@@ -32,8 +32,10 @@ public class EventManagerImpl implements EventManager {
 
 	@Override
 	public void addEvent(Event event) {
-		// TODO Auto-generated method stub
-
+		if (event.isPositionEvent())
+			positionEventList.add((PositionEvent)event);
+		if (event.isTimeEvent())
+			timeEventList.add((TimeEvent)event);
 	}
 
 }

@@ -4,13 +4,14 @@ import java.awt.Graphics2D;
 
 import story.event.EventManager;
 
-
 import map.maptiled.MapTiled;
 
 import controller.GameController;
 import controller.GameControllerImpl;
 import controller.GameWindow;
 import entities.manager.EntityManager;
+import exceptions.NoWindowException;
+import exceptions.ViewSizeNull;
 
 public class ScenarioImpl implements Scenario {
 
@@ -28,18 +29,28 @@ public class ScenarioImpl implements Scenario {
 	 * @param gameWindow
 	 *            Window in which the game is running
 	 */
-	public ScenarioImpl(GameWindow gameWindow, String title) {
-		super();
-		this.gameWindow = gameWindow;
+	public ScenarioImpl(String title) {
 		this.title = title;
 	}
 
 	@Override
-	public void start() {
-		loop();
+	public void start() throws NoWindowException {
+		if (gameWindow == null)
+			throw new NoWindowException();
+
+		gameController.setViewSize(gameWindow.getSize().width, gameWindow
+				.getSize().height);
+		try {
+			loop();
+		} catch (ViewSizeNull e) {
+			e.printStackTrace();
+		}
 	}
 
-	protected void loop() {
+	protected void loop() throws ViewSizeNull {
+		//Test
+		gameController.setHorizontalMovement(80);
+		
 		// sleep : time to sleep before the next frame
 		// delta : time elapsed since the previous frame (in ms)
 		// lastFpsTime : time elapsed since the last record of fps
@@ -65,18 +76,11 @@ public class ScenarioImpl implements Scenario {
 				gameWindow.setTitle(title + " (FPS: " + fps + ")");
 				lastFpsTime = 0;
 				fps = 0;
-
-				// Speed update
-				//gameController.setHorizontalMovement(40 * r.nextInt(10) + 1);
 			}
-			
-			// Updating the game
-			gameController.updateView(delta);
 
-			// Activating independant events
+			// Updating the game, activating events and moving entities
+			gameController.updateView(delta);
 			eventManager.activateEvents(gameController);
-			
-			// Moving entities
 			gameController.updateEntities();
 
 			// Get hold of a graphics context for the accelerated
@@ -91,10 +95,10 @@ public class ScenarioImpl implements Scenario {
 			g.dispose();
 			gameWindow.show();
 
-			// we want each frame to take x milliseconds, to do this
-			// we've recorded when we started the frame. We add x milliseconds
-			// to this and then factor in the current time to give
-			// us our final value to wait for
+			// we want each frame to take x milliseconds (given by the number of
+			// frame per second), to do this we've recorded when we started the
+			// frame. We add x milliseconds to this and then factor in the
+			// current time to give us our final value to wait for
 			if ((sleep = 1000 / FRAME_RATE - (System.nanoTime() - lastLoopTime)
 					/ 1000000) > 0)
 				try {
@@ -114,10 +118,14 @@ public class ScenarioImpl implements Scenario {
 	}
 
 	@Override
+	public void setGameWindow(GameWindow gameWindow) {
+		this.gameWindow = gameWindow;
+	}
+
+	@Override
 	public void initialization(MapTiled mapTiled, EntityManager entityManager,
 			EventManager eventManager) {
-		gameController = new GameControllerImpl(mapTiled, entityManager, 0, 0,
-				gameWindow.getSize().width, gameWindow.getSize().height);
+		gameController = new GameControllerImpl(mapTiled, entityManager, 0, 0);
 		this.eventManager = eventManager;
 	}
 
