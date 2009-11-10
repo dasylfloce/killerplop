@@ -41,7 +41,7 @@ public class EntityTest extends Test{
 	}
 	
 	protected static void testShip() {
-		manager.addEntity(new ShipEntity(SpriteStore.get().getSprite("sprites/alien.gif"), 10, windowSize.height/2, new LinearMovement()));
+		manager.addEntity(new ShipEntity(SpriteStore.get().getSprite("sprites/alien.gif"), 10, windowSize.height/2, new ShipMovement()));
 	}
 	
 	protected static void testSinusStatic() {
