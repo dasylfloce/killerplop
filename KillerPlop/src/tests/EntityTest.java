@@ -12,19 +12,18 @@ import entities.movement.SinusMovementStatic;
 import entities.movement.StaticMovement;
 import entities.sprites.SpriteStore;
 
-@SuppressWarnings("serial")
-public class EntityTest extends MapTest {
+public class EntityTest extends Test{
 
-	protected EntityManager createEntityManager() {
+	public static EntityManager createEntityManager() {
 		return testShip();
 	}
 
-	protected EntityManager testStatic() {
+	protected static EntityManager testStatic() {
 		LinkedList<ActivatedEntity> sleepingEntities = new LinkedList<ActivatedEntity>();
 		for (int i = 0; i < 80; i++) {
 			sleepingEntities.add(new ActivatedEntity(SpriteStore.get()
 					.getSprite("sprites/alien.gif"), r
-					.nextInt(windowSize.height), new StaticMovement(), 800
+					.nextInt(Test.windowSize.height), new StaticMovement(), 800
 					+ 100 * i + r.nextInt(500)));
 		}
 
@@ -33,12 +32,12 @@ public class EntityTest extends MapTest {
 		return entityManager;
 	}
 
-	protected EntityManager testSinus() {
+	protected static EntityManager testSinus() {
 		LinkedList<ActivatedEntity> sleepingEntities = new LinkedList<ActivatedEntity>();
 		for (int i = 0; i < 80; i++) {
 			sleepingEntities.add(new ActivatedEntity(SpriteStore.get()
 					.getSprite("sprites/ship.gif"), r
-					.nextInt(windowSize.height), new SinusMovement(r
+					.nextInt(Test.windowSize.height), new SinusMovement(r
 					.nextInt(250), r.nextInt(3) + 1, -40), 800 + 100 * i
 					+ r.nextInt(500)));
 		}
@@ -48,7 +47,7 @@ public class EntityTest extends MapTest {
 		return entityManager;
 	}
 	
-	protected EntityManager testShip() {
+	protected static EntityManager testShip() {
 		LinkedList<ActivatedEntity> sleepingEntities = new LinkedList<ActivatedEntity>();
 		for (int i = 0; i < 80; i++) {
 			sleepingEntities.add(new ActivatedEntity(SpriteStore.get()
@@ -65,7 +64,7 @@ public class EntityTest extends MapTest {
 		return entityManager;
 	}
 	
-	protected EntityManager testSinusStatic() {
+	protected static EntityManager testSinusStatic() {
 		LinkedList<ActivatedEntity> sleepingEntities = new LinkedList<ActivatedEntity>();
 		for (int i = 0; i < 80; i++) {
 			sleepingEntities.add(new ActivatedEntity(SpriteStore.get()
@@ -80,19 +79,4 @@ public class EntityTest extends MapTest {
 		return entityManager;
 	}
 
-	/**
-	 * The entry point into the game. We'll simply create an instance of class
-	 * which will start the display and game loop.
-	 * 
-	 * @param argv
-	 *            The arguments that are passed into our game
-	 */
-	public static void main(String argv[]) {
-		EntityTest mapTest = new EntityTest();
-
-		// Start the main game loop, note: this method will not
-		// return until the game has finished running. Hence we are
-		// using the actual main thread to run the game.
-		mapTest.startRendering();
-	}
 }

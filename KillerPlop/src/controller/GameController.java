@@ -3,6 +3,7 @@ package controller;
 import java.awt.Graphics2D;
 
 import entities.manager.EntityManager;
+import exceptions.ViewSizeNull;
 
 import map.maptiled.MapTiled;
 
@@ -90,12 +91,12 @@ public interface GameController {
 	 * @param delta
 	 *            Time elapsed, in ms, since the last update.
 	 * */
-	public void updateView(long delta);
+	public void updateView(long delta) throws ViewSizeNull;
 
 	/**
 	 * Update the position of all the active entities.
 	 */
-	public void updateEntities();
+	public void updateEntities() throws ViewSizeNull;
 
 	/**
 	 * @return the time in ms elapsed since the last update.
@@ -118,5 +119,5 @@ public interface GameController {
 	 * @param g
 	 *            The graphics context on which to draw
 	 */
-	public void render(Graphics2D g);
+	public void render(Graphics2D g) throws ViewSizeNull;
 }

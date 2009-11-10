@@ -1,8 +1,10 @@
 package story.scenario;
 
+import controller.GameWindow;
 import story.event.EventManager;
 import map.maptiled.MapTiled;
 import entities.manager.EntityManager;
+import exceptions.NoWindowException;
 
 
 /**
@@ -20,9 +22,15 @@ public interface Scenario {
 	public void initialization(MapTiled mapTiled, EntityManager entityManager, EventManager eventManager);
 	
 	/**
+	 * 
+	 * @param gameWindow
+	 */
+	public void setGameWindow(GameWindow gameWindow);
+	
+	/**
 	 * Start the scenario
 	 */
-	public void start();
+	public void start() throws NoWindowException;
 	
 	/**
 	 * @return true if the scenario is terminated.

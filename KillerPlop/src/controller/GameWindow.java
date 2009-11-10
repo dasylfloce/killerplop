@@ -18,14 +18,6 @@ public interface GameWindow {
 	public void setTitle(String title);
 	
 	/**
-	 * Set the game display resolution
-	 * 
-	 * @param x The new x resolution of the display
-	 * @param y The new y resolution of the display
-	 */
-	public void setResolution(int x,int y);
-	
-	/**
 	 * @return the graphic context of the window
 	 */
 	public Graphics2D getGraphics();

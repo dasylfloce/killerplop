@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 
 import map.maptiled.MapTiled;
 import entities.manager.EntityManager;
+import exceptions.ViewSizeNull;
 
 /**
  * Implements the GameController interface.
@@ -73,11 +74,9 @@ public class GameControllerImpl implements GameController {
 	 *            Hauteur de la vue, en pixels.
 	 */
 	public GameControllerImpl(MapTiled mapTiled, EntityManager entityManager,
-			double x, double y, int viewWidth, int viewHeight) {
+			double x, double y) {
 		this.x = x;
 		this.y = y;
-		this.viewWidth = viewWidth;
-		this.viewHeight = viewHeight;
 		this.mapTiled = mapTiled;
 		this.entityManager = entityManager;
 	}
@@ -144,13 +143,13 @@ public class GameControllerImpl implements GameController {
 	}
 
 	@Override
-	public void render(Graphics2D g) {
+	public void render(Graphics2D g) throws ViewSizeNull {
 		mapTiled.render(g, x, y, viewWidth, viewHeight);
 		entityManager.render(g, (int) x, (int) y);
 	}
 
 	@Override
-	public void updateView(long delta) {
+	public void updateView(long delta) throws ViewSizeNull {
 		this.delta = delta;
 
 		// update positions
@@ -163,7 +162,7 @@ public class GameControllerImpl implements GameController {
 	}
 
 	@Override
-	public void updateEntities() {
+	public void updateEntities() throws ViewSizeNull {
 		entityManager.moveEntities(this);
 		entityManager.activateEntities(x + viewWidth);
 		entityManager.resolveCollisions();
