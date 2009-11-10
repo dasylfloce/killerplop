@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 
 import entities.manager.EntityManager;
 
-import map.maptiled2.MapTiled;
+import map.maptiled.MapTiled;
 
 /**
  * Control the evolution of the game.

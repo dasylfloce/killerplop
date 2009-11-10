@@ -1,4 +1,4 @@
-package map.maptiled2;
+package map.maptiled;
 
 import map.tile.Tile;
 import map.tile.TileWareHouse;
