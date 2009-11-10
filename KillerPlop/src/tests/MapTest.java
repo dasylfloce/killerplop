@@ -17,8 +17,8 @@ import entities.manager.EntityManager;
 import entities.manager.EntityManagerImpl;
 
 import map.Utilities;
-import map.mapTiled.MapTiled;
-import map.mapTiled.MapTiledBuilder;
+import map.maptiled2.MapTiled;
+import map.maptiled2.MapTiledBuilder;
 import map.tile.SimpleTile;
 import map.tile.Tile;
 

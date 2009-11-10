@@ -2,7 +2,7 @@ package controller;
 
 import java.awt.Graphics2D;
 
-import map.mapTiled.MapTiled;
+import map.maptiled2.MapTiled;
 import entities.manager.EntityManager;
 
 /**
