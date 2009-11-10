@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.Graphics2D;
 
+import story.scenario.ScenarioImpl;
+
 import map.maptiled.MapTiled;
 import entities.manager.EntityManager;
 import exceptions.ViewSizeNull;
@@ -156,7 +158,7 @@ public class GameControllerImpl implements GameController {
 		x += delta * dx / 1000;
 		y += delta * dy / 1000;
 
-		if (delta != 30)
+		if (delta != 1000/ScenarioImpl.FRAME_RATE)
 		System.out.println("GameController.update(delta=" + delta + ")\n\tx:"
 				+ x + "\ty:" + y);
 	}

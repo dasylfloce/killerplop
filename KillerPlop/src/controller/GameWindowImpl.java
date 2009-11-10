@@ -18,7 +18,7 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 	/** The game window that we'll update with the frame count */
 	protected JFrame container;
 	/** Size of the window */
-	protected Dimension windowSize = new Dimension(480, 320);
+	protected Dimension windowSize;
 
 	/**
 	 * Construct our map and set it running.
@@ -26,6 +26,7 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 	public GameWindowImpl(Dimension windowSize) {
 		// create a frame to contain our game
 		container = new JFrame();
+		this.windowSize = windowSize;
 
 		// get hold the content of the frame and set up the resolution of the
 		// game

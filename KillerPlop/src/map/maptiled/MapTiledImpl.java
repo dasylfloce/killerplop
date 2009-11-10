@@ -101,7 +101,6 @@ public class MapTiledImpl implements MapTiled {
 	 */
 	private void zoneRender(Graphics2D g, double posx, double posy, int vw,
 			int vh, int xd, int yd) throws ArrayIndexOutOfBoundsException {
-		System.out.println("vw:"+vw+"|vh:"+vh);
 		// positions dans la carte
 		int xm = ((int) posx) / getTileWidth();
 		int ym = ((int) posy) / getTileHeight();

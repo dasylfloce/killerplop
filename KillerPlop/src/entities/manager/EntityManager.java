@@ -15,6 +15,12 @@ import entities.Entity;
  * 
  */
 public interface EntityManager {
+	
+	/**
+	 * Adds an entity to the entity manager.
+	 * @param entity the entity to add.
+	 */
+	public void addEntity(Entity entity);
 
 	/**
 	 * Activate all the entities that should be activated at the "x" position

@@ -40,28 +40,14 @@ public class EntityManagerImpl implements EntityManager {
 
 	/**
 	 * Constructor
-	 * 
-	 * @param shipEntities
-	 *            Ships that evolve in the level.
-	 * @param waitingEntities
-	 *            Entities that evolve in the level.
 	 */
-	public EntityManagerImpl(LinkedList<ShipEntity> shipEntities,
-			LinkedList<ActivatedEntity> sleepingEntities) {
-
-		if (sleepingEntities == null)
-			this.sleepingEntities = new LinkedList<ActivatedEntity>();
-		else
-			this.sleepingEntities = sleepingEntities;
-
-		if (sleepingEntities == null)
-			this.shipEntities = new LinkedList<ShipEntity>();
-		else
-			this.shipEntities = shipEntities;
+	public EntityManagerImpl() {
+		sleepingEntities = new LinkedList<ActivatedEntity>();
+		shipEntities = new LinkedList<ShipEntity>();
 		activatedEntities = new ArrayList<ActivatedEntity>();
 		waitingEntities = new ArrayList<ActivatedEntity>();
 		shotEntities = new LinkedList<ShotEntity>();
-		
+
 		Collections.sort(this.sleepingEntities);
 	}
 
@@ -109,6 +95,16 @@ public class EntityManagerImpl implements EntityManager {
 	public void resolveCollisions() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void addEntity(Entity entity) {
+		if (entity.isActivatedEntity())
+			sleepingEntities.add((ActivatedEntity)entity);
+		if (entity.isShipEntity())
+			shipEntities.add((ShipEntity)entity);
+		if (entity.isShotEntity())
+			shotEntities.add((ShotEntity)entity);
 	}
 
 }
