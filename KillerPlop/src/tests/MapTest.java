@@ -125,8 +125,8 @@ public class MapTest extends Canvas {
 				fps = 0;
 
 				//Speed update
-				//gameController.setHorizontalMovement(40*r.nextInt(10)+1);
-				gameController.setHorizontalMovement(120);
+				gameController.setHorizontalMovement(40*r.nextInt(10)+1);
+				//gameController.setHorizontalMovement(120);
 			}
 
 			// Get hold of a graphics context for the accelerated
