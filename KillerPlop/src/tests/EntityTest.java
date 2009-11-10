@@ -6,7 +6,7 @@ import entities.ActivatedEntity;
 import entities.ShipEntity;
 import entities.manager.EntityManager;
 import entities.manager.EntityManagerImpl;
-import entities.movement.LinearMovement;
+import entities.movement.ShipMovement;
 import entities.movement.SinusMovement;
 import entities.movement.SinusMovementStatic;
 import entities.movement.StaticMovement;
@@ -57,7 +57,7 @@ public class EntityTest extends Test{
 					+ r.nextInt(500)));
 		}
 		LinkedList<ShipEntity> shipEntities = new LinkedList<ShipEntity>();
-		shipEntities.add(new ShipEntity(SpriteStore.get().getSprite("sprites/alien.gif"), 10, windowSize.height/2, new LinearMovement()));
+		shipEntities.add(new ShipEntity(SpriteStore.get().getSprite("sprites/alien.gif"), 10, windowSize.height/2, new ShipMovement()));
 
 		EntityManager entityManager = new EntityManagerImpl(shipEntities,
 				sleepingEntities);
