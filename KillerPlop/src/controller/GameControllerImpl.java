@@ -150,13 +150,20 @@ public class GameControllerImpl implements GameController {
 	}
 
 	@Override
-	public void update(long delta) {
+	public void updateView(long delta) {
 		this.delta = delta;
 
 		// update positions
 		x += delta * dx / 1000;
 		y += delta * dy / 1000;
 
+		if (delta != 30)
+		System.out.println("GameController.update(delta=" + delta + ")\n\tx:"
+				+ x + "\ty:" + y);
+	}
+
+	@Override
+	public void updateEntities() {
 		entityManager.moveEntities(this);
 		entityManager.activateEntities(x + viewWidth);
 		entityManager.resolveCollisions();

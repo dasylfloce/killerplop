@@ -67,11 +67,9 @@ public class EntityManagerImpl implements EntityManager {
 
 	@Override
 	public void activateEntities(double x) {
-		System.out.println(x + " | " + sleepingEntities.size());
 		if (!sleepingEntities.isEmpty()) {
 			boolean next = true;
 			do {
-				System.out.println("\t act:" + sleepingEntities.getFirst().getCurrentActivation());
 				if (next = sleepingEntities.getFirst().getCurrentActivation() < x)
 					activatedEntities.add(sleepingEntities.removeFirst());
 			} while (next && !sleepingEntities.isEmpty());

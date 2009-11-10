@@ -10,8 +10,7 @@ import map.maptiled.MapTiled;
  * Control the evolution of the game.
  * 
  * Everything is updated with "delta", the amount of time in ms passed since the
- * last update.
- * Control the view on the map, and the entities that evolve on it.
+ * last update. Control the view on the map, and the entities that evolve on it.
  * 
  * @author Aurélien RAMBAUX
  * 
@@ -67,6 +66,7 @@ public interface GameController {
 	 * @return The vertical speed of this controller (pixels/sec)
 	 */
 	public double getVerticalMovement();
+
 	/**
 	 * Set the horizontal speed of this controller.
 	 * 
@@ -84,16 +84,24 @@ public interface GameController {
 	public void setVerticalMovement(double dy);
 
 	/**
-	 * Update the position of all the active entities, an the view on the map. 
-	 * @param delta Time elapsed, in ms, since the last update.
+	 * Update the position of the view on the map, and set displacement factor
+	 * for entities.
+	 * 
+	 * @param delta
+	 *            Time elapsed, in ms, since the last update.
+	 * */
+	public void updateView(long delta);
+
+	/**
+	 * Update the position of all the active entities.
 	 */
-	public void update(long delta);
-	
+	public void updateEntities();
+
 	/**
 	 * @return the time in ms elapsed since the last update.
 	 */
 	public long getDelta();
-	
+
 	/**
 	 * @return the tiled map of this controller.
 	 */
