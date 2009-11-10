@@ -40,7 +40,9 @@ public class MapTest extends Canvas {
 	protected JFrame container;
 
 	protected GameController gameController;
-	protected Dimension windowSize;
+	
+	protected int FPS = 50;
+	protected Dimension windowSize = new Dimension(480, 320);
 
 	/**
 	 * Construct our map and set it running.
@@ -53,7 +55,6 @@ public class MapTest extends Canvas {
 	 * Start the rendering process. This method will not return. 
 	 */
 	public void startRendering() {
-		windowSize = new Dimension(480, 320);
 
 		// get hold the content of the frame and set up the resolution of the
 		// game
@@ -136,7 +137,7 @@ public class MapTest extends Canvas {
 			// g.fillRect(0, 0, 800, 600);
 
 			// Drawing the map
-			gameController.update(delta);
+			//gameController.update(delta);
 			gameController.render(g);
 
 			// finally, we've completed drawing so clear up the graphics
@@ -148,7 +149,7 @@ public class MapTest extends Canvas {
 			// we've recorded when we started the frame. We add 10 milliseconds
 			// to this and then factor in the current time to give
 			// us our final value to wait for
-			if ((sleep = 30 - (System.nanoTime() - lastLoopTime) / 1000000) > 0)
+			if ((sleep = 1000/FPS - (System.nanoTime() - lastLoopTime) / 1000000) > 0)
 				try {
 					Thread.sleep(sleep);
 				} catch (InterruptedException e) {
