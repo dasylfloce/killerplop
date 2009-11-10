@@ -91,14 +91,18 @@ public class EntityManagerImpl implements EntityManager {
 
 	@Override
 	public void moveEntities(GameController gameController) {
-		for (Entity entity : activatedEntities)
+		for (ActivatedEntity entity : activatedEntities)
 			entity.update(gameController);
+		for (ShipEntity ship : shipEntities)
+			ship.update(gameController);
 	}
 
 	@Override
 	public void render(Graphics2D g, int offsetX, int offsetY) {
-		for (Entity entity : activatedEntities)
+		for (ActivatedEntity entity : activatedEntities)
 			entity.draw(g, offsetX, offsetY);
+		for (ShipEntity ship : shipEntities)
+			ship.draw(g, offsetX, offsetY);
 	}
 
 	@Override

@@ -1,36 +1,35 @@
 package entities;
 
 import controller.GameController;
+import entities.movement.Movement;
 import entities.sprites.Sprite;
 
 public class ShipEntity extends EntityImpl {
+	
+	protected Movement movement;
 
-	public ShipEntity(Sprite sprite, int x, int y) {
+	public ShipEntity(Sprite sprite, int x, int y, Movement movement) {
 		super(sprite, x, y);
-		// TODO Auto-generated constructor stub
+		this.movement = movement;
 	}
 
 	@Override
 	public void calculateSpeed(GameController gameController) {
-		// TODO Auto-generated method stub
-
+		movement.setMovement(this, gameController);
 	}
 
 	@Override
 	public boolean isActivatedEntity() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isShipEntity() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isShotEntity() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
