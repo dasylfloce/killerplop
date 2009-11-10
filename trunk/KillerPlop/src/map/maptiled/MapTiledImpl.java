@@ -1,4 +1,4 @@
-package map.maptiled2;
+package map.maptiled;
 
 import java.awt.Graphics2D;
 import java.awt.Shape;
