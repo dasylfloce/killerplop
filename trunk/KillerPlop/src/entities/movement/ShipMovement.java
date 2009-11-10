@@ -3,7 +3,7 @@ package entities.movement;
 import controller.GameController;
 import entities.Entity;
 
-public class LinearMovement implements Movement {
+public class ShipMovement implements Movement {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class LinearMovement implements Movement {
 	 *            Period in sec
 	 * @param vx
 	 */
-	public LinearMovement() {
+	public ShipMovement() {
 		super();
 	}
 
