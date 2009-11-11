@@ -7,7 +7,7 @@ public class ShotEntity extends ActivatedEntity {
 
 	public ShotEntity(Sprite sprite, int y, Movement movement,
 			int activationPoint) {
-		super(sprite, y, movement, activationPoint);
+		super(sprite, activationPoint, y, movement);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -5,52 +5,58 @@ import entities.ShipEntity;
 import entities.manager.EntityManager;
 import entities.manager.EntityManagerImpl;
 import entities.movement.ShipMovement;
-import entities.movement.SinusMovement;
-import entities.movement.SinusMovementStatic;
-import entities.movement.StaticMovement;
+import entities.movement.basics.DynamicMovement;
+import entities.movement.basics.SinusMovement;
+import entities.movement.basics.StaticMovement;
 import entities.sprites.SpriteStore;
 
-public class EntityTest extends Test{
-	
+public class EntityTest extends Test {
+
 	private static EntityManager manager;
 
 	public static EntityManager createEntityManager() {
 		manager = new EntityManagerImpl();
-		testSinus();
+		testSinusStatic();
 		testShip();
 		return manager;
 	}
 
 	protected static void testStatic() {
 		for (int i = 0; i < 80; i++) {
-			manager.addEntity(new ActivatedEntity(SpriteStore.get()
-					.getSprite("sprites/alien.gif"), r
-					.nextInt(Test.windowSize.height), new StaticMovement(), 800
-					+ 100 * i + r.nextInt(windowSize.height-40)));
+			manager.addEntity(new ActivatedEntity(SpriteStore.get().getSprite(
+					"sprites/alien.gif"), 800 + 100 * i
+					+ r.nextInt(windowSize.height - 40), r
+					.nextInt(Test.windowSize.height), new StaticMovement()));
 		}
 	}
 
 	protected static void testSinus() {
 		for (int i = 0; i < 80; i++) {
-			manager.addEntity(new ActivatedEntity(SpriteStore.get()
-					.getSprite("sprites/ship.gif"), r
-					.nextInt(Test.windowSize.height), new SinusMovement(r
-					.nextInt(250), r.nextInt(3) + 1, -40), 800 + 100 * i
-					+ r.nextInt(windowSize.height-40)));
+			int amplitude = r.nextInt(250);
+			manager.addEntity(new ActivatedEntity(SpriteStore.get().getSprite(
+					"sprites/ship.gif"), 800 + 100 * i
+					+ r.nextInt(windowSize.width), r
+					.nextInt(Test.windowSize.height - amplitude)
+					+ amplitude / 2, new DynamicMovement(new SinusMovement(
+					amplitude, r.nextInt(3) + 1, -r.nextInt(200)))));
 		}
 	}
-	
+
 	protected static void testShip() {
-		manager.addEntity(new ShipEntity(SpriteStore.get().getSprite("sprites/alien.gif"), 10, windowSize.height/2, new ShipMovement()));
+		manager.addEntity(new ShipEntity(SpriteStore.get().getSprite(
+				"sprites/alien.gif"), 10, windowSize.height / 2,
+				new ShipMovement()));
 	}
-	
+
 	protected static void testSinusStatic() {
 		for (int i = 0; i < 80; i++) {
-			manager.addEntity(new ActivatedEntity(SpriteStore.get()
-					.getSprite("sprites/ship.gif"), r
-					.nextInt(Test.windowSize.height), new SinusMovementStatic(r
-					.nextInt(250), r.nextInt(3) + 1, 80), 800 + 100 * i
-					+ r.nextInt(windowSize.height-40)));
+			int amplitude = r.nextInt(250);
+			manager.addEntity(new ActivatedEntity(SpriteStore.get().getSprite(
+					"sprites/ship.gif"), 800 + 100 * i
+					+ r.nextInt(windowSize.width), r
+					.nextInt(Test.windowSize.height - amplitude)
+					+ amplitude / 2, new SinusMovement(amplitude, r
+					.nextInt(3) + 1, r.nextInt(200))));
 		}
 	}
 

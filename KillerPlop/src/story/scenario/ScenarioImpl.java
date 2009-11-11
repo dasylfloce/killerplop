@@ -48,8 +48,6 @@ public class ScenarioImpl implements Scenario {
 	}
 
 	protected void loop() throws ViewSizeNull {
-		//Test
-		gameController.setHorizontalMovement(80);
 		
 		// sleep : time to sleep before the next frame
 		// delta : time elapsed since the previous frame (in ms)
