@@ -186,4 +186,12 @@ public class MapTiledBuilder extends MapTiledImpl {
 		}
 		return new MapTiledBuilder(tileWareHouse.clone(), width, height);
 	}
+	
+	/**
+	 * Sauvegarde la map
+	 * @param path
+	 */
+	public void saveTo(String path) {
+		
+	}
 }

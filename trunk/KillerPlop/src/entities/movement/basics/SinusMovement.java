@@ -1,9 +1,9 @@
-package entities.movement;
+package entities.movement.basics;
 
 import controller.GameController;
 import entities.Entity;
 
-public class SinusMovementStatic implements Movement {
+public class SinusMovement extends ControlledMovement {
 
 	protected long time;
 	protected double amplitude;
@@ -18,8 +18,7 @@ public class SinusMovementStatic implements Movement {
 	 *            Period in sec
 	 * @param vx
 	 */
-	public SinusMovementStatic(double amplitude, double period, double vx) {
-		super();
+	public SinusMovement(double amplitude, double period, double vx) {
 		time = 0;
 		this.vx = vx;
 		this.amplitude = amplitude;
@@ -27,10 +26,10 @@ public class SinusMovementStatic implements Movement {
 	}
 
 	@Override
-	public void setMovement(Entity entity, GameController gameController) {
+	public void calculateSpeed(Entity entity, GameController gameController) {
 		time += gameController.getDelta();
-		entity.setHorizontalMovement(vx);
-		entity.setVerticalMovement(amplitude * Math.sin(time / period));
+		setVx(vx);
+		setVy(amplitude * Math.sin(time / period));
 	}
 
 }

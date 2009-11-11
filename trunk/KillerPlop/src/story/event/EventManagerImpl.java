@@ -22,11 +22,11 @@ public class EventManagerImpl implements EventManager {
 	public void activateEvents(GameController gameController) {
 		timeElapsed += gameController.getDelta();
 		for (TimeEvent event : timeEventList)
-			if (event.isActivated(timeElapsed))
+			if (event.isActivationPoint(timeElapsed))
 				event.doEvent(gameController);
 
 		for (PositionEvent event : positionEventList)
-			if (event.isActivated(gameController.getX()))
+			if (event.isActivationPoint(gameController.getX()))
 				event.doEvent(gameController);
 	}
 

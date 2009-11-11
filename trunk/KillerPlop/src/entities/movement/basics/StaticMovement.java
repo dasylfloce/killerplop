@@ -1,7 +1,8 @@
-package entities.movement;
+package entities.movement.basics;
 
 import controller.GameController;
 import entities.Entity;
+import entities.movement.Movement;
 
 /**
  * Static movement.

@@ -21,27 +21,36 @@ public class ActivatedEntity extends EntityImpl implements
 	protected int currentActivation;
 	protected Movement movement;
 
-	public ActivatedEntity(Sprite sprite, int y, Movement movement,
-			int activationPoint) {
-		this(sprite, y, movement, new int[] { activationPoint });
+	public ActivatedEntity(Sprite sprite, int activationPoint, int y,
+			Movement movement) {
+		this(sprite, new int[] { activationPoint }, y, movement);
 	}
 
-	public ActivatedEntity(Sprite sprite, int y, Movement movement,
-			int[] activatingPoints) {
+	public ActivatedEntity(Sprite sprite, int[] activatingPoints, int y,
+			Movement movement) {
 		super(sprite, activatingPoints[0], y);
 		this.activatingPoints = activatingPoints;
 		this.movement = movement;
 		currentActivation = 0;
 	}
 
-	public int getCurrentActivation() {
+	/**
+	 * @return the x position of its next activation point.
+	 */
+	public int getActivationPoint() {
 		return activatingPoints[currentActivation];
 	}
 
+	/**
+	 * @return true if the entity can be reactivated.
+	 */
 	public boolean canBeReactivated() {
 		return currentActivation < activatingPoints.length - 1;
 	}
 
+	/**
+	 * Update the status of this ActivatedEntity for its next activation.
+	 */
 	public void nextActivation() {
 		currentActivation++;
 	}
@@ -68,9 +77,9 @@ public class ActivatedEntity extends EntityImpl implements
 
 	@Override
 	public int compareTo(ActivatedEntity arg0) {
-		if (getCurrentActivation() < arg0.getCurrentActivation())
+		if (getActivationPoint() < arg0.getActivationPoint())
 			return -1;
-		else if (getCurrentActivation() == arg0.getCurrentActivation())
+		else if (getActivationPoint() == arg0.getActivationPoint())
 			return 0;
 		else
 			return 1;

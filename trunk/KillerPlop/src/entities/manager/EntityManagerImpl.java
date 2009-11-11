@@ -2,8 +2,8 @@ package entities.manager;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 import controller.GameController;
 import entities.ActivatedEntity;
@@ -30,10 +30,6 @@ public class EntityManagerImpl implements EntityManager {
 	 * Entities currently active.
 	 */
 	protected ArrayList<ActivatedEntity> activatedEntities;
-	/**
-	 * Entities waiting for their next activation (not the first activation).
-	 */
-	protected ArrayList<ActivatedEntity> waitingEntities;
 
 	protected LinkedList<ShipEntity> shipEntities;
 	protected LinkedList<ShotEntity> shotEntities;
@@ -45,10 +41,7 @@ public class EntityManagerImpl implements EntityManager {
 		sleepingEntities = new LinkedList<ActivatedEntity>();
 		shipEntities = new LinkedList<ShipEntity>();
 		activatedEntities = new ArrayList<ActivatedEntity>();
-		waitingEntities = new ArrayList<ActivatedEntity>();
 		shotEntities = new LinkedList<ShotEntity>();
-
-		Collections.sort(this.sleepingEntities);
 	}
 
 	@Override
@@ -56,22 +49,21 @@ public class EntityManagerImpl implements EntityManager {
 		if (!sleepingEntities.isEmpty()) {
 			boolean next = true;
 			do {
-				if (next = sleepingEntities.getFirst().getCurrentActivation() < x)
+				if (next = sleepingEntities.getFirst().getActivationPoint() < x)
 					activatedEntities.add(sleepingEntities.removeFirst());
 			} while (next && !sleepingEntities.isEmpty());
 		}
-
-		for (int i = 0; i < waitingEntities.size(); i++)
-			if (waitingEntities.get(i).getCurrentActivation() < x)
-				activatedEntities.add(waitingEntities.remove(i--));
 	}
 
 	@Override
 	public void desactivateEntity(Entity entity) {
 		activatedEntities.remove(entity);
 		if (entity.isActivatedEntity()) {
-			if (((ActivatedEntity) entity).canBeReactivated())
-				waitingEntities.add((ActivatedEntity) entity);
+			ActivatedEntity ae = (ActivatedEntity) entity;
+			if (ae.canBeReactivated()) {
+				ae.nextActivation();
+				sleepingEntities.add(ae);
+			}
 		}
 	}
 
@@ -99,12 +91,35 @@ public class EntityManagerImpl implements EntityManager {
 
 	@Override
 	public void addEntity(Entity entity) {
-		if (entity.isActivatedEntity())
-			sleepingEntities.add((ActivatedEntity)entity);
+
+		if (entity.isActivatedEntity()) {
+			// Adding this activated entity in the sleeping list, sorted by
+			// activation point.
+			ActivatedEntity ae = (ActivatedEntity) entity;
+
+			// There is three special cases, when the list is empty or when the
+			// entity to add is the first one or the last one.
+			if (sleepingEntities.isEmpty()) {
+				sleepingEntities.add(ae);
+			} else if (sleepingEntities.getFirst().compareTo(ae) > 0) {
+				sleepingEntities.addFirst(ae);
+			} else if (sleepingEntities.getLast().compareTo(ae) < 0) {
+				sleepingEntities.addLast(ae);
+			} else {
+				ListIterator<ActivatedEntity> i = sleepingEntities
+						.listIterator();
+				while (i.hasNext() && i.next().compareTo(ae) < 0)
+					;
+				// Must go backward
+				i.previous();
+				i.add(ae);
+			}
+		}
+
 		if (entity.isShipEntity())
-			shipEntities.add((ShipEntity)entity);
+			shipEntities.add((ShipEntity) entity);
 		if (entity.isShotEntity())
-			shotEntities.add((ShotEntity)entity);
+			shotEntities.add((ShotEntity) entity);
 	}
 
 }
