@@ -21,6 +21,8 @@ public class Utilities {
 				img.setAccelerationPriority(1.0f);
 			return img;
 		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
 			return null;
 		}
 	}

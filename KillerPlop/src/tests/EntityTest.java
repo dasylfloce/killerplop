@@ -24,7 +24,7 @@ public class EntityTest extends Test {
 	protected static void testStatic() {
 		for (int i = 0; i < 80; i++) {
 			manager.addEntity(new ActivatedEntity(SpriteStore.get().getSprite(
-					"sprites/alien.gif"), 800 + 100 * i
+					"resources/sprites/alien.gif"), 800 + 100 * i
 					+ r.nextInt(windowSize.height - 40), r
 					.nextInt(Test.windowSize.height), new StaticMovement()));
 		}
@@ -34,7 +34,7 @@ public class EntityTest extends Test {
 		for (int i = 0; i < 80; i++) {
 			int amplitude = r.nextInt(250);
 			manager.addEntity(new ActivatedEntity(SpriteStore.get().getSprite(
-					"sprites/ship.gif"), 800 + 100 * i
+					"resources/sprites/ship.gif"), 800 + 100 * i
 					+ r.nextInt(windowSize.width), r
 					.nextInt(Test.windowSize.height - amplitude)
 					+ amplitude / 2, new DynamicMovement(new SinusMovement(
@@ -44,7 +44,7 @@ public class EntityTest extends Test {
 
 	protected static void testShip() {
 		manager.addEntity(new ShipEntity(SpriteStore.get().getSprite(
-				"sprites/alien.gif"), 10, windowSize.height / 2,
+				"resources/sprites/alien.gif"), 10, windowSize.height / 2,
 				new ShipMovement()));
 	}
 
@@ -52,7 +52,7 @@ public class EntityTest extends Test {
 		for (int i = 0; i < 80; i++) {
 			int amplitude = r.nextInt(250);
 			manager.addEntity(new ActivatedEntity(SpriteStore.get().getSprite(
-					"sprites/ship.gif"), 800 + 100 * i
+					"resources/sprites/ship.gif"), 800 + 100 * i
 					+ r.nextInt(windowSize.width), r
 					.nextInt(Test.windowSize.height - amplitude)
 					+ amplitude / 2, new SinusMovement(amplitude, r
