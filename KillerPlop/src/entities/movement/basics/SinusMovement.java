@@ -26,7 +26,7 @@ public class SinusMovement extends ControlledMovement {
 	}
 
 	@Override
-	public void calculateSpeed(Entity entity, GameController gameController) {
+	protected void calculateSpeed(Entity entity, GameController gameController) {
 		time += gameController.getDelta();
 		setVx(vx);
 		setVy(amplitude * Math.sin(time / period));

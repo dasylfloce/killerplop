@@ -95,6 +95,12 @@ public abstract class EntityImpl implements Entity {
 		x += (gameController.getDelta()* dx) / 1000;
 		y += (gameController.getDelta() * dy) / 1000;
 	}
+	
+	/**
+	 * Calculate the speed of the entity, used to move it.
+	 * @param gameController controller
+	 */
+	public abstract void calculateSpeed(GameController gameController);
 
 	@Override
 	public boolean collidesWith(Entity other) {

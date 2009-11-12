@@ -1,6 +1,7 @@
-package entities;
+package entities.aliens;
 
 import controller.GameController;
+import entities.EntityImpl;
 import entities.movement.Movement;
 import entities.sprites.Sprite;
 
@@ -14,19 +15,19 @@ import entities.sprites.Sprite;
  * @author Aurélien RAMBAUX
  * 
  */
-public class ActivatedEntity extends EntityImpl implements
-		Comparable<ActivatedEntity> {
+public class AlienEntity extends EntityImpl implements
+		Comparable<AlienEntity> {
 
 	protected int[] activatingPoints;
 	protected int currentActivation;
 	protected Movement movement;
 
-	public ActivatedEntity(Sprite sprite, int activationPoint, int y,
+	public AlienEntity(Sprite sprite, int activationPoint, int y,
 			Movement movement) {
 		this(sprite, new int[] { activationPoint }, y, movement);
 	}
 
-	public ActivatedEntity(Sprite sprite, int[] activatingPoints, int y,
+	public AlienEntity(Sprite sprite, int[] activatingPoints, int y,
 			Movement movement) {
 		super(sprite, activatingPoints[0], y);
 		this.activatingPoints = activatingPoints;
@@ -56,7 +57,7 @@ public class ActivatedEntity extends EntityImpl implements
 	}
 
 	@Override
-	public boolean isActivatedEntity() {
+	public boolean isAlienEntity() {
 		return true;
 	}
 
@@ -76,7 +77,7 @@ public class ActivatedEntity extends EntityImpl implements
 	}
 
 	@Override
-	public int compareTo(ActivatedEntity arg0) {
+	public int compareTo(AlienEntity arg0) {
 		if (getActivationPoint() < arg0.getActivationPoint())
 			return -1;
 		else if (getActivationPoint() == arg0.getActivationPoint())

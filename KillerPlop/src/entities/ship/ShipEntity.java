@@ -1,6 +1,7 @@
-package entities;
+package entities.ship;
 
 import controller.GameController;
+import entities.EntityImpl;
 import entities.movement.Movement;
 import entities.sprites.Sprite;
 
@@ -19,7 +20,7 @@ public class ShipEntity extends EntityImpl {
 	}
 
 	@Override
-	public boolean isActivatedEntity() {
+	public boolean isAlienEntity() {
 		return false;
 	}
 
