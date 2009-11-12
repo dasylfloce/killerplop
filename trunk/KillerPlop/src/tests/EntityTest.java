@@ -1,13 +1,13 @@
 package tests;
 
-import entities.ActivatedEntity;
-import entities.ShipEntity;
+import entities.aliens.AlienEntity;
 import entities.manager.EntityManager;
 import entities.manager.EntityManagerImpl;
 import entities.movement.ShipMovement;
 import entities.movement.basics.DynamicMovement;
 import entities.movement.basics.SinusMovement;
 import entities.movement.basics.StaticMovement;
+import entities.ship.ShipEntity;
 import entities.sprites.SpriteStore;
 
 public class EntityTest extends Test {
@@ -23,7 +23,7 @@ public class EntityTest extends Test {
 
 	protected static void testStatic() {
 		for (int i = 0; i < 80; i++) {
-			manager.addEntity(new ActivatedEntity(SpriteStore.get().getSprite(
+			manager.addEntity(new AlienEntity(SpriteStore.get().getSprite(
 					"resources/sprites/alien.gif"), 800 + 100 * i
 					+ r.nextInt(windowSize.height - 40), r
 					.nextInt(Test.windowSize.height), new StaticMovement()));
@@ -33,7 +33,7 @@ public class EntityTest extends Test {
 	protected static void testSinus() {
 		for (int i = 0; i < 80; i++) {
 			int amplitude = r.nextInt(250);
-			manager.addEntity(new ActivatedEntity(SpriteStore.get().getSprite(
+			manager.addEntity(new AlienEntity(SpriteStore.get().getSprite(
 					"resources/sprites/ship.gif"), 800 + 100 * i
 					+ r.nextInt(windowSize.width), r
 					.nextInt(Test.windowSize.height - amplitude)
@@ -51,7 +51,7 @@ public class EntityTest extends Test {
 	protected static void testSinusStatic() {
 		for (int i = 0; i < 80; i++) {
 			int amplitude = r.nextInt(250);
-			manager.addEntity(new ActivatedEntity(SpriteStore.get().getSprite(
+			manager.addEntity(new AlienEntity(SpriteStore.get().getSprite(
 					"resources/sprites/ship.gif"), 800 + 100 * i
 					+ r.nextInt(windowSize.width), r
 					.nextInt(Test.windowSize.height - amplitude)

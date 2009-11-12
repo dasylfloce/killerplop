@@ -48,7 +48,8 @@ public interface MapTiled {
 	public int getTileHeight();
 
 	/**
-	 * Donne la tuile a l'endroit indiqué
+	 * Donne la tuile a la position indiquée dans la map.
+	 * Position tuile par tuile, et non au pixel près !
 	 * 
 	 * @param x
 	 *            position x dans la carte

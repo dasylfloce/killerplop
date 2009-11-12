@@ -32,11 +32,4 @@ public interface GameWindow {
 	 */
 	public Dimension getSize();
 	
-	/**
-	 * Check if a particular key is pressed
-	 * 
-	 * @param keyCode The code associate with the key to check
-	 * @return True if the particular key is pressed
-	 */
-	public boolean isKeyPressed(int keyCode);
 }

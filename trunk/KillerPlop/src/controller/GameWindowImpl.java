@@ -77,12 +77,6 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 	}
 
 	@Override
-	public boolean isKeyPressed(int keyCode) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public void setTitle(String title) {
 		container.setTitle(title);
 	}

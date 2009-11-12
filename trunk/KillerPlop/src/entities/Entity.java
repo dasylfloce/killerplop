@@ -30,11 +30,11 @@ public interface Entity {
 	public abstract boolean isShotEntity();
 
 	/**
-	 * Tests if the entity is an activated entity
+	 * Tests if the entity is an alien entity
 	 * 
-	 * @return true if this is an activated entity.
+	 * @return true if this is an alien entity.
 	 */
-	public abstract boolean isActivatedEntity();
+	public abstract boolean isAlienEntity();
 
 	/**
 	 * Get the x location of this entity
@@ -93,12 +93,6 @@ public interface Entity {
 	 * @return The vertical speed of this entity (pixels/sec)
 	 */
 	public double getVerticalMovement();
-
-	/**
-	 * Calculate the speed of the entity, used to move it.
-	 * @param gameController controller
-	 */
-	public void calculateSpeed(GameController gameController);
 
 	/**
 	 * Request that this entity move itself based on a the game controller
