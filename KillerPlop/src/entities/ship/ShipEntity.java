@@ -1,22 +1,24 @@
 package entities.ship;
 
+import Constants.Constants;
 import controller.GameController;
 import entities.EntityImpl;
 import entities.movement.Movement;
 import entities.sprites.Sprite;
 
-public class ShipEntity extends EntityImpl {
+public class ShipEntity extends EntityImpl implements Constants {
 	
-	protected Movement movement;
-
-	public ShipEntity(Sprite sprite, int x, int y, Movement movement) {
+	public static int Vmove = 0, Hmove = 0;
+	public static boolean isShooting;
+	
+	public ShipEntity(Sprite sprite, int x, int y) {
 		super(sprite, x, y);
-		this.movement = movement;
 	}
 
 	@Override
 	public void calculateSpeed(GameController gameController) {
-		movement.setMovement(this, gameController);
+		this.setHorizontalMovement(gameController.getHorizontalMovement()+Hmove*SHIPSPEED);
+		this.setVerticalMovement(gameController.getVerticalMovement()+Vmove*SHIPSPEED);
 	}
 
 	@Override
