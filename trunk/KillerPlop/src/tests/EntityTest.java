@@ -3,7 +3,6 @@ package tests;
 import entities.aliens.AlienEntity;
 import entities.manager.EntityManager;
 import entities.manager.EntityManagerImpl;
-import entities.movement.ShipMovement;
 import entities.movement.basics.DynamicMovement;
 import entities.movement.basics.SinusMovement;
 import entities.movement.basics.StaticMovement;
@@ -44,8 +43,7 @@ public class EntityTest extends Test {
 
 	protected static void testShip() {
 		manager.addEntity(new ShipEntity(SpriteStore.get().getSprite(
-				"resources/sprites/alien.gif"), 10, windowSize.height / 2,
-				new ShipMovement()));
+				"resources/sprites/alien.gif"), 10, windowSize.height / 2));
 	}
 
 	protected static void testSinusStatic() {

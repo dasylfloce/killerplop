@@ -10,6 +10,8 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import entities.ship.KeyHandler;
+
 @SuppressWarnings("serial")
 public class GameWindowImpl extends Canvas implements GameWindow {
 
@@ -55,6 +57,7 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 				System.exit(0);
 			}
 		});
+		addKeyListener(new KeyHandler());
 
 		// request the focus so key events come to us
 		requestFocus();
