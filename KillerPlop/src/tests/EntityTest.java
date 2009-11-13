@@ -1,5 +1,6 @@
 package tests;
 
+import Constants.Constants;
 import entities.aliens.AlienEntity;
 import entities.manager.EntityManager;
 import entities.manager.EntityManagerImpl;
@@ -9,14 +10,16 @@ import entities.movement.basics.StaticMovement;
 import entities.ship.ShipEntity;
 import entities.sprites.SpriteStore;
 
-public class EntityTest extends Test {
+public class EntityTest extends Test implements Constants{
 
 	private static EntityManager manager;
+	public static ShipEntity ship = new ShipEntity(SpriteStore.get().getSprite(
+	"resources/sprites/alien.gif"), 10, windowSize.height / 2, SHIPSPEED);
 
 	public static EntityManager createEntityManager() {
 		manager = new EntityManagerImpl();
 		testSinusStatic();
-		testShip();
+		manager.addEntity(ship);
 		return manager;
 	}
 
@@ -39,11 +42,6 @@ public class EntityTest extends Test {
 					+ amplitude / 2, new DynamicMovement(new SinusMovement(
 					amplitude, r.nextInt(3) + 1, -r.nextInt(200)))));
 		}
-	}
-
-	protected static void testShip() {
-		manager.addEntity(new ShipEntity(SpriteStore.get().getSprite(
-				"resources/sprites/alien.gif"), 10, windowSize.height / 2));
 	}
 
 	protected static void testSinusStatic() {

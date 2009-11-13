@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+import Constants.Constants;
+
 import controller.GameController;
 import entities.Entity;
 import entities.aliens.AlienEntity;
 import entities.ship.ShipEntity;
 import entities.shots.ShotEntity;
+import entities.shots.ShotPool;
 
 /**
  * Implements EntityManager.
@@ -20,7 +23,7 @@ import entities.shots.ShotEntity;
  * @author Administrateur
  * 
  */
-public class EntityManagerImpl implements EntityManager {
+public class EntityManagerImpl implements EntityManager, Constants {
 
 	/**
 	 * Entities waiting to be added in the activated list.
@@ -33,6 +36,7 @@ public class EntityManagerImpl implements EntityManager {
 
 	protected LinkedList<ShipEntity> shipEntities;
 	protected LinkedList<ShotEntity> shotEntities;
+	
 
 	/**
 	 * Constructor
@@ -73,6 +77,8 @@ public class EntityManagerImpl implements EntityManager {
 			entity.update(gameController);
 		for (ShipEntity ship : shipEntities)
 			ship.update(gameController);
+		for (ShotEntity shot : shotEntities)
+			shot.update(gameController);
 	}
 
 	@Override
@@ -81,6 +87,8 @@ public class EntityManagerImpl implements EntityManager {
 			entity.draw(g, offsetX, offsetY);
 		for (ShipEntity ship : shipEntities)
 			ship.draw(g, offsetX, offsetY);
+		for (ShotEntity shot : shotEntities)
+			shot.draw(g, offsetX, offsetY);
 	}
 
 	@Override
@@ -120,6 +128,18 @@ public class EntityManagerImpl implements EntityManager {
 			shipEntities.add((ShipEntity) entity);
 		if (entity.isShotEntity())
 			shotEntities.add((ShotEntity) entity);
+	}
+
+	@Override
+	public void resolveShot(long delta) {
+		for (ShipEntity ship : shipEntities)
+			if(ship.isShooting()){
+				shotEntities.addFirst(ShotPool.getInstance().getShot());
+				ship.setShooting(false);
+				shotEntities.getFirst().setX(ship.getX()+30);
+				shotEntities.getFirst().setY(ship.getY()+5);
+			}	
+			
 	}
 
 }
