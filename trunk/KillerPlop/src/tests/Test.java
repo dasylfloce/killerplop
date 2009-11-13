@@ -3,6 +3,8 @@ package tests;
 import java.awt.Dimension;
 import java.util.Random;
 
+import Constants.Constants;
+
 import story.event.EventManager;
 import story.event.EventManagerImpl;
 import story.event.PeriodicEvent;
@@ -14,9 +16,9 @@ import controller.GameWindow;
 import controller.GameWindowImpl;
 import exceptions.NoWindowException;
 
-public class Test {
+public class Test implements Constants{
 	
-	public static final Dimension windowSize = new Dimension(800, 600);
+	public static final Dimension windowSize = new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT);
 	public static Random r = new Random();
 	
 	public static void main(String[] args) throws NoWindowException {
