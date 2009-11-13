@@ -43,6 +43,16 @@ public interface GameController {
 	 * @return the vertical position of this controller (top left corner)
 	 */
 	public double getY();
+	
+	/**
+	 * @return the vertical size of this controller 
+	 */
+	public int getViewHeight();
+	
+	/**
+	 * @return the horizontal size of this controller 
+	 */
+	public int getViewWidth();
 
 	/**
 	 * Define the size of the view, in pixels.

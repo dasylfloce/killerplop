@@ -19,7 +19,7 @@ public class ShotPool implements Constants{
 	
 	private ShotPool(int nbShots){
 		for (int i=0; i<nbShots; i++){ 
-			available.add(new ShotEntity(SpriteStore.get().getSprite("resources/sprites/shot.gif"), 0, 0, SHOTSPEED));
+			available.add(new ShotEntity(SpriteStore.get().getSprite("resources/sprites/shot.gif"), 0, 0));
 		}
 	}
 	

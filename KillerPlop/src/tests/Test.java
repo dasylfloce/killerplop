@@ -24,6 +24,7 @@ public class Test {
 		EventManager eventManager = new EventManagerImpl();
 		//eventManager.addEvent(new RandomMapSpeedEvent(1500));
 		eventManager.addEvent(new NormalMapSpeedEvent());
+		
 				
 		Scenario storyTest = new ScenarioImpl("Test");
 		storyTest.initialization(MapTest.createMap(), EntityTest.createEntityManager(), eventManager);

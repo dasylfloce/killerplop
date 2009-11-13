@@ -53,8 +53,18 @@ public class ShipEntity extends EntityImpl implements Constants{
 	@Override
 	public void calculateSpeed(GameController gameController) {
 		lastShoot += gameController.getDelta();
-		this.setHorizontalMovement(gameController.getHorizontalMovement()+Hmove*this.shipSpeed);
-		this.setVerticalMovement(gameController.getVerticalMovement()+Vmove*this.shipSpeed);
+		double Vspeed = Vmove*this.shipSpeed;
+		double Hspeed = Hmove*this.shipSpeed;
+		if((getX()<gameController.getX() && Hmove == -1) ||
+			(getX()>gameController.getX()+gameController.getViewWidth()-40 && Hmove == 1)){
+			Hspeed = 0;
+		}
+		if((getY()<gameController.getY() && Vmove == -1)|| 
+			(getY()>gameController.getY()+gameController.getViewHeight()-30 && Vmove == 1)){
+			Vspeed = 0;
+		}
+		this.setHorizontalMovement(gameController.getHorizontalMovement()+Hspeed);
+		this.setVerticalMovement(gameController.getVerticalMovement()+Vspeed);
 	}
 
 	@Override
