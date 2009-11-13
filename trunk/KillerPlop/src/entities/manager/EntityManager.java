@@ -63,4 +63,6 @@ public interface EntityManager {
 	 *            Vertical offset
 	 */
 	public void render(Graphics2D g, int offsetX, int offsetY);
+
+	public void resolveShot(long delta);
 }

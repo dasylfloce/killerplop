@@ -168,6 +168,7 @@ public class GameControllerImpl implements GameController {
 		entityManager.moveEntities(this);
 		entityManager.activateEntities(x + viewWidth);
 		entityManager.resolveCollisions();
+		entityManager.resolveShot(delta);
 	}
 
 }

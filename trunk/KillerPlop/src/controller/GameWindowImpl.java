@@ -21,6 +21,8 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 	protected JFrame container;
 	/** Size of the window */
 	protected Dimension windowSize;
+	
+	protected KeyHandler keyHandler;
 
 	/**
 	 * Construct our map and set it running.
@@ -57,7 +59,8 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 				System.exit(0);
 			}
 		});
-		addKeyListener(new KeyHandler());
+		keyHandler = new KeyHandler();
+		addKeyListener(keyHandler);
 
 		// request the focus so key events come to us
 		requestFocus();
@@ -66,6 +69,11 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 		// to manage our accelerated graphics
 		createBufferStrategy(2);
 		strategy = getBufferStrategy();
+	}
+	
+	@Override
+	public KeyHandler getKeyHandler(){
+		return keyHandler;
 	}
 
 	

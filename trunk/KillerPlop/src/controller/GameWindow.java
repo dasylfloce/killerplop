@@ -3,6 +3,8 @@ package controller;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 
+import entities.ship.KeyHandler;
+
 /**
  * The window in which the game will be displayed.
  *
@@ -31,5 +33,7 @@ public interface GameWindow {
 	 * @return the size of the window.
 	 */
 	public Dimension getSize();
+
+	public KeyHandler getKeyHandler();
 	
 }

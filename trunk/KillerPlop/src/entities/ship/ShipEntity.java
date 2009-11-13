@@ -3,22 +3,58 @@ package entities.ship;
 import Constants.Constants;
 import controller.GameController;
 import entities.EntityImpl;
-import entities.movement.Movement;
 import entities.sprites.Sprite;
 
-public class ShipEntity extends EntityImpl implements Constants {
+public class ShipEntity extends EntityImpl implements Constants{
 	
-	public static int Vmove = 0, Hmove = 0;
-	public static boolean isShooting;
-	
-	public ShipEntity(Sprite sprite, int x, int y) {
+	private int Vmove, Hmove;
+	private boolean isShooting;
+	private double shipSpeed;
+	private long lastShoot;
+		
+	public ShipEntity(Sprite sprite, int x, int y, double shipSpeed) {
 		super(sprite, x, y);
+		this.shipSpeed = shipSpeed;
+		this.Vmove = 0;
+		this.Hmove = 0;
+		this.lastShoot = SHOOTDELAY;
+		this.isShooting = false;
 	}
 
+	public int getVmove() {
+		return Vmove;
+	}
+
+	public void setVmove(int vmove) {
+		Vmove = vmove;
+	}
+
+	public int getHmove() {
+		return Hmove;
+	}
+
+	public void setHmove(int hmove) {
+		Hmove = hmove;
+	}
+
+	public boolean isShooting() {
+		return isShooting;
+	}
+
+	public void setShooting(boolean isShooting) {
+		if((lastShoot >= SHOOTDELAY)||(!isShooting)){
+			this.isShooting = isShooting;
+			if(isShooting){
+				lastShoot = 0;
+			}			
+		}		
+	}
+	
 	@Override
 	public void calculateSpeed(GameController gameController) {
-		this.setHorizontalMovement(gameController.getHorizontalMovement()+Hmove*SHIPSPEED);
-		this.setVerticalMovement(gameController.getVerticalMovement()+Vmove*SHIPSPEED);
+		lastShoot += gameController.getDelta();
+		this.setHorizontalMovement(gameController.getHorizontalMovement()+Hmove*this.shipSpeed);
+		this.setVerticalMovement(gameController.getVerticalMovement()+Vmove*this.shipSpeed);
 	}
 
 	@Override
