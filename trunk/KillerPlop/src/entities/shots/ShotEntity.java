@@ -8,11 +8,8 @@ import entities.sprites.Sprite;
 
 public class ShotEntity extends EntityImpl implements Constants{
 	
-	private double speed;
-
-	public ShotEntity(Sprite sprite, int x, int y, double speed) {
+	public ShotEntity(Sprite sprite, int x, int y) {
 		super(sprite, x, y);
-		this.speed = speed;
 	}
 	
 	@Override

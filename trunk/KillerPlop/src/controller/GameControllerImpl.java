@@ -138,6 +138,16 @@ public class GameControllerImpl implements GameController {
 	public EntityManager getManager() {
 		return entityManager;
 	}
+	
+	@Override
+	public int getViewWidth() {
+		return viewWidth;
+	}
+	
+	@Override
+	public int getViewHeight() {
+		return viewHeight;
+	}
 
 	@Override
 	public MapTiled getMap() {
@@ -148,6 +158,7 @@ public class GameControllerImpl implements GameController {
 	public void render(Graphics2D g) throws ViewSizeNull {
 		mapTiled.render(g, x, y, viewWidth, viewHeight);
 		entityManager.render(g, (int) x, (int) y);
+		
 	}
 
 	@Override
@@ -167,7 +178,7 @@ public class GameControllerImpl implements GameController {
 	public void updateEntities() throws ViewSizeNull {
 		entityManager.moveEntities(this);
 		entityManager.activateEntities(x + viewWidth);
-		entityManager.resolveCollisions();
+		entityManager.resolveCollisions(x, y, viewHeight, viewWidth);
 		entityManager.resolveShot(delta);
 	}
 

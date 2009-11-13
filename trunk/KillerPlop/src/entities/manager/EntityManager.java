@@ -48,8 +48,12 @@ public interface EntityManager {
 
 	/**
 	 * Perform the collisions between entities that are activated.
+	 * @param viewWidth 
+	 * @param viewHeight 
+	 * @param y 
+	 * @param x 
 	 */
-	public void resolveCollisions();
+	public void resolveCollisions(double x, double y, int viewHeight, int viewWidth);
 
 	/**
 	 * Draw all active entities on the graph, with an offset that is required by

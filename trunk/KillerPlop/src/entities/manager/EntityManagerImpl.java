@@ -32,7 +32,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 	/**
 	 * Entities currently active.
 	 */
-	protected ArrayList<AlienEntity> activatedEntities;
+	protected ArrayList<AlienEntity> alienEntities;
 
 	protected LinkedList<ShipEntity> shipEntities;
 	protected LinkedList<ShotEntity> shotEntities;
@@ -44,7 +44,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 	public EntityManagerImpl() {
 		sleepingEntities = new LinkedList<AlienEntity>();
 		shipEntities = new LinkedList<ShipEntity>();
-		activatedEntities = new ArrayList<AlienEntity>();
+		alienEntities = new ArrayList<AlienEntity>();
 		shotEntities = new LinkedList<ShotEntity>();
 	}
 
@@ -54,26 +54,34 @@ public class EntityManagerImpl implements EntityManager, Constants {
 			boolean next = true;
 			do {
 				if (next = sleepingEntities.getFirst().getActivationPoint() < x)
-					activatedEntities.add(sleepingEntities.removeFirst());
+					alienEntities.add(sleepingEntities.removeFirst());
 			} while (next && !sleepingEntities.isEmpty());
 		}
 	}
 
 	@Override
-	public void desactivateEntity(Entity entity) {
-		activatedEntities.remove(entity);
+	public void desactivateEntity(Entity entity) {		
 		if (entity.isAlienEntity()) {
+			alienEntities.remove(entity);
 			AlienEntity ae = (AlienEntity) entity;
 			if (ae.canBeReactivated()) {
 				ae.nextActivation();
 				sleepingEntities.add(ae);
 			}
 		}
+		if (entity.isShipEntity()){
+			shipEntities.remove(entity);
+		}
+		if (entity.isShotEntity()){
+			shotEntities.remove(entity);
+			ShotPool.getInstance().returnShot((ShotEntity) entity);
+		}
+		
 	}
 
 	@Override
 	public void moveEntities(GameController gameController) {
-		for (AlienEntity entity : activatedEntities)
+		for (AlienEntity entity : alienEntities)
 			entity.update(gameController);
 		for (ShipEntity ship : shipEntities)
 			ship.update(gameController);
@@ -83,7 +91,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 
 	@Override
 	public void render(Graphics2D g, int offsetX, int offsetY) {
-		for (AlienEntity entity : activatedEntities)
+		for (AlienEntity entity : alienEntities)
 			entity.draw(g, offsetX, offsetY);
 		for (ShipEntity ship : shipEntities)
 			ship.draw(g, offsetX, offsetY);
@@ -92,9 +100,32 @@ public class EntityManagerImpl implements EntityManager, Constants {
 	}
 
 	@Override
-	public void resolveCollisions() {
-		// TODO Auto-generated method stub
-
+	public void resolveCollisions(double x, double y, int viewHeight, int viewWidth) {
+		//collisions with between the map and shots
+		for (int i=0; i<shotEntities.size(); i++){
+			if (shotEntities.get(i).getX()<x || shotEntities.get(i).getX()>x+viewWidth || shotEntities.get(i).getY()<y || shotEntities.get(i).getY()>y+viewHeight){
+				desactivateEntity(shotEntities.get(i));
+				i--;
+			}
+		}		
+		//collisions between entities
+		for (int i=0; i<alienEntities.size(); i++){
+			for (int j=0; j<shipEntities.size(); j++){
+				if(Math.sqrt(Math.pow(alienEntities.get(i).getX()-shipEntities.get(j).getX(), 2)+Math.pow(alienEntities.get(i).getY()-shipEntities.get(j).getY(), 2)) < 20){
+					desactivateEntity(alienEntities.get(i));
+					desactivateEntity(shipEntities.get(j));
+				}
+			}
+			for (int j=0; j<shotEntities.size(); j++){
+				if(Math.sqrt(Math.pow(alienEntities.get(i).getX()-shotEntities.get(j).getX(), 2)+Math.pow(alienEntities.get(i).getY()-shotEntities.get(j).getY(), 2)) < 20){
+					
+					//System.out.println(Math.sqrt(Math.pow(alienEntities.get(i).getX()-shotEntities.get(j).getX(), 2)+Math.pow(alienEntities.get(i).getX()-shotEntities.get(j).getX(), 2)));
+					desactivateEntity(alienEntities.get(i));
+					desactivateEntity(shotEntities.get(j));
+				}
+			}
+		}
+		
 	}
 
 	@Override
