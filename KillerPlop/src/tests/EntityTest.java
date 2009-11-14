@@ -2,7 +2,7 @@ package tests;
 
 import resources.sprites.ImageStore;
 import resources.sprites.SimpleSprite;
-import resources.sprites.SpriteStore;
+import resources.sprites.SpriteFactory;
 import Constants.Constants;
 import entities.aliens.AlienEntity;
 import entities.manager.EntityManager;
@@ -15,7 +15,7 @@ import entities.ship.ShipEntity;
 public class EntityTest extends Test implements Constants{
 
 	private static EntityManager manager;
-	public static ShipEntity ship = new ShipEntity(SpriteStore.createBasicShip(), 10, WINDOW_HEIGHT / 2, SHIPSPEED);
+	public static ShipEntity ship = new ShipEntity(SpriteFactory.createBasicShip(), 10, WINDOW_HEIGHT / 2, SHIPSPEED);
 
 	public static EntityManager createEntityManager() {
 		manager = new EntityManagerImpl();
@@ -48,8 +48,7 @@ public class EntityTest extends Test implements Constants{
 	protected static void testSinusStatic() {
 		for (int i = 0; i < 80; i++) {
 			int amplitude = r.nextInt(150);
-			manager.addEntity(new AlienEntity(new SimpleSprite(ImageStore.get(
-					"resources/entities/ship.gif")), WINDOW_WIDTH + 100 * i
+			manager.addEntity(new AlienEntity(SpriteFactory.createChampi(), WINDOW_WIDTH + 100 * i
 					+ r.nextInt(WINDOW_WIDTH), r
 					.nextInt(Test.WINDOW_HEIGHT - 2*amplitude)
 					+ amplitude / 2, new SinusMovement(amplitude, r

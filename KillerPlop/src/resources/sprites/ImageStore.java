@@ -89,6 +89,9 @@ public class ImageStore {
 		} catch (IOException e) {
 			fail("Failed to load: " + ref);
 		}
+		if (sourceImage == null) {
+			fail("Error loading: " + ref);
+		}
 
 		// create an accelerated image of the right size
 		GraphicsConfiguration gc = GraphicsEnvironment
