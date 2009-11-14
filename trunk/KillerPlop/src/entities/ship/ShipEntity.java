@@ -1,9 +1,9 @@
 package entities.ship;
 
+import resources.sprites.Sprite;
 import Constants.Constants;
 import controller.GameController;
 import entities.EntityImpl;
-import entities.sprites.Sprite;
 
 public class ShipEntity extends EntityImpl implements Constants{
 	

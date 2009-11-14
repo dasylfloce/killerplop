@@ -1,16 +1,17 @@
 package map.tile;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
-import resources.ImageStore;
+import resources.sprites.ImageStore;
+import resources.sprites.SimpleSprite;
+import resources.sprites.Sprite;
 
 public class SimpleTile implements Tile {
 
 	/**
 	 * L'image actuelle à dessiner.
 	 */
-	protected BufferedImage image;
+	protected Sprite sprite;
 	/**
 	 * Nom de la tuile.
 	 */
@@ -22,24 +23,19 @@ public class SimpleTile implements Tile {
 	 */
 	public SimpleTile(String name) {
 		this.name = name;
-		image = ImageStore.get(name);
+		sprite = new SimpleSprite(ImageStore.get(name));
 	}
 
 	@Override
 	public int getWidth() {
-		return image.getWidth();
+		return sprite.getWidth();
 	}
 
 	@Override
 	public int getHeight() {
-		return image.getHeight();
+		return sprite.getHeight();
 	}
 
-	@Override
-	public BufferedImage getImage() {
-		return image;
-	}
-	
 	@Override
 	public String getName() {
 		return name;
@@ -47,12 +43,12 @@ public class SimpleTile implements Tile {
 
 	@Override
 	public void update(long delta) {
-		//Rien à faire dans une tuile normale.
+		sprite.update(delta);
 	}
 
 	@Override
 	public void draw(Graphics2D g, int x, int y) {
-		g.drawImage(image, x, y, null);
+		sprite.draw(g, x, y);
 	}
 
 	public boolean equals(Object o) {

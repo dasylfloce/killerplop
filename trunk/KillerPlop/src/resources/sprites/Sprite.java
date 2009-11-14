@@ -1,4 +1,4 @@
-package entities.sprites;
+package resources.sprites;
 
 import java.awt.Graphics;
 
@@ -35,5 +35,11 @@ public interface Sprite {
 	 * @param y The y location at which to draw the sprite
 	 */
 	public void draw(Graphics g, int x, int y);
+	
+	/**
+	 * Update the sprite.
+	 * @param delta Time elapsed since last update.
+	 */
+	public void update(long delta);
 
 }
