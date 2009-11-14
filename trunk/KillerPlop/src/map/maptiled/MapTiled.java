@@ -11,7 +11,7 @@ package map.maptiled;
 
 import java.awt.Graphics2D;
 
-import map.tile.*;
+import map.tile.Tile;
 
 /**
  * La carte : c'est un tableau a deux dimensions. Chaque cellule contient l'id

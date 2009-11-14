@@ -1,13 +1,34 @@
 package story.event;
 
+import controller.GameController;
 
 
-public interface TimeEvent extends Event {
 
-	/**
-	 * @param time the time elapsed since the beginning of the scenario
-	 * @return true if the event has just been activated, regarding the time
-	 */
-	public boolean isActivationPoint(long time);
+public abstract class TimeEvent implements Event {
+	
+	protected long nextActivationTime;
+	
+	protected TimeEvent(long nextActivationTime) {
+		this.nextActivationTime = nextActivationTime;
+	}
+
+	@Override
+	public boolean isActivationPoint(GameController gameController) {
+		 return gameController.getTime() >= nextActivationTime;
+	}
+	
+	public void setNextActivationTime(long nextActivationTime) {
+		this.nextActivationTime = nextActivationTime;
+	}
+
+	@Override
+	public boolean isPositionEvent() {
+		return false;
+	}
+
+	@Override
+	public boolean isTimeEvent() {
+		return true;
+	}
 	
 }

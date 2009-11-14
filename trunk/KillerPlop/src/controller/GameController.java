@@ -2,10 +2,9 @@ package controller;
 
 import java.awt.Graphics2D;
 
+import map.maptiled.MapTiled;
 import entities.manager.EntityManager;
 import exceptions.ViewSizeNull;
-
-import map.maptiled.MapTiled;
 
 /**
  * Control the evolution of the game.
@@ -112,6 +111,11 @@ public interface GameController {
 	 * @return the time in ms elapsed since the last update.
 	 */
 	public long getDelta();
+
+	/**
+	 * @return the time in ms elapsed since the beginning of the scenario.
+	 */
+	public long getTime();
 
 	/**
 	 * @return the tiled map of this controller.

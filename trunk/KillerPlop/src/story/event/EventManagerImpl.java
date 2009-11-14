@@ -1,41 +1,35 @@
 package story.event;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 import controller.GameController;
 
 
 public class EventManagerImpl implements EventManager {
 
-	protected LinkedList<TimeEvent> timeEventList;
-	protected LinkedList<PositionEvent> positionEventList;
-
-	protected long timeElapsed;
+	protected LinkedList<Event> eventList;
 
 	public EventManagerImpl() {
-		timeEventList = new LinkedList<TimeEvent>();
-		positionEventList = new LinkedList<PositionEvent>();
-		timeElapsed = 0;
+		eventList = new LinkedList<Event>();
 	}
 
 	@Override
 	public void activateEvents(GameController gameController) {
-		timeElapsed += gameController.getDelta();
-		for (TimeEvent event : timeEventList)
-			if (event.isActivationPoint(timeElapsed))
+		ListIterator<Event> it = eventList.listIterator();
+		while (it.hasNext()) {
+			Event event = it.next();
+			if (event.isActivationPoint(gameController)) {
 				event.doEvent(gameController);
-
-		for (PositionEvent event : positionEventList)
-			if (event.isActivationPoint(gameController.getX()))
-				event.doEvent(gameController);
+				if (event.isOneActivationOnly())
+					it.remove();
+			}
+		}
 	}
-
+	
 	@Override
 	public void addEvent(Event event) {
-		if (event.isPositionEvent())
-			positionEventList.add((PositionEvent)event);
-		if (event.isTimeEvent())
-			timeEventList.add((TimeEvent)event);
+			eventList.add(event);
 	}
 
 }

@@ -48,11 +48,6 @@ public class NullTile implements Tile {
 		//Rien à dessiner
 	}
 
-	@Override
-	public void convert(int imageType) {
-		//Rien à convertir
-	}
-
 	public boolean equals(Object o) {
 		if (o instanceof Tile) {
 			return ((Tile)o).getName().equals("null");

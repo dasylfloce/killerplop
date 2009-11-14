@@ -91,13 +91,6 @@ public class TileWareHouseImpl implements TileWareHouse {
 	}
 
 	@Override
-	public void convert(int imageType) {
-		for (Tile tile : tiles) {
-			tile.convert(imageType);
-		}
-	}
-
-	@Override
 	public void updateTiles(long delta) {
 		for (Tile tile : tiles) {
 			tile.update(delta);

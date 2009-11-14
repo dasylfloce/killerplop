@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 import Constants.Constants;
-
 import controller.GameController;
 import entities.Entity;
 import entities.aliens.AlienEntity;

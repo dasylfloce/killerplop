@@ -75,16 +75,6 @@ public interface TileWareHouse {
 	public int addTile(Tile tile);
 
 	/**
-	 * Convertit le type d'image des tuiles<br>
-	 * Peut etre utile pour des problemes de performances, en effet si le
-	 * graphics où on affiche la map n'a pas le meme format d'image, l'affichage
-	 * est ralentit lors de la conversion du format de l'image vers le format
-	 * destination.<br>
-	 * Voir les types pour BufferedImage
-	 */
-	public void convert(int imageType);
-	
-	/**
 	 * Clone l'objet
 	 * @return Un clone de l'objet
 	 */

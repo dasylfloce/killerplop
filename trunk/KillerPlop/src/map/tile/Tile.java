@@ -62,14 +62,4 @@ public interface Tile {
 	 */
 	public void draw(Graphics2D g, int x, int y);
 
-	/**
-	 * Convertion des images en autre format (pour des problemes d'optmisation
-	 * d'affichage)<br>
-	 * Voir les types pour BufferedImage<br>
-	 * 
-	 * @param image_type
-	 *            le type désiré pour l'image, voir les numeros des types dans
-	 *            BufferedImage
-	 */
-	public void convert(int image_type);
 }

@@ -3,22 +3,20 @@ package tests;
 import java.awt.Dimension;
 import java.util.Random;
 
-import Constants.Constants;
-
 import story.event.EventManager;
 import story.event.EventManagerImpl;
-import story.event.PeriodicEvent;
 import story.event.TimeEvent;
+import story.event.TimePeriodicEvent;
 import story.scenario.Scenario;
 import story.scenario.ScenarioImpl;
+import Constants.Constants;
 import controller.GameController;
 import controller.GameWindow;
 import controller.GameWindowImpl;
 import exceptions.NoWindowException;
 
-public class Test implements Constants{
+public class Test implements Constants {
 	
-	public static final Dimension windowSize = new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT);
 	public static Random r = new Random();
 	
 	public static void main(String[] args) throws NoWindowException {
@@ -31,7 +29,7 @@ public class Test implements Constants{
 		Scenario storyTest = new ScenarioImpl("Test");
 		storyTest.initialization(MapTest.createMap(), EntityTest.createEntityManager(), eventManager);
 		
-		GameWindow gameWindow = new GameWindowImpl(windowSize);
+		GameWindow gameWindow = new GameWindowImpl(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
 		gameWindow.getKeyHandler().setShip(EntityTest.ship);
 		storyTest.setGameWindow(gameWindow);
 		
@@ -39,49 +37,32 @@ public class Test implements Constants{
 	}
 }
 
-class RandomMapSpeedEvent extends PeriodicEvent {
+class RandomMapSpeedEvent extends TimePeriodicEvent {
 
 	protected RandomMapSpeedEvent(int period) {
-		super(period);
+		super(0, period);
 	}
 
 	@Override
 	public void doEvent(GameController gameController) {
-		gameController.setHorizontalMovement(Test.r.nextDouble()*Test.windowSize.width/2);
+		gameController.setHorizontalMovement(Test.r.nextDouble()*WINDOW_WIDTH/2);
 	}
-	
-	
-	
+		
 }
-class NormalMapSpeedEvent implements TimeEvent {
+class NormalMapSpeedEvent extends TimeEvent {
 
 	protected NormalMapSpeedEvent() {
-		super();
+		super(0);
 	}
 
 	@Override
 	public void doEvent(GameController gameController) {
-		gameController.setHorizontalMovement(80);
+		gameController.setHorizontalMovement(240);
 	}
 
 	@Override
-	public boolean isActivationPoint(long time) {
-		
-		return time>0;
-	}
-
-	@Override
-	public boolean isPositionEvent() {
-		
-		return false;
-	}
-
-	@Override
-	public boolean isTimeEvent() {
-		
+	public boolean isOneActivationOnly() {
 		return true;
 	}
-	
-	
-	
+
 }

@@ -1,5 +1,6 @@
 package story.event;
 
+import Constants.Constants;
 import controller.GameController;
 
 /**
@@ -12,22 +13,37 @@ import controller.GameController;
  * @author Aurélien RAMBAUX
  *
  */
-public interface Event {
+public interface Event extends Constants {
 
 	/**
-	 * @return true if the event is a time event
+	 * Checks if the event is actually activated, because of the time or the
+	 * position.
+	 * 
+	 * @param gameController
+	 *            controller of the game
+	 * @return true if the event has just been activated
+	 */
+	public boolean isActivationPoint(GameController gameController);
+
+	/**
+	 * @return true if the event is a time event.
 	 */
 	public boolean isTimeEvent();
 	
 	/**
-	 * @return true if the event is a position event
+	 * @return true if the event is a position event.
 	 */
 	public boolean isPositionEvent();
 	
 	/**
 	 * 
-	 * @param gameController
+	 * @param gameController.
 	 */
 	public void doEvent(GameController gameController);
+	
+	/**
+	 * @return true if this event must be activated only once.
+	 */
+	public boolean isOneActivationOnly();
 
 }

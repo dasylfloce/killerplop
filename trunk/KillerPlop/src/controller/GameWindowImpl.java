@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,8 +14,6 @@ import entities.ship.KeyHandler;
 @SuppressWarnings("serial")
 public class GameWindowImpl extends Canvas implements GameWindow {
 
-	/** The stragey that allows us to use accelerate page flipping */
-	protected BufferStrategy strategy;
 	/** The game window that we'll update with the frame count */
 	protected JFrame container;
 	/** Size of the window */
@@ -68,7 +65,6 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 		// create the buffering strategy which will allow AWT
 		// to manage our accelerated graphics
 		createBufferStrategy(2);
-		strategy = getBufferStrategy();
 	}
 	
 	@Override
@@ -79,7 +75,7 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 	
 	@Override
 	public Graphics2D getGraphics() {
-		return (Graphics2D) strategy.getDrawGraphics();
+		return (Graphics2D) getBufferStrategy().getDrawGraphics();
 	}
 
 	@Override
@@ -94,7 +90,7 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 
 	@Override
 	public void show() {
-		strategy.show();
+		getBufferStrategy().show();
 	}
 
 }

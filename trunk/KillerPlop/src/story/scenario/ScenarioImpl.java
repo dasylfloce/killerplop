@@ -2,10 +2,8 @@ package story.scenario;
 
 import java.awt.Graphics2D;
 
-import story.event.EventManager;
-
 import map.maptiled.MapTiled;
-
+import story.event.EventManager;
 import controller.GameController;
 import controller.GameControllerImpl;
 import controller.GameWindow;
@@ -17,8 +15,6 @@ public class ScenarioImpl implements Scenario {
 
 	protected GameWindow gameWindow;
 	protected String title;
-
-	public static final int FRAME_RATE = 50;
 
 	protected GameController gameController;
 	protected EventManager eventManager;
