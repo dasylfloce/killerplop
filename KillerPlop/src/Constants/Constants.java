@@ -2,16 +2,18 @@ package Constants;
 
 public interface Constants {
 	
-	final static double SHIPSPEED = 200;
+	public static final int FRAME_RATE = 50;
+
+	public static final double SHIPSPEED = 200;
 	
-	final static double SHOTSPEED = 300;
+	public static final  double SHOTSPEED = 300;
 	
-	final static int NB_SHOTS_MAX = 20;
+	public static final  int NB_SHOTS_MAX = 20;
 	
-	final static int SHOOTDELAY = 500;
+	public static final  int SHOOTDELAY = 500;
 	
-	final static int WINDOW_HEIGHT = 320;
+	public static final  int WINDOW_HEIGHT = 320;
 	
-	final static int WINDOW_WIDTH = 600;
+	public static final  int WINDOW_WIDTH = 600;
 
 }

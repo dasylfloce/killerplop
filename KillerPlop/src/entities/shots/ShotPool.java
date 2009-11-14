@@ -3,9 +3,8 @@ package entities.shots;
 import java.util.LinkedList;
 import java.util.List;
 
-import entities.sprites.SpriteStore;
-
 import Constants.Constants;
+import entities.sprites.SpriteStore;
 
 public class ShotPool implements Constants{
 	

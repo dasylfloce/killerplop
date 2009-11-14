@@ -1,8 +1,9 @@
 package story.scenario;
 
-import controller.GameWindow;
-import story.event.EventManager;
 import map.maptiled.MapTiled;
+import story.event.EventManager;
+import Constants.Constants;
+import controller.GameWindow;
 import entities.manager.EntityManager;
 import exceptions.NoWindowException;
 
@@ -14,7 +15,7 @@ import exceptions.NoWindowException;
  * @author Aurélien RAMBAUX
  *
  */
-public interface Scenario {
+public interface Scenario extends Constants {
 
 	/**
 	 * Create the game controller from the scenario

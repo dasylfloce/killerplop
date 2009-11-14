@@ -1,13 +1,30 @@
 package story.event;
 
+import controller.GameController;
 
 
-public interface PositionEvent extends Event {
 
-	/**
-	 * @param position the position of activation (on x axis)
-	 * @return true if the event has just been activated, regarding the position
-	 */
-	public boolean isActivationPoint(double position);
+public abstract class PositionEvent implements Event {
+
+	protected long nextActivationPoint;
+
+	@Override
+	public boolean isActivationPoint(GameController gameController) {
+		 return gameController.getX() >= nextActivationPoint;
+	}
+	
+	public void setNextActivationPoint(long nextActivationPoint) {
+		this.nextActivationPoint = nextActivationPoint;
+	}
+
+	@Override
+	public boolean isPositionEvent() {
+		return true;
+	}
+
+	@Override
+	public boolean isTimeEvent() {
+		return false;
+	}
 	
 }

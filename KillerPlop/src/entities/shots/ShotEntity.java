@@ -3,7 +3,6 @@ package entities.shots;
 import Constants.Constants;
 import controller.GameController;
 import entities.EntityImpl;
-import entities.movement.Movement;
 import entities.sprites.Sprite;
 
 public class ShotEntity extends EntityImpl implements Constants{

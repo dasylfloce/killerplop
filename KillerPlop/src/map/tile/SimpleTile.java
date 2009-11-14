@@ -1,8 +1,9 @@
 package map.tile;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+import resources.ImageStore;
 
 public class SimpleTile implements Tile {
 
@@ -17,13 +18,11 @@ public class SimpleTile implements Tile {
 	
 	/**
 	 * Construit une tuile à partir d'une image
-	 * @param image Image de la tuile
-	 * @param name nom de la tuile
+	 * @param name nom de la tuile (réference vers l'image)
 	 */
-	public SimpleTile(String name, BufferedImage image) {
-		// TODO Générer exception si image == null
-		this.image = image;
+	public SimpleTile(String name) {
 		this.name = name;
+		image = ImageStore.get(name);
 	}
 
 	@Override
@@ -56,22 +55,6 @@ public class SimpleTile implements Tile {
 		g.drawImage(image, x, y, null);
 	}
 
-	@Override
-	public void convert(int imageType) {
-		if (image.getType() == imageType)
-			return;
-
-		// conversion
-		BufferedImage i = new BufferedImage(getWidth(), getHeight(),
-				imageType); // nouveau format
-		i.setAccelerationPriority(1.0f);
-		Graphics g = i.createGraphics();
-		g.drawImage(i, 0, 0, null);
-		g.dispose();
-
-		image = i;
-	}
-	
 	public boolean equals(Object o) {
 		if (o instanceof Tile) {
 			return ((Tile)o).getName().equals(getName());

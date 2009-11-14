@@ -2,8 +2,6 @@ package controller;
 
 import java.awt.Graphics2D;
 
-import story.scenario.ScenarioImpl;
-
 import map.maptiled.MapTiled;
 import entities.manager.EntityManager;
 import exceptions.ViewSizeNull;
@@ -44,6 +42,11 @@ public class GameControllerImpl implements GameController {
 	protected double dy;
 
 	/**
+	 * Time elapsed since the beginning of the scenario.
+	 */
+	protected long time;
+
+	/**
 	 * Time elapsed since the last update, in ms.
 	 */
 	protected long delta;
@@ -81,6 +84,7 @@ public class GameControllerImpl implements GameController {
 		this.y = y;
 		this.mapTiled = mapTiled;
 		this.entityManager = entityManager;
+		time = 0;
 	}
 
 	@Override
@@ -135,6 +139,11 @@ public class GameControllerImpl implements GameController {
 	}
 
 	@Override
+	public long getTime() {
+		return time;
+	}
+
+	@Override
 	public EntityManager getManager() {
 		return entityManager;
 	}
@@ -164,6 +173,7 @@ public class GameControllerImpl implements GameController {
 	@Override
 	public void updateView(long delta) throws ViewSizeNull {
 		this.delta = delta;
+		time += delta;
 
 		// update positions
 		x += delta * dx / 1000;
