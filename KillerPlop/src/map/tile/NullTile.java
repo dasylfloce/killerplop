@@ -1,7 +1,6 @@
 package map.tile;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
 public class NullTile implements Tile {
 
@@ -28,11 +27,6 @@ public class NullTile implements Tile {
 		return height;
 	}
 
-	@Override
-	public BufferedImage getImage() {
-		return null;
-	}
-	
 	@Override
 	public String getName() {
 		return "null";

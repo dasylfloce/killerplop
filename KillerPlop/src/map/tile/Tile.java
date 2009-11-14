@@ -8,7 +8,6 @@
 package map.tile;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
 /**
  * Les tuiles de la carte<br>
@@ -30,13 +29,6 @@ public interface Tile {
 	 * @return la hauteur
 	 */
 	public int getHeight();
-	
-	/**
-	 * Donne l'image en cours
-	 * 
-	 * @return l'image en cours
-	 **/
-	public BufferedImage getImage();
 	
 	/**
 	 * @return le nom de la tuile (utilisé pour éviter les doublons dans le warehouse)

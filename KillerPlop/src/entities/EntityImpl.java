@@ -2,8 +2,9 @@ package entities;
 
 import java.awt.Graphics;
 
+import resources.sprites.Sprite;
+
 import controller.GameController;
-import entities.sprites.Sprite;
 
 /**
  * An entity represents any element that appears in the game. The entity is
@@ -94,6 +95,8 @@ public abstract class EntityImpl implements Entity {
 		// update the location of the entity based on move speeds
 		x += (gameController.getDelta()* dx) / 1000;
 		y += (gameController.getDelta() * dy) / 1000;
+		
+		sprite.update(gameController.getDelta());
 	}
 	
 	/**

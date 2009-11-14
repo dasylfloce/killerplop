@@ -55,8 +55,8 @@ public class TileWareHouseImpl implements TileWareHouse {
 	public int addTile(Tile tile) {
 		if (tile == null)
 			return -1;
-		if (tile.getImage() == null || tile.getImage().getWidth() != tileWidth
-				|| tile.getImage().getHeight() != tileHeight)
+		if (tile.getWidth() != tileWidth
+				|| tile.getHeight() != tileHeight)
 			return -1;
 
 		// Tile valide

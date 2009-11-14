@@ -1,9 +1,9 @@
 package entities.aliens;
 
+import resources.sprites.Sprite;
 import controller.GameController;
 import entities.EntityImpl;
 import entities.movement.Movement;
-import entities.sprites.Sprite;
 
 /**
  * This is an Entity that moves according to a Movement class, and which has an
