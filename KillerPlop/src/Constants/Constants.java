@@ -10,7 +10,7 @@ public interface Constants {
 	
 	public static final  int NB_SHOTS_MAX = 20;
 	
-	public static final  int SHOOTDELAY = 500;
+	public static final  int SHOOTDELAY = 250;
 	
 	public static final  int WINDOW_HEIGHT = 320;
 	
