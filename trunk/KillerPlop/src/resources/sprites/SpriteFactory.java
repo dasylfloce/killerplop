@@ -17,10 +17,10 @@ public class SpriteFactory {
 
 	public static Sprite createBasicShip() {
 		return new AnimatedSprite(new Image[] {
-				ImageStore.get("resources/entities/alien.gif"),
-				ImageStore.get("resources/entities/alien2.gif"),
-				ImageStore.get("resources/entities/alien.gif"),
-				ImageStore.get("resources/entities/alien3.gif") }, 200);
+				ImageStore.get("resources/entities/ship2.gif"),
+				ImageStore.get("resources/entities/ship2.gif"),
+				ImageStore.get("resources/entities/ship2.gif"),
+				ImageStore.get("resources/entities/ship2.gif") }, 200);
 	}
 	
 	public static Sprite createChampi() {
