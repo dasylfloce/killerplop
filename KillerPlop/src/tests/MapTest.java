@@ -9,9 +9,9 @@ public class MapTest extends Test {
 
 	public static MapTiled createMap() {
 		MapTiledBuilder map = new MapTiledBuilder(500, 20, 32, 32);
-		Tile tileHerbe = new SimpleTile("resources/tiles/background-star.png");
+		Tile tileHerbe = new SimpleTile("resources/tiles/fond20en.png");
 		Tile tileMur = new SimpleTile("resources/tiles/asteroide.png");
-		Tile tilePierre = new SimpleTile("resources/tiles/tile2.png");
+		Tile tilePierre = new SimpleTile("resources/tiles/asteroide.png");
 
 		map.fillWith(tileHerbe);
 		map.horizontal(tileMur, 0, 0, 499);

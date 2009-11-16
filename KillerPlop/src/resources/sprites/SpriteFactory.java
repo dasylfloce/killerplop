@@ -25,8 +25,8 @@ public class SpriteFactory {
 	
 	public static Sprite createChampi() {
 		return new AnimatedSprite(new Image[] {
-				ImageStore.get("resources/entities/champi1.png"),
-				ImageStore.get("resources/entities/champi2.png"),
-				ImageStore.get("resources/entities/champi3.png") }, 200);
+				ImageStore.get("resources/entities/ship.gif"),
+				ImageStore.get("resources/entities/ship.gif"),
+				ImageStore.get("resources/entities/ship.gif") }, 200);
 	}
 }
