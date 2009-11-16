@@ -1,6 +1,7 @@
 package resources.sprites;
 
 import java.awt.Image;
+import java.util.Random;
 
 import resources.ImageStore;
 
@@ -47,5 +48,30 @@ public class SpriteFactory {
 				ImageStore.get("resources/entities/sonic_bleu1.png"),
 				ImageStore.get("resources/entities/sonic_bleu2.png"),
 				ImageStore.get("resources/entities/sonic_bleu3.png") }, 40);
+	}
+	
+	public static Sprite createBoss() {
+		
+		long[] time = {400, 150, 150, 400, 150, 150};
+		return new AnimatedSprite(new Image[] {
+				ImageStore.get("resources/entities/boss0.png"),
+				ImageStore.get("resources/entities/boss1.png"),
+				ImageStore.get("resources/entities/boss2.png"),
+				ImageStore.get("resources/entities/boss3.png"),
+				ImageStore.get("resources/entities/boss2.png"),
+				ImageStore.get("resources/entities/boss1.png")}, time);
+	}
+
+	public static Sprite createrandom() {
+		Random r = new Random();
+		int random = r.nextInt(3);
+		switch (random){
+		case 0 : return createBoss();
+		case 1 : return createSonicBleu();
+		case 2 : return createSonicOr();
+		default : return createChampi();
+		}
+		
+		
 	}
 }

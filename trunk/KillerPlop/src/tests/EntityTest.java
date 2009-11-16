@@ -20,7 +20,7 @@ public class EntityTest extends Test implements Constants {
 
 	public static EntityManager createEntityManager() {
 		manager = new EntityManagerImpl();
-		testSinusStatic();
+		testSinusStaticSeveralEnemies();
 		manager.addEntity(ship);
 		return manager;
 	}
@@ -49,7 +49,18 @@ public class EntityTest extends Test implements Constants {
 	protected static void testSinusStatic() {
 		for (int i = 0; i < 80; i++) {
 			int amplitude = r.nextInt(150);
-			manager.addEntity(new AlienEntity(SpriteFactory.createSonicBleu(),
+			manager.addEntity(new AlienEntity(SpriteFactory.createBoss(),
+					WINDOW_WIDTH + 100 * i + r.nextInt(WINDOW_WIDTH), r
+							.nextInt(Test.WINDOW_HEIGHT - 2 * amplitude)
+							+ amplitude / 2, new SinusMovement(amplitude, r
+							.nextInt(3) + 1, r.nextInt(200))));
+		}
+	}
+	
+	protected static void testSinusStaticSeveralEnemies() {
+		for (int i = 0; i < 80; i++) {
+			int amplitude = r.nextInt(150);
+			manager.addEntity(new AlienEntity(SpriteFactory.createrandom(),
 					WINDOW_WIDTH + 100 * i + r.nextInt(WINDOW_WIDTH), r
 							.nextInt(Test.WINDOW_HEIGHT - 2 * amplitude)
 							+ amplitude / 2, new SinusMovement(amplitude, r
