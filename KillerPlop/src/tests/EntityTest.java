@@ -15,8 +15,7 @@ import entities.ship.ShipEntity;
 public class EntityTest extends Test implements Constants {
 
 	private static EntityManager manager;
-	public static ShipEntity ship = new ShipEntity(new SimpleSprite(ImageStore
-			.get("resources/entities/ship2.gif")), 10, WINDOW_HEIGHT / 2,
+	public static ShipEntity ship = new ShipEntity(SpriteFactory.createAnimatedShip(), 10, WINDOW_HEIGHT / 2,
 			SHIPSPEED);
 
 	public static EntityManager createEntityManager() {
@@ -50,7 +49,7 @@ public class EntityTest extends Test implements Constants {
 	protected static void testSinusStatic() {
 		for (int i = 0; i < 80; i++) {
 			int amplitude = r.nextInt(150);
-			manager.addEntity(new AlienEntity(SpriteFactory.createChampi(),
+			manager.addEntity(new AlienEntity(SpriteFactory.createSonicBleu(),
 					WINDOW_WIDTH + 100 * i + r.nextInt(WINDOW_WIDTH), r
 							.nextInt(Test.WINDOW_HEIGHT - 2 * amplitude)
 							+ amplitude / 2, new SinusMovement(amplitude, r

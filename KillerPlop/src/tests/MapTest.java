@@ -16,7 +16,7 @@ public class MapTest extends Test {
 		MapTiledBuilder map = new MapTiledBuilder(500, 20, 32, 32);
 		map.setBackground(ImageStore.get("resources/backgrounds/espace1.jpg"));
 		
-		Tile tileAsteroide = new SimpleTile("resources/tiles/asteroide.png");
+		Tile tileAsteroide = new SimpleTile("resources/tiles/asteroide_transp.png");
 
 		for (int x = 10; x < 500; x++) {
 			int nb = r.nextInt(3);
@@ -28,8 +28,8 @@ public class MapTest extends Test {
 	public static MapTiled fullTiles() {
 		MapTiledBuilder map = new MapTiledBuilder(500, 20, 32, 32);
 		Tile tileHerbe = new SimpleTile("resources/tiles/fond20en.png");
-		Tile tileMur = new SimpleTile("resources/tiles/asteroide.png");
-		Tile tilePierre = new SimpleTile("resources/tiles/asteroide.png");
+		Tile tileMur = new SimpleTile("resources/tiles/asteroide_transp.png");
+		Tile tilePierre = new SimpleTile("resources/tiles/asteroide_transp.png");
 
 		map.fillWith(tileHerbe);
 		map.horizontal(tileMur, 0, 0, 499);
