@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import resources.sprites.Sprite;
 
 import controller.GameController;
+import exceptions.OutOfMapException;
 
 /**
  * An entity represents any element that appears in the game. The entity is
@@ -46,7 +47,7 @@ public abstract class EntityImpl implements Entity {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	@Override
 	public double getX() {
 		return (int) x;
@@ -86,28 +87,84 @@ public abstract class EntityImpl implements Entity {
 	public double getVerticalMovement() {
 		return dy;
 	}
-	
+
 	@Override
 	public void update(GameController gameController) {
 		// update speeds
 		calculateSpeed(gameController);
-		
+
 		// update the location of the entity based on move speeds
-		x += (gameController.getDelta()* dx) / 1000;
-		y += (gameController.getDelta() * dy) / 1000;
-		
+		try {
+			updatePosition(gameController);
+		} catch (OutOfMapException e) {
+			isOutOfMap();
+		}
+
 		sprite.update(gameController.getDelta());
 	}
-	
+
+	private void updatePosition(GameController gameController)
+			throws OutOfMapException {
+		double tempX = x + (gameController.getDelta() * dx) / 1000;
+		double tempY = y + (gameController.getDelta() * dy) / 1000;
+		
+		// if going right;
+		if (dx > 0) {
+			if (!gameController.getMap().isBlockedAt(tempX + getWidth(), y)
+					&& !gameController.getMap().isBlockedAt(tempX + getWidth(),
+							y + getHeight()))
+				x = tempX;
+		}
+		
+		// if going left;
+		if (dx < 0)
+			if (!gameController.getMap().isBlockedAt(tempX, tempY)
+					&& !gameController.getMap().isBlockedAt(tempX,
+							tempY + getHeight()))
+				x = tempX;
+		
+		// if going down;
+		if (dy > 0)
+			if (!gameController.getMap()
+					.isBlockedAt(x, tempY + getHeight())
+					&& !gameController.getMap().isBlockedAt(x + getWidth(),
+							tempY + getHeight()))
+				y = tempY;
+		
+		// if going up;
+		if (dy < 0)
+			if (!gameController.getMap().isBlockedAt(x, tempY)
+					&& !gameController.getMap().isBlockedAt(x + getWidth(),
+							tempY))
+				y = tempY;
+	}
+
 	/**
 	 * Calculate the speed of the entity, used to move it.
-	 * @param gameController controller
+	 * 
+	 * @param gameController
+	 *            controller
 	 */
 	public abstract void calculateSpeed(GameController gameController);
+
+	/**
+	 * Called when the entity goes out of the map.
+	 */
+	public abstract void isOutOfMap();
 
 	@Override
 	public boolean collidesWith(Entity other) {
 		return false;
+	}
+
+	@Override
+	public int getHeight() {
+		return sprite.getHeight();
+	}
+
+	@Override
+	public int getWidth() {
+		return sprite.getWidth();
 	}
 
 	@Override

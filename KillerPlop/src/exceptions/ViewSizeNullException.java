@@ -1,6 +1,6 @@
 package exceptions;
 
 @SuppressWarnings("serial")
-public class ViewSizeNull extends Exception {
+public class ViewSizeNullException extends Exception {
 
 }

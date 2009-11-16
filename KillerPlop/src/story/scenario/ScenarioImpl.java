@@ -9,7 +9,8 @@ import controller.GameControllerImpl;
 import controller.GameWindow;
 import entities.manager.EntityManager;
 import exceptions.NoWindowException;
-import exceptions.ViewSizeNull;
+import exceptions.OutOfMapException;
+import exceptions.ViewSizeNullException;
 
 public class ScenarioImpl implements Scenario {
 
@@ -38,13 +39,17 @@ public class ScenarioImpl implements Scenario {
 				.getSize().height);
 		try {
 			loop();
-		} catch (ViewSizeNull e) {
+		} catch (ViewSizeNullException e) {
+			e.printStackTrace();
+		} catch (OutOfMapException e) {
 			e.printStackTrace();
 		}
 	}
 
-	protected void loop() throws ViewSizeNull {
-		
+	protected void loop() throws ViewSizeNullException, OutOfMapException {
+		if (gameController.getViewWidth() * gameController.getViewHeight() == 0)
+			throw new ViewSizeNullException();
+
 		// sleep : time to sleep before the next frame
 		// delta : time elapsed since the previous frame (in ms)
 		// lastFpsTime : time elapsed since the last record of fps

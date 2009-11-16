@@ -1,6 +1,7 @@
 package tests;
 
-import resources.sprites.ImageStore;
+
+import resources.ImageStore;
 import map.maptiled.MapTiled;
 import map.maptiled.MapTiledBuilder;
 import map.tile.SimpleTile;
@@ -18,7 +19,7 @@ public class MapTest extends Test {
 		
 		Tile tileAsteroide = new SimpleTile("resources/tiles/asteroide_transp.png");
 
-		for (int x = 10; x < 500; x++) {
+		for (int x = 10; x < 400; x+=3) {
 			int nb = r.nextInt(3);
 			for (int y = 0; y < nb; y++)
 				map.setTile(tileAsteroide, x, 1 + r.nextInt(8));

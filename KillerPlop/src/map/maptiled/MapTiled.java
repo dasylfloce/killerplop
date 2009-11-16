@@ -11,7 +11,7 @@ package map.maptiled;
 
 import java.awt.Graphics2D;
 
-import map.tile.Tile;
+import exceptions.OutOfMapException;
 
 /**
  * La carte : c'est un tableau a deux dimensions. Chaque cellule contient l'id
@@ -20,14 +20,14 @@ import map.tile.Tile;
 public interface MapTiled {
 
 	/**
-	 * Donne la largeur
+	 * Donne le nombre de tuile dans la direction horizontale.
 	 * 
 	 * @return la largeur en tuile de la map
 	 */
 	public int getMapWidth();
 
 	/**
-	 * Donne la hauteur
+	 * Donne le nombre de tuile dans la direction verticale.
 	 * 
 	 * @return la hauteur en tuile de la map
 	 */
@@ -48,18 +48,17 @@ public interface MapTiled {
 	public int getTileHeight();
 
 	/**
-	 * Donne la tuile a la position indiquée dans la map.
-	 * Position tuile par tuile, et non au pixel près !
+	 * Donne l'état de la map à la position (x, y)
 	 * 
 	 * @param x
 	 *            position x dans la carte
 	 * @param y
 	 *            position y dans la carte
-	 * @return l'objet Tile a cet endroit ou null si aucune
-	 * @exception ArrayIndexOutOfBoundsException
-	 *                si hors de la map
+	 * @return true si la map est blocante.
+	 * @exception OutOfMapException
+	 *                si la position est hors de la map
 	 */
-	public Tile getTileAt(int x, int y) throws ArrayIndexOutOfBoundsException;
+	public boolean isBlockedAt(double x, double y) throws OutOfMapException;
 
 	/**
 	 * Update toutes les tuiles de la carte
@@ -83,9 +82,9 @@ public interface MapTiled {
 	 *            largeur de la vue
 	 * @param viewHeight
 	 *            hauteur de la vue
-	 * @exception ArrayIndexOutOfBoundsException
-	 *                si hors de la map
+	 * @exception OutOfMapException
+	 *                si la position est hors de la map
 	 */
 	void render(Graphics2D g, double x, double y, int viewWidth, int viewHeight)
-			throws ArrayIndexOutOfBoundsException;
+			throws OutOfMapException;
 }

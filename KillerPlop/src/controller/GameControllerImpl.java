@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 
 import map.maptiled.MapTiled;
 import entities.manager.EntityManager;
-import exceptions.ViewSizeNull;
+import exceptions.OutOfMapException;
 
 /**
  * Implements the GameController interface.
@@ -164,14 +164,14 @@ public class GameControllerImpl implements GameController {
 	}
 
 	@Override
-	public void render(Graphics2D g) throws ViewSizeNull {
+	public void render(Graphics2D g) throws OutOfMapException {
 		mapTiled.render(g, x, y, viewWidth, viewHeight);
 		entityManager.render(g, (int) x, (int) y);
 		
 	}
 
 	@Override
-	public void updateView(long delta) throws ViewSizeNull {
+	public void updateView(long delta) {
 		this.delta = delta;
 		time += delta;
 
@@ -185,7 +185,7 @@ public class GameControllerImpl implements GameController {
 	}
 
 	@Override
-	public void updateEntities() throws ViewSizeNull {
+	public void updateEntities() {
 		entityManager.moveEntities(this);
 		entityManager.activateEntities(x + viewWidth);
 		entityManager.resolveCollisions(x, y, viewHeight, viewWidth);

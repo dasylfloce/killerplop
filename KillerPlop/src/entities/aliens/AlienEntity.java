@@ -86,4 +86,10 @@ public class AlienEntity extends EntityImpl implements
 			return 1;
 	}
 
+	@Override
+	public void isOutOfMap() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

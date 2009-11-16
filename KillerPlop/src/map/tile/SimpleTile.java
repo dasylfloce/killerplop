@@ -2,7 +2,7 @@ package map.tile;
 
 import java.awt.Graphics2D;
 
-import resources.sprites.ImageStore;
+import resources.ImageStore;
 import resources.sprites.SimpleSprite;
 import resources.sprites.Sprite;
 
@@ -17,12 +17,15 @@ public class SimpleTile implements Tile {
 	 */
 	protected String name; 
 	
+	protected boolean blocking;
+	
 	/**
 	 * Construit une tuile à partir d'une image
 	 * @param name nom de la tuile (réference vers l'image)
 	 */
-	public SimpleTile(String name) {
+	public SimpleTile(String name, boolean blocking) {
 		this.name = name;
+		this.blocking = blocking;
 		sprite = new SimpleSprite(ImageStore.get(name));
 	}
 
@@ -56,5 +59,10 @@ public class SimpleTile implements Tile {
 			return ((Tile)o).getName().equals(getName());
 		}
 		return false;
+	}
+
+	@Override
+	public boolean isBlockingAt(double x, double y) {
+		return blocking;
 	}
 }

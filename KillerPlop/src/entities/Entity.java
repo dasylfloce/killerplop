@@ -37,32 +37,46 @@ public interface Entity {
 	public abstract boolean isAlienEntity();
 
 	/**
-	 * Get the x location of this entity
+	 * Gives the x location of this entity
 	 * 
 	 * @return The x location of this entity
 	 */
 	public double getX();
 
 	/**
-	 * Get the y location of this entity
+	 * Gives the y location of this entity
 	 * 
 	 * @return The y location of this entity
 	 */
 	public double getY();
 
 	/**
-	 * Get the x location of this entity
+	 * Modifies the x location of this entity
 	 * 
 	 * @return The x location of this entity
 	 */
 	public void setX(double x);
 
 	/**
-	 * Get the y location of this entity
+	 * Modifies the y location of this entity
 	 * 
 	 * @return The y location of this entity
 	 */
 	public void setY(double y);
+
+	/**
+	 * Gives the width of the entity, given by its sprite representation.
+	 * 
+	 * @return the width of the entity.
+	 */
+	public int getWidth();
+
+	/**
+	 * Gives the width of the entity, given by its sprite representation.
+	 * 
+	 * @return the width of the entity.
+	 */
+	public int getHeight();
 
 	/**
 	 * Set the horizontal speed of this entity

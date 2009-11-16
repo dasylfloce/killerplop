@@ -82,4 +82,10 @@ public class ShipEntity extends EntityImpl implements Constants{
 		return false;
 	}
 
+	@Override
+	public void isOutOfMap() {
+		System.err.println("Ship out of the map !? (x:"+x+"; y:"+y);
+		System.exit(0);
+	}
+
 }

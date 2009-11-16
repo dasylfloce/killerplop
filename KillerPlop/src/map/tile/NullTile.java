@@ -48,4 +48,10 @@ public class NullTile implements Tile {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean isBlockingAt(double x, double y) {
+		//Jamais blocant.
+		return false;
+	}
 }

@@ -2,6 +2,8 @@ package resources.sprites;
 
 import java.awt.Image;
 
+import resources.ImageStore;
+
 /**
  * A resource manager for sprites in the game. Its often quite important how and
  * where you get your game resources from. In most cases it makes sense to have
@@ -16,11 +18,8 @@ import java.awt.Image;
 public class SpriteFactory {
 
 	public static Sprite createBasicShip() {
-		return new AnimatedSprite(new Image[] {
-				ImageStore.get("resources/entities/ship2.gif"),
-				ImageStore.get("resources/entities/ship2.gif"),
-				ImageStore.get("resources/entities/ship2.gif"),
-				ImageStore.get("resources/entities/ship2.gif") }, 200);
+		return new SimpleSprite(ImageStore
+				.get("resources/entities/ship2.gif"));
 	}
 	
 	public static Sprite createAnimatedShip() {
