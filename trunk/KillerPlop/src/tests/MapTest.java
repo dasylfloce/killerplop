@@ -9,7 +9,7 @@ public class MapTest extends Test {
 
 	public static MapTiled createMap() {
 		MapTiledBuilder map = new MapTiledBuilder(500, 20, 32, 32);
-		Tile tileHerbe = new SimpleTile("resources/tiles/tile4.png");
+		Tile tileHerbe = new SimpleTile("resources/tiles/background-star.png");
 		Tile tileMur = new SimpleTile("resources/tiles/tile3.png");
 		Tile tilePierre = new SimpleTile("resources/tiles/tile2.png");
 
