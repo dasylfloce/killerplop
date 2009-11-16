@@ -23,10 +23,30 @@ public class SpriteFactory {
 				ImageStore.get("resources/entities/ship2.gif") }, 200);
 	}
 	
+	public static Sprite createAnimatedShip() {
+		return new AnimatedSprite(new Image[] {
+				ImageStore.get("resources/entities/ship2.gif"),
+				ImageStore.get("resources/entities/ship3.gif")}, 40);
+	}
+	
 	public static Sprite createChampi() {
 		return new AnimatedSprite(new Image[] {
 				ImageStore.get("resources/entities/ship.gif"),
 				ImageStore.get("resources/entities/ship.gif"),
 				ImageStore.get("resources/entities/ship.gif") }, 200);
+	}
+	
+	public static Sprite createSonicOr() {
+		return new AnimatedSprite(new Image[] {
+				ImageStore.get("resources/entities/sonic_or1.png"),
+				ImageStore.get("resources/entities/sonic_or2.png"),
+				ImageStore.get("resources/entities/sonic_or3.png") }, 40);
+	}
+	
+	public static Sprite createSonicBleu() {
+		return new AnimatedSprite(new Image[] {
+				ImageStore.get("resources/entities/sonic_bleu1.png"),
+				ImageStore.get("resources/entities/sonic_bleu2.png"),
+				ImageStore.get("resources/entities/sonic_bleu3.png") }, 40);
 	}
 }
