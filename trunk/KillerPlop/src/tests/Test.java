@@ -57,7 +57,7 @@ class NormalMapSpeedEvent extends TimeEvent {
 
 	@Override
 	public void doEvent(GameController gameController) {
-		gameController.setHorizontalMovement(240);
+		gameController.setHorizontalMovement(60);
 	}
 
 	@Override
