@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 
 import map.maptiled.MapTiled;
 import entities.manager.EntityManager;
-import exceptions.ViewSizeNull;
+import exceptions.OutOfMapException;
 
 /**
  * Control the evolution of the game.
@@ -100,12 +100,12 @@ public interface GameController {
 	 * @param delta
 	 *            Time elapsed, in ms, since the last update.
 	 * */
-	public void updateView(long delta) throws ViewSizeNull;
+	public void updateView(long delta);
 
 	/**
 	 * Update the position of all the active entities.
 	 */
-	public void updateEntities() throws ViewSizeNull;
+	public void updateEntities();
 
 	/**
 	 * @return the time in ms elapsed since the last update.
@@ -133,5 +133,5 @@ public interface GameController {
 	 * @param g
 	 *            The graphics context on which to draw
 	 */
-	public void render(Graphics2D g) throws ViewSizeNull;
+	public void render(Graphics2D g) throws OutOfMapException;
 }

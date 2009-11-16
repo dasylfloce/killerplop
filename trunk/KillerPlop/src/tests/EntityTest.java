@@ -1,6 +1,6 @@
 package tests;
 
-import resources.sprites.ImageStore;
+import resources.ImageStore;
 import resources.sprites.SimpleSprite;
 import resources.sprites.SpriteFactory;
 import Constants.Constants;

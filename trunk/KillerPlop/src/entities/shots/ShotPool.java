@@ -3,7 +3,7 @@ package entities.shots;
 import java.util.LinkedList;
 import java.util.List;
 
-import resources.sprites.ImageStore;
+import resources.ImageStore;
 import resources.sprites.SimpleSprite;
 import Constants.Constants;
 

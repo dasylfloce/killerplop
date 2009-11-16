@@ -4,10 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Shape;
 
-import Constants.Constants;
-
 import map.tile.Tile;
 import map.tile.TileWareHouse;
+import Constants.Constants;
+import exceptions.OutOfMapException;
 
 public class MapTiledImpl implements MapTiled, Constants {
 
@@ -57,11 +57,6 @@ public class MapTiledImpl implements MapTiled, Constants {
 	}
 
 	@Override
-	public Tile getTileAt(int x, int y) throws ArrayIndexOutOfBoundsException {
-		return map[x][y];
-	}
-
-	@Override
 	public int getTileHeight() {
 		return tileWareHouse.getTileHeight();
 	}
@@ -86,9 +81,19 @@ public class MapTiledImpl implements MapTiled, Constants {
 		tileWareHouse.updateTiles(delta);
 	}
 
+	private Tile getTileAt(double x, double y)
+			throws ArrayIndexOutOfBoundsException {
+		return map[((int) x) / getTileWidth()][((int) y) / getTileHeight()];
+	}
+
 	@Override
 	public void render(Graphics2D g, double x, double y, int viewWidth,
-			int viewHeight) throws ArrayIndexOutOfBoundsException {
+			int viewHeight) throws OutOfMapException {
+
+		if (x < 0 || y < 0 || x + viewWidth > mapWidth * getTileWidth()
+				|| y + viewHeight > mapHeight * getTileHeight())
+			throw new OutOfMapException(this, x, y);
+
 		// affichage du background
 		if (background != null)
 			g.drawImage(background, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, null);
@@ -107,11 +112,11 @@ public class MapTiledImpl implements MapTiled, Constants {
 
 		// affichage
 		Tile t = null;
-		int pxm = 0, pym = ym; // positions dans la map
+		int pxm = xm, pym = ym; // positions dans la map
 		for (int yi = -yo; yi < viewHeight; yi += getTileHeight()) {
 			pxm = xm;
 			for (int xi = -xo; xi < viewWidth; xi += getTileWidth()) {
-				t = getTileAt(pxm, pym);
+				t = map[pxm][pym];
 				if (t != null)
 					t.draw(g, xi, yi);
 				pxm++;
@@ -121,6 +126,17 @@ public class MapTiledImpl implements MapTiled, Constants {
 
 		// remet le clipping
 		g.setClip(clipping);
+	}
+
+	@Override
+	public boolean isBlockedAt(double x, double y) throws OutOfMapException {
+		try {
+			return getTileAt(x, y).isBlockingAt(x % getTileWidth(),
+					y % getTileHeight());
+		} catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

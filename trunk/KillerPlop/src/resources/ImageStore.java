@@ -1,4 +1,4 @@
-package resources.sprites;
+package resources;
 
 import java.awt.Graphics;
 import java.awt.GraphicsConfiguration;

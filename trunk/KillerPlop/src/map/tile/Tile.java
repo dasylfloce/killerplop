@@ -15,7 +15,7 @@ import java.awt.Graphics2D;
  * @author Guillaume Bouchon
  */
 public interface Tile {
-	
+
 	/**
 	 * Donne la largeur de la tuile
 	 * 
@@ -29,16 +29,28 @@ public interface Tile {
 	 * @return la hauteur
 	 */
 	public int getHeight();
-	
+
 	/**
-	 * @return le nom de la tuile (utilisé pour éviter les doublons dans le warehouse)
+	 * @return le nom de la tuile (utilisé pour éviter les doublons dans le
+	 *         warehouse)
 	 */
 	public String getName();
 
 	/**
+	 * Teste si la tuile est blocante à la position (x, y). La position (0, 0)
+	 * est le point supérieur gauche de la tile.
+	 * 
+	 * @param x abscisse
+	 * @param y ordonnée
+	 * @return true si la tuile est blocante.
+	 */
+	public boolean isBlockingAt(double x, double y);
+
+	/**
 	 * Update la tuile
 	 * 
-	 * @param delta temps écoulé (en ms) depuis la dernière update
+	 * @param delta
+	 *            temps écoulé (en ms) depuis la dernière update
 	 */
 	public void update(long delta);
 
