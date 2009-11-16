@@ -1,5 +1,7 @@
 package map.maptiled;
 
+import java.awt.Image;
+
 import map.tile.Tile;
 import map.tile.TileWareHouse;
 import map.tile.TileWareHouseImpl;
@@ -20,7 +22,7 @@ public class MapTiledBuilder extends MapTiledImpl {
 	 */
 	public MapTiledBuilder(int mapWidth, int mapHeight, int tileWidth,
 			int tileHeight) {
-		super(new TileWareHouseImpl(tileWidth, tileHeight), mapWidth, mapHeight);
+		super(new TileWareHouseImpl(tileWidth, tileHeight), mapWidth, mapHeight, null);
 		map = new Tile[mapWidth][mapHeight];
 		
 		fillWith(tileWareHouse.getNullTile());
@@ -38,11 +40,18 @@ public class MapTiledBuilder extends MapTiledImpl {
 	 */
 	public MapTiledBuilder(TileWareHouse tileWareHouse, int mapWidth,
 			int mapHeight) {
-		super(tileWareHouse, mapWidth, mapHeight);
+		super(tileWareHouse, mapWidth, mapHeight, null);
 	}
 
 	private void addTile(Tile tile) {
 		tileWareHouse.addTile(tile);
+	}
+	
+	public Image getBackground() {
+		return background;
+	}
+	public void setBackground(Image background) {
+		this.background = background;
 	}
 
 	/**

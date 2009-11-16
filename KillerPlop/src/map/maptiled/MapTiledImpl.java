@@ -1,12 +1,20 @@
 package map.maptiled;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Shape;
+
+import Constants.Constants;
 
 import map.tile.Tile;
 import map.tile.TileWareHouse;
 
-public class MapTiledImpl implements MapTiled {
+public class MapTiledImpl implements MapTiled, Constants {
+
+	/**
+	 * Image de fond de la map, qui ne défile pas.
+	 */
+	protected Image background;
 
 	/**
 	 * La carte : contient les tuiles
@@ -37,12 +45,15 @@ public class MapTiledImpl implements MapTiled {
 	 *            Nombre de tuiles à l'horizontale
 	 * @param mapHeight
 	 *            Nombre de tuiles à la verticale
+	 * @param background
+	 *            Image de fond statique
 	 */
 	protected MapTiledImpl(TileWareHouse tileWareHouse, int mapWidth,
-			int mapHeight) {
+			int mapHeight, Image background) {
 		this.tileWareHouse = tileWareHouse;
 		this.mapWidth = mapWidth;
 		this.mapHeight = mapHeight;
+		this.background = background;
 	}
 
 	@Override
@@ -78,50 +89,31 @@ public class MapTiledImpl implements MapTiled {
 	@Override
 	public void render(Graphics2D g, double x, double y, int viewWidth,
 			int viewHeight) throws ArrayIndexOutOfBoundsException {
-		zoneRender(g, x, y, viewWidth, viewHeight, 0, 0);
-	}
+		// affichage du background
+		if (background != null)
+			g.drawImage(background, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, null);
 
-	/**
-	 * Dessine une zone sur le graph à partir de zéro.
-	 * 
-	 * @param g
-	 *            Graphic sur lequel dessiner.
-	 * @param posx
-	 *            la position x en pixels de la vue
-	 * @param posy
-	 *            la position y en pixels de la vue
-	 * @param vw
-	 *            largeur en pixels de la vue
-	 * @param vh
-	 *            hauteur en pixels de la vue
-	 * @param xd
-	 *            la position x où afficher dans le Graphics
-	 * @param yd
-	 *            la position y où afficher dans le Graphics
-	 */
-	private void zoneRender(Graphics2D g, double posx, double posy, int vw,
-			int vh, int xd, int yd) throws ArrayIndexOutOfBoundsException {
 		// positions dans la carte
-		int xm = ((int) posx) / getTileWidth();
-		int ym = ((int) posy) / getTileHeight();
+		int xm = ((int) x) / getTileWidth();
+		int ym = ((int) y) / getTileHeight();
 
 		// la vue passe au milieu d'une tuile
-		int xo = ((int) posx) % getTileWidth();
-		int yo = ((int) posy) % getTileHeight();
+		int xo = ((int) x) % getTileWidth();
+		int yo = ((int) y) % getTileHeight();
 
 		// defini le clipping
 		Shape clipping = g.getClip();
-		g.setClip(xd, yd, vw, vh);
+		g.setClip(0, 0, viewWidth, viewHeight);
 
 		// affichage
 		Tile t = null;
 		int pxm = 0, pym = ym; // positions dans la map
-		for (int y = -yo; y < vh; y += getTileHeight()) {
+		for (int yi = -yo; yi < viewHeight; yi += getTileHeight()) {
 			pxm = xm;
-			for (int x = -xo; x < vw; x += getTileWidth()) {
+			for (int xi = -xo; xi < viewWidth; xi += getTileWidth()) {
 				t = getTileAt(pxm, pym);
 				if (t != null)
-					t.draw(g, x + xd, y + yd);
+					t.draw(g, xi, yi);
 				pxm++;
 			}
 			pym++;

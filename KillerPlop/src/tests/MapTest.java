@@ -1,5 +1,6 @@
 package tests;
 
+import resources.sprites.ImageStore;
 import map.maptiled.MapTiled;
 import map.maptiled.MapTiledBuilder;
 import map.tile.SimpleTile;
@@ -8,6 +9,23 @@ import map.tile.Tile;
 public class MapTest extends Test {
 
 	public static MapTiled createMap() {
+		return background();
+	}
+
+	public static MapTiled background() {
+		MapTiledBuilder map = new MapTiledBuilder(500, 20, 32, 32);
+		map.setBackground(ImageStore.get("resources/backgrounds/espace1.jpg"));
+		
+		Tile tileAsteroide = new SimpleTile("resources/tiles/asteroide.png");
+
+		for (int x = 10; x < 500; x++) {
+			int nb = r.nextInt(3);
+			for (int y = 0; y < nb; y++)
+				map.setTile(tileAsteroide, x, 1 + r.nextInt(8));
+		}
+		return map;
+	}
+	public static MapTiled fullTiles() {
 		MapTiledBuilder map = new MapTiledBuilder(500, 20, 32, 32);
 		Tile tileHerbe = new SimpleTile("resources/tiles/fond20en.png");
 		Tile tileMur = new SimpleTile("resources/tiles/asteroide.png");
