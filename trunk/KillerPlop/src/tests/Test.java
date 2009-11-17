@@ -1,6 +1,5 @@
 package tests;
 
-import java.awt.Dimension;
 import java.util.Random;
 
 import story.event.EventManager;
@@ -18,6 +17,9 @@ import exceptions.NoWindowException;
 public class Test implements Constants {
 	
 	public static Random r = new Random();
+	public static final  int WINDOW_HEIGHT = 320;
+	public static final  int WINDOW_WIDTH = 600;
+
 	
 	public static void main(String[] args) throws NoWindowException {
 		
@@ -29,7 +31,7 @@ public class Test implements Constants {
 		Scenario storyTest = new ScenarioImpl("Test");
 		storyTest.initialization(MapTest.createMap(), EntityTest.createEntityManager(), eventManager);
 		
-		GameWindow gameWindow = new GameWindowImpl(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+		GameWindow gameWindow = new GameWindowImpl(WINDOW_WIDTH, WINDOW_HEIGHT);
 		gameWindow.getKeyHandler().setShip(EntityTest.ship);
 		storyTest.setGameWindow(gameWindow);
 		
@@ -45,7 +47,7 @@ class RandomMapSpeedEvent extends TimePeriodicEvent {
 
 	@Override
 	public void doEvent(GameController gameController) {
-		gameController.setHorizontalMovement(Test.r.nextDouble()*WINDOW_WIDTH/2);
+		gameController.setHorizontalMovement(Test.r.nextDouble()*Test.WINDOW_WIDTH/2);
 	}
 		
 }

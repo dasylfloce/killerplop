@@ -2,7 +2,6 @@ package map.maptiled;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Shape;
 
 import map.tile.Tile;
 import map.tile.TileWareHouse;
@@ -96,7 +95,7 @@ public class MapTiledImpl implements MapTiled, Constants {
 
 		// affichage du background
 		if (background != null)
-			g.drawImage(background, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, null);
+			g.drawImage(background, 0, 0, viewWidth, viewHeight, null);
 
 		// positions dans la carte
 		int xm = ((int) x) / getTileWidth();
@@ -105,10 +104,6 @@ public class MapTiledImpl implements MapTiled, Constants {
 		// la vue passe au milieu d'une tuile
 		int xo = ((int) x) % getTileWidth();
 		int yo = ((int) y) % getTileHeight();
-
-		// defini le clipping
-		Shape clipping = g.getClip();
-		g.setClip(0, 0, viewWidth, viewHeight);
 
 		// affichage
 		Tile t = null;
@@ -123,9 +118,6 @@ public class MapTiledImpl implements MapTiled, Constants {
 			}
 			pym++;
 		}
-
-		// remet le clipping
-		g.setClip(clipping);
 	}
 
 	@Override

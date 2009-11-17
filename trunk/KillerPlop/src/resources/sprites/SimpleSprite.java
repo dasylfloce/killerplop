@@ -1,6 +1,6 @@
 package resources.sprites;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 /**
@@ -52,7 +52,7 @@ public class SimpleSprite implements Sprite {
 	 * @param y
 	 *            The y location at which to draw the sprite
 	 */
-	public void draw(Graphics g, int x, int y) {
+	public void draw(Graphics2D g, int x, int y) {
 		g.drawImage(image, x, y, null);
 	}
 

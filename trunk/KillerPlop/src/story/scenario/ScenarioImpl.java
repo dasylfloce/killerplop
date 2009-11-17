@@ -35,8 +35,8 @@ public class ScenarioImpl implements Scenario {
 		if (gameWindow == null)
 			throw new NoWindowException();
 
-		gameController.setViewSize(gameWindow.getSize().width, gameWindow
-				.getSize().height);
+		gameController.setViewSize(gameWindow.getWindowWidth(), gameWindow
+				.getWindowHeight());
 		try {
 			loop();
 		} catch (ViewSizeNullException e) {
