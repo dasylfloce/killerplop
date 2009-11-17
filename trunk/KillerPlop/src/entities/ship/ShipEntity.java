@@ -1,6 +1,6 @@
 package entities.ship;
 
-import resources.sprites.Sprite;
+import sprites.Sprite;
 import Constants.Constants;
 import controller.GameController;
 import entities.EntityImpl;

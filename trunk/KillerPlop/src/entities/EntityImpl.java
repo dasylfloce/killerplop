@@ -2,10 +2,9 @@ package entities;
 
 import java.awt.Graphics2D;
 
-import resources.sprites.Sprite;
+import sprites.Sprite;
 import controller.GameController;
 import entities.shapes.Shape;
-import entities.shapes.ShapeRectangle;
 import exceptions.OutOfMapException;
 
 /**
@@ -26,21 +25,18 @@ public abstract class EntityImpl implements Entity {
 	protected double x;
 	/** The current y location of this entity */
 	protected double y;
-	/** The sprite that represents this entity */
-	protected Sprite sprite;
 	/** The current speed of this entity horizontally (pixels/sec) */
 	protected double dx;
 	/** The current speed of this entity vertically (pixels/sec) */
 	protected double dy;
 
-	/** Shape of the entity */
-	protected Shape shape;
+	/** The sprite that represents this entity */
+	protected Sprite sprite;
 	/** This flag is turned on if the entity has to be removed from the game. */
 	protected boolean destroyed;
 
 	/**
-	 * Construct a entity based on a sprite image, a location and a shape used
-	 * for collision.
+	 * Construct a entity based on a sprite image and a location
 	 * 
 	 * @param sprite
 	 *            The sprite of the entity
@@ -48,38 +44,17 @@ public abstract class EntityImpl implements Entity {
 	 *            The initial x location of this entity
 	 * @param y
 	 *            The initial y location of this entity
-	 * @param shape
-	 *            The shape used for collision
 	 */
-	public EntityImpl(Sprite sprite, int x, int y, Shape shape) {
+	public EntityImpl(Sprite sprite, int x, int y) {
 		this.sprite = sprite;
 		this.x = x;
 		this.y = y;
-		this.shape = shape;
 		destroyed = false;
-	}
-
-	/**
-	 * Construct a entity based on a sprite image and a location. The shape is
-	 * given by default as a rectangle, which size is the sprite size.
-	 * 
-	 * @param sprite
-	 *            The sprite of the entity
-	 * @param x
-	 *            The initial x location of this entity
-	 * @param y
-	 *            The initial y location of this entity
-	 * @param shape
-	 *            The shape used for collision
-	 */
-	public EntityImpl(Sprite sprite, int x, int y) {
-		this(sprite, x, y, null);
-		shape = new ShapeRectangle(getWidth(), getHeight());
 	}
 
 	@Override
 	public Shape getShape() {
-		return shape;
+		return sprite.getShape();
 	}
 
 	@Override
@@ -146,7 +121,7 @@ public abstract class EntityImpl implements Entity {
 
 		sprite.update(gameController.getDelta());
 
-		shape.setPosition(x, y);
+		getShape().setPosition(x, y);
 	}
 
 	protected void updatePosition(GameController gameController)
@@ -199,11 +174,11 @@ public abstract class EntityImpl implements Entity {
 
 	@Override
 	public boolean collidesWith(Entity other) {
-		if (shape.intersectsWith(other.getShape()))
-			System.out.println(shape.toString() + "\n"
-					+ other.getShape().toString());
+//		if (getShape().intersectsWith(other.getShape()))
+//			System.out.println(getShape().toString() + "\n"
+//					+ other.getShape().toString());
 		//System.exit(0);
-		return shape.intersectsWith(other.getShape());
+		return getShape().intersectsWith(other.getShape());
 	}
 
 	@Override

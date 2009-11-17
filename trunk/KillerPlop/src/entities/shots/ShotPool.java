@@ -3,8 +3,10 @@ package entities.shots;
 import java.util.LinkedList;
 import java.util.List;
 
+import entities.shapes.PointShape;
+
 import resources.ImageStore;
-import resources.sprites.SimpleSprite;
+import sprites.SimpleSprite;
 import Constants.Constants;
 
 public class ShotPool implements Constants {
@@ -18,8 +20,10 @@ public class ShotPool implements Constants {
 
 	private ShotPool(int nbShots) {
 		for (int i = 0; i < nbShots; i++) {
-			available.add(new ShotEntity(new SimpleSprite(ImageStore
-					.get("resources/entities/shot.gif")), 0, 0));
+			available.add(new ShotEntity(
+					new SimpleSprite(ImageStore
+							.get("resources/entities/shot.gif"),
+							new PointShape(10, 5)), 0, 0));
 		}
 	}
 

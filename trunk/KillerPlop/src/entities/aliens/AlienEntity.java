@@ -1,6 +1,6 @@
 package entities.aliens;
 
-import resources.sprites.Sprite;
+import sprites.Sprite;
 import controller.GameController;
 import entities.EntityImpl;
 import entities.movement.Movement;

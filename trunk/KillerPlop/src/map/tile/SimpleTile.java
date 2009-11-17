@@ -3,8 +3,8 @@ package map.tile;
 import java.awt.Graphics2D;
 
 import resources.ImageStore;
-import resources.sprites.SimpleSprite;
-import resources.sprites.Sprite;
+import sprites.SimpleSprite;
+import sprites.Sprite;
 
 public class SimpleTile implements Tile {
 

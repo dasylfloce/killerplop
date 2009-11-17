@@ -1,10 +1,10 @@
 package entities.shapes;
 
-public class ShapeCircle extends Shape {
+public class CircleShape extends Shape {
 
 	protected double radius;
 
-	public ShapeCircle(double radius) {
+	public CircleShape(double radius) {
 		this.radius = radius;
 	}
 	
@@ -22,13 +22,13 @@ public class ShapeCircle extends Shape {
 	}
 
 	@Override
-	protected boolean intersectsWithCircle(ShapeCircle circle) {
+	protected boolean intersectsWithCircle(CircleShape circle) {
 		return distance(x, y, circle.x, circle.y) < radius
 		+ circle.radius;
 	}
 
 	@Override
-	protected boolean intersectsWithRect(ShapeRectangle rect) {
+	protected boolean intersectsWithRect(RectShape rect) {
 		return rect.intersectsWithCircle(this);
 	}
 
