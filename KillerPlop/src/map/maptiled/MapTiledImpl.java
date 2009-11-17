@@ -6,6 +6,7 @@ import java.awt.Image;
 import map.tile.Tile;
 import map.tile.TileWareHouse;
 import Constants.Constants;
+import entities.shapes.Shape;
 import exceptions.OutOfMapException;
 
 public class MapTiledImpl implements MapTiled, Constants {
@@ -127,8 +128,13 @@ public class MapTiledImpl implements MapTiled, Constants {
 					y % getTileHeight());
 		} catch (ArrayIndexOutOfBoundsException e) {
 			e.printStackTrace();
-			return false;
+			throw new OutOfMapException(this, x, y);
 		}
+	}
+
+	@Override
+	public Shape getShapeAt(double x, double y) throws OutOfMapException {
+		return getTileAt(x, y).getShape();
 	}
 
 }

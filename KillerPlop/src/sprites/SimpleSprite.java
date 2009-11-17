@@ -3,8 +3,8 @@ package sprites;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-import entities.shapes.Shape;
 import entities.shapes.RectShape;
+import entities.shapes.Shape;
 
 /**
  * A sprite to be displayed on the screen. This sprite is composed by only one

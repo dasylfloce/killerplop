@@ -11,6 +11,7 @@ package map.maptiled;
 
 import java.awt.Graphics2D;
 
+import entities.shapes.Shape;
 import exceptions.OutOfMapException;
 
 /**
@@ -48,7 +49,7 @@ public interface MapTiled {
 	public int getTileHeight();
 
 	/**
-	 * Donne l'état de la map à la position (x, y)
+	 * Teste l'état de la map à la position (x, y), blocante ou non.
 	 * 
 	 * @param x
 	 *            position x dans la carte
@@ -59,6 +60,19 @@ public interface MapTiled {
 	 *                si la position est hors de la map
 	 */
 	public boolean isBlockedAt(double x, double y) throws OutOfMapException;
+
+	/**
+	 * Retourne la shape de la tile presente à la position (x, y).
+	 * 
+	 * @param x
+	 *            position x dans la carte
+	 * @param y
+	 *            position y dans la carte
+	 * @return la shape de la tile concernée.
+	 * @exception OutOfMapException
+	 *                si la position est hors de la map
+	 */
+	public Shape getShapeAt(double x, double y) throws OutOfMapException;
 
 	/**
 	 * Update toutes les tuiles de la carte

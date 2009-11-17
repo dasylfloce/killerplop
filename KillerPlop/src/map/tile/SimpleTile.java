@@ -5,6 +5,9 @@ import java.awt.Graphics2D;
 import resources.ImageStore;
 import sprites.SimpleSprite;
 import sprites.Sprite;
+import entities.shapes.NullShape;
+import entities.shapes.RectShape;
+import entities.shapes.Shape;
 
 public class SimpleTile implements Tile {
 
@@ -15,18 +18,22 @@ public class SimpleTile implements Tile {
 	/**
 	 * Nom de la tuile.
 	 */
-	protected String name; 
-	
-	protected boolean blocking;
+	protected String name;
 	
 	/**
-	 * Construit une tuile à partir d'une image
-	 * @param name nom de la tuile (réference vers l'image)
+	 * Construit une tuile à partir d'une image.
+	 * 
+	 * @param name
+	 *            nom de la tuile (réference vers l'image)
 	 */
 	public SimpleTile(String name, boolean blocking) {
 		this.name = name;
-		this.blocking = blocking;
-		sprite = new SimpleSprite(ImageStore.get(name));
+		Shape shape;
+		if (blocking)
+			shape = new RectShape(getWidth(), getHeight());
+		else
+			shape = new NullShape();
+		sprite = new SimpleSprite(ImageStore.get(name), shape);
 	}
 
 	@Override
@@ -56,13 +63,18 @@ public class SimpleTile implements Tile {
 
 	public boolean equals(Object o) {
 		if (o instanceof Tile) {
-			return ((Tile)o).getName().equals(getName());
+			return ((Tile) o).getName().equals(getName());
 		}
 		return false;
 	}
 
 	@Override
 	public boolean isBlockingAt(double x, double y) {
-		return blocking;
+		return sprite.getShape().contains(x, y);
+	}
+
+	@Override
+	public Shape getShape() {
+		return sprite.getShape();
 	}
 }

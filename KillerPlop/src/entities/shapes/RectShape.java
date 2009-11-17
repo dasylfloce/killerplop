@@ -12,7 +12,7 @@ public class RectShape extends Shape {
 
 	@Override
 	public int getType() {
-		return SHAPE_RECTANGLE;
+		return RECTANGLE_SHAPE;
 	}
 
 	@Override
