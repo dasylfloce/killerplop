@@ -9,6 +9,8 @@ package map.tile;
 
 import java.awt.Graphics2D;
 
+import entities.shapes.Shape;
+
 /**
  * Les tuiles de la carte<br>
  * 
@@ -37,11 +39,20 @@ public interface Tile {
 	public String getName();
 
 	/**
+	 * Donne la shape de la tile. Si la tile est non blocante, return null.
+	 * 
+	 * @return la shape de la tile
+	 */
+	public Shape getShape();
+
+	/**
 	 * Teste si la tuile est blocante à la position (x, y). La position (0, 0)
 	 * est le point supérieur gauche de la tile.
 	 * 
-	 * @param x abscisse
-	 * @param y ordonnée
+	 * @param x
+	 *            abscisse
+	 * @param y
+	 *            ordonnée
 	 * @return true si la tuile est blocante.
 	 */
 	public boolean isBlockingAt(double x, double y);

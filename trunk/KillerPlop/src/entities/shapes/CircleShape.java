@@ -18,7 +18,7 @@ public class CircleShape extends Shape {
 
 	@Override
 	public int getType() {
-		return SHAPE_CIRCLE;
+		return CIRCLE_SHAPE;
 	}
 
 	@Override

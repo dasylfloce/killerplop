@@ -22,7 +22,7 @@ public class PointShape extends Shape {
 
 	@Override
 	public int getType() {
-		return SHAPE_POINT;
+		return POINT_SHAPE;
 	}
 
 	@Override

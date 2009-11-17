@@ -2,10 +2,15 @@ package map.tile;
 
 import java.awt.Graphics2D;
 
+import entities.shapes.NullShape;
+import entities.shapes.Shape;
+
 public class NullTile implements Tile {
 
 	protected int width;
 	protected int height;
+	
+	protected Shape shape;
 	
 	/**
 	 * Construit une tuile vide.
@@ -15,6 +20,7 @@ public class NullTile implements Tile {
 	public NullTile(int width, int height) {
 		this.width = width;
 		this.height = height;
+		shape = new NullShape();
 	}
 
 	@Override
@@ -53,5 +59,10 @@ public class NullTile implements Tile {
 	public boolean isBlockingAt(double x, double y) {
 		//Jamais blocant.
 		return false;
+	}
+
+	@Override
+	public Shape getShape() {
+		return shape;
 	}
 }

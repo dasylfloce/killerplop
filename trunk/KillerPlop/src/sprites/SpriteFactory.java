@@ -3,10 +3,9 @@ package sprites;
 import java.awt.Image;
 import java.util.Random;
 
-import entities.shapes.Shape;
-import entities.shapes.CircleShape;
-
 import resources.ImageStore;
+import entities.shapes.CircleShape;
+import entities.shapes.Shape;
 
 /**
  * A resource manager for sprites in the game. Its often quite important how and

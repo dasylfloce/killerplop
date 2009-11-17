@@ -124,37 +124,37 @@ public abstract class EntityImpl implements Entity {
 		getShape().setPosition(x, y);
 	}
 
-	protected void updatePosition(GameController gameController)
+	protected void updatePosition(GameController gc)
 			throws OutOfMapException {
-		double tempX = x + (gameController.getDelta() * dx) / 1000;
-		double tempY = y + (gameController.getDelta() * dy) / 1000;
+		double tempX = x + (gc.getDelta() * dx) / 1000;
+		double tempY = y + (gc.getDelta() * dy) / 1000;
 
 		// if going right;
 		if (dx > 0) {
-			if (!gameController.getMap().isBlockedAt(tempX + getWidth(), y)
-					&& !gameController.getMap().isBlockedAt(tempX + getWidth(),
+			if (!gc.getMap().isBlockedAt(tempX + getWidth(), y)
+					&& !gc.getMap().isBlockedAt(tempX + getWidth(),
 							y + getHeight()))
 				x = tempX;
 		}
 
 		// if going left;
 		if (dx < 0)
-			if (!gameController.getMap().isBlockedAt(tempX, tempY)
-					&& !gameController.getMap().isBlockedAt(tempX,
+			if (!gc.getMap().isBlockedAt(tempX, tempY)
+					&& !gc.getMap().isBlockedAt(tempX,
 							tempY + getHeight()))
 				x = tempX;
 
 		// if going down;
 		if (dy > 0)
-			if (!gameController.getMap().isBlockedAt(x, tempY + getHeight())
-					&& !gameController.getMap().isBlockedAt(x + getWidth(),
+			if (!gc.getMap().isBlockedAt(x, tempY + getHeight())
+					&& !gc.getMap().isBlockedAt(x + getWidth(),
 							tempY + getHeight()))
 				y = tempY;
 
 		// if going up;
 		if (dy < 0)
-			if (!gameController.getMap().isBlockedAt(x, tempY)
-					&& !gameController.getMap().isBlockedAt(x + getWidth(),
+			if (!gc.getMap().isBlockedAt(x, tempY)
+					&& !gc.getMap().isBlockedAt(x + getWidth(),
 							tempY))
 				y = tempY;
 	}

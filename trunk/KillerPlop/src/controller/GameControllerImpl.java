@@ -182,6 +182,8 @@ public class GameControllerImpl implements GameController {
 		//if (delta != 1000/ScenarioImpl.FRAME_RATE)
 		//System.out.println("GameController.update(delta=" + delta + ")\n\tx:"
 		//		+ x + "\ty:" + y);
+		
+		mapTiled.updateTiles(delta);
 	}
 
 	@Override

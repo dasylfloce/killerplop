@@ -3,11 +3,10 @@ package entities.shots;
 import java.util.LinkedList;
 import java.util.List;
 
-import entities.shapes.PointShape;
-
 import resources.ImageStore;
 import sprites.SimpleSprite;
 import Constants.Constants;
+import entities.shapes.PointShape;
 
 public class ShotPool implements Constants {
 

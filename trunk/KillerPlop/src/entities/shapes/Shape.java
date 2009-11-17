@@ -2,9 +2,10 @@ package entities.shapes;
 
 public abstract class Shape {
 
-	protected static final int SHAPE_CIRCLE = 0;
-	protected static final int SHAPE_RECTANGLE = 1;
-	protected static final int SHAPE_POINT = 2;
+	protected static final int CIRCLE_SHAPE = 0;
+	protected static final int RECTANGLE_SHAPE = 1;
+	protected static final int POINT_SHAPE = 2;
+	protected static final int NULL_SHAPE = 3;
 
 	protected double x;
 	protected double y;
@@ -23,11 +24,13 @@ public abstract class Shape {
 	}
 
 	public boolean intersectsWith(Shape shape) {
-		if (shape.getType() == SHAPE_POINT)
+		if (shape.getType() == NULL_SHAPE)
+			return false;
+		else if (shape.getType() == POINT_SHAPE)
 			return contains(shape.x, shape.y);
-		else if (shape.getType() == SHAPE_CIRCLE)
+		else if (shape.getType() == CIRCLE_SHAPE)
 			return intersectsWithCircle((CircleShape) shape);
-		else if (shape.getType() == SHAPE_RECTANGLE)
+		else if (shape.getType() == RECTANGLE_SHAPE)
 			return intersectsWithRect((RectShape) shape);
 		else {
 			System.err.println("Error Shape[" + getType()
