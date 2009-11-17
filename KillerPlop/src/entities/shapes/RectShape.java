@@ -1,11 +1,11 @@
 package entities.shapes;
 
-public class ShapeRectangle extends Shape {
+public class RectShape extends Shape {
 
 	protected double width;
 	protected double height;
 
-	public ShapeRectangle(double width, double height) {
+	public RectShape(double width, double height) {
 		this.width = width;
 		this.height = height;
 	}
@@ -16,7 +16,7 @@ public class ShapeRectangle extends Shape {
 	}
 
 	@Override
-	protected boolean intersectsWithCircle(ShapeCircle circle) {
+	protected boolean intersectsWithCircle(CircleShape circle) {
 		if (circle.y < this.x) {
 			// Centre du cercle au dessus (peut-être à gauche ou à droite du
 			// rectangle)
@@ -58,7 +58,7 @@ public class ShapeRectangle extends Shape {
 	}
 
 	@Override
-	protected boolean intersectsWithRect(ShapeRectangle rect) {
+	protected boolean intersectsWithRect(RectShape rect) {
 		double maxLeft = Math.max(x, rect.x);
 		double minRight = Math.min(x+width, rect.x+rect.width);
 

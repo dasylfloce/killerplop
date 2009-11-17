@@ -1,7 +1,10 @@
-package resources.sprites;
+package sprites;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+
+import entities.shapes.Shape;
+import entities.shapes.RectShape;
 
 /**
  * A sprite to be displayed on the screen. This sprite is composed by only one
@@ -13,6 +16,8 @@ public class SimpleSprite implements Sprite {
 
 	/** The image to be drawn for this sprite */
 	protected Image image;
+	/** The shape of the sprite */
+	protected Shape shape;
 
 	/**
 	 * Create a new sprite based on an image
@@ -20,8 +25,21 @@ public class SimpleSprite implements Sprite {
 	 * @param image
 	 *            The image that is this sprite
 	 */
+	public SimpleSprite(Image image, Shape shape) {
+		this.image = image;
+		this.shape = shape;
+	}
+
+	/**
+	 * Create a new sprite based on an image with a default shape. The shape is
+	 * a ShapeRectangle based on the size of the image.
+	 * 
+	 * @param image
+	 *            The image that is this sprite
+	 */
 	public SimpleSprite(Image image) {
 		this.image = image;
+		this.shape = new RectShape(getWidth(), getHeight());
 	}
 
 	/**
@@ -59,5 +77,10 @@ public class SimpleSprite implements Sprite {
 	@Override
 	public void update(long delta) {
 		// Nothing to do.
+	}
+
+	@Override
+	public Shape getShape() {
+		return shape;
 	}
 }

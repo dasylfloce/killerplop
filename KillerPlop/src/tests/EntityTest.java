@@ -1,8 +1,8 @@
 package tests;
 
 import resources.ImageStore;
-import resources.sprites.SimpleSprite;
-import resources.sprites.SpriteFactory;
+import sprites.SimpleSprite;
+import sprites.SpriteFactory;
 import entities.aliens.AlienEntity;
 import entities.manager.EntityManager;
 import entities.manager.EntityManagerImpl;
