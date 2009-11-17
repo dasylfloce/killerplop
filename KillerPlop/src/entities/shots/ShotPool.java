@@ -9,9 +9,8 @@ import Constants.Constants;
 
 public class ShotPool implements Constants {
 
-	static public final int MAX_RESOURCES = NB_SHOTS_MAX;
 	private List<ShotEntity> available = new LinkedList<ShotEntity>();
-	static private ShotPool instance = new ShotPool(MAX_RESOURCES);
+	static private ShotPool instance = new ShotPool(NB_SHOTS_MAX);
 
 	static public ShotPool getInstance() {
 		return instance;
@@ -29,6 +28,7 @@ public class ShotPool implements Constants {
 	}
 
 	public void returnShot(ShotEntity shot) {
+		shot.reactivate();
 		available.add(shot);
 	}
 }

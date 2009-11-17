@@ -81,6 +81,11 @@ public class ShipEntity extends EntityImpl implements Constants{
 	public boolean isShotEntity() {
 		return false;
 	}
+	
+	@Override
+	public void hit() {
+		destroyed = true;
+	}
 
 	@Override
 	public void isOutOfMap() {

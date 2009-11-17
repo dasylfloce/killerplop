@@ -15,28 +15,23 @@ import entities.Entity;
  * 
  */
 public interface EntityManager {
-	
+
 	/**
 	 * Adds an entity to the entity manager.
-	 * @param entity the entity to add.
+	 * 
+	 * @param entity
+	 *            the entity to add.
 	 */
 	public void addEntity(Entity entity);
 
 	/**
-	 * Activate all the entities that should be activated at the "x" position
+	 * Activate all the alien entities that should be activated at the "x"
+	 * position
 	 * 
 	 * @param x
 	 *            Horizontal position of activation
 	 */
 	public void activateEntities(double x);
-
-	/**
-	 * Desactivate a particular entity. The entity can be re-activated later.
-	 * 
-	 * @param entity
-	 *            Entity to desactivate.
-	 */
-	public void desactivateEntity(Entity entity);
 
 	/**
 	 * Move all the entities that are active
@@ -48,12 +43,14 @@ public interface EntityManager {
 
 	/**
 	 * Perform the collisions between entities that are activated.
-	 * @param viewWidth 
-	 * @param viewHeight 
-	 * @param y 
-	 * @param x 
+	 * 
+	 * @param viewWidth
+	 * @param viewHeight
+	 * @param y
+	 * @param x
 	 */
-	public void resolveCollisions(double x, double y, int viewHeight, int viewWidth);
+	public void resolveCollisions(double x, double y, int viewHeight,
+			int viewWidth);
 
 	/**
 	 * Draw all active entities on the graph, with an offset that is required by
@@ -69,4 +66,9 @@ public interface EntityManager {
 	public void render(Graphics2D g, int offsetX, int offsetY);
 
 	public void resolveShot(long delta);
+	
+	/**
+	 * Delete all entities that have been marked destroyed
+	 */
+	public void cleanUpEntities();
 }

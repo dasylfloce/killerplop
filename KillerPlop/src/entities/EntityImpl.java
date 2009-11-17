@@ -1,10 +1,11 @@
 package entities;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import resources.sprites.Sprite;
-
 import controller.GameController;
+import entities.shapes.Shape;
+import entities.shapes.ShapeRectangle;
 import exceptions.OutOfMapException;
 
 /**
@@ -32,8 +33,14 @@ public abstract class EntityImpl implements Entity {
 	/** The current speed of this entity vertically (pixels/sec) */
 	protected double dy;
 
+	/** Shape of the entity */
+	protected Shape shape;
+	/** This flag is turned on if the entity has to be removed from the game. */
+	protected boolean destroyed;
+
 	/**
-	 * Construct a entity based on a sprite image and a location.
+	 * Construct a entity based on a sprite image, a location and a shape used
+	 * for collision.
 	 * 
 	 * @param sprite
 	 *            The sprite of the entity
@@ -41,11 +48,48 @@ public abstract class EntityImpl implements Entity {
 	 *            The initial x location of this entity
 	 * @param y
 	 *            The initial y location of this entity
+	 * @param shape
+	 *            The shape used for collision
 	 */
-	public EntityImpl(Sprite sprite, int x, int y) {
+	public EntityImpl(Sprite sprite, int x, int y, Shape shape) {
 		this.sprite = sprite;
 		this.x = x;
 		this.y = y;
+		this.shape = shape;
+		destroyed = false;
+	}
+
+	/**
+	 * Construct a entity based on a sprite image and a location. The shape is
+	 * given by default as a rectangle, which size is the sprite size.
+	 * 
+	 * @param sprite
+	 *            The sprite of the entity
+	 * @param x
+	 *            The initial x location of this entity
+	 * @param y
+	 *            The initial y location of this entity
+	 * @param shape
+	 *            The shape used for collision
+	 */
+	public EntityImpl(Sprite sprite, int x, int y) {
+		this(sprite, x, y, null);
+		shape = new ShapeRectangle(getWidth(), getHeight());
+	}
+
+	@Override
+	public Shape getShape() {
+		return shape;
+	}
+
+	@Override
+	public boolean isDestroyed() {
+		return destroyed;
+	}
+
+	@Override
+	public void reactivate() {
+		this.destroyed = false;
 	}
 
 	@Override
@@ -89,7 +133,7 @@ public abstract class EntityImpl implements Entity {
 	}
 
 	@Override
-	public void update(GameController gameController) {
+	public void move(GameController gameController) {
 		// update speeds
 		calculateSpeed(gameController);
 
@@ -101,13 +145,15 @@ public abstract class EntityImpl implements Entity {
 		}
 
 		sprite.update(gameController.getDelta());
+
+		shape.setPosition(x, y);
 	}
 
-	private void updatePosition(GameController gameController)
+	protected void updatePosition(GameController gameController)
 			throws OutOfMapException {
 		double tempX = x + (gameController.getDelta() * dx) / 1000;
 		double tempY = y + (gameController.getDelta() * dy) / 1000;
-		
+
 		// if going right;
 		if (dx > 0) {
 			if (!gameController.getMap().isBlockedAt(tempX + getWidth(), y)
@@ -115,22 +161,21 @@ public abstract class EntityImpl implements Entity {
 							y + getHeight()))
 				x = tempX;
 		}
-		
+
 		// if going left;
 		if (dx < 0)
 			if (!gameController.getMap().isBlockedAt(tempX, tempY)
 					&& !gameController.getMap().isBlockedAt(tempX,
 							tempY + getHeight()))
 				x = tempX;
-		
+
 		// if going down;
 		if (dy > 0)
-			if (!gameController.getMap()
-					.isBlockedAt(x, tempY + getHeight())
+			if (!gameController.getMap().isBlockedAt(x, tempY + getHeight())
 					&& !gameController.getMap().isBlockedAt(x + getWidth(),
 							tempY + getHeight()))
 				y = tempY;
-		
+
 		// if going up;
 		if (dy < 0)
 			if (!gameController.getMap().isBlockedAt(x, tempY)
@@ -154,7 +199,11 @@ public abstract class EntityImpl implements Entity {
 
 	@Override
 	public boolean collidesWith(Entity other) {
-		return false;
+		if (shape.intersectsWith(other.getShape()))
+			System.out.println(shape.toString() + "\n"
+					+ other.getShape().toString());
+		//System.exit(0);
+		return shape.intersectsWith(other.getShape());
 	}
 
 	@Override
@@ -168,7 +217,7 @@ public abstract class EntityImpl implements Entity {
 	}
 
 	@Override
-	public void draw(Graphics g, int offsetX, int offsetY) {
+	public void draw(Graphics2D g, int offsetX, int offsetY) {
 		sprite.draw(g, (int) x - offsetX, (int) y - offsetY);
 	}
 

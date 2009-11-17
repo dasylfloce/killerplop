@@ -1,11 +1,11 @@
 package tests;
 
 
-import resources.ImageStore;
 import map.maptiled.MapTiled;
 import map.maptiled.MapTiledBuilder;
 import map.tile.SimpleTile;
 import map.tile.Tile;
+import resources.ImageStore;
 
 public class MapTest extends Test {
 

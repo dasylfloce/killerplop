@@ -17,27 +17,29 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 	/** The game window that we'll update with the frame count */
 	protected JFrame container;
 	/** Size of the window */
-	protected Dimension windowSize;
+	protected int width;
+	protected int height;
 	
 	protected KeyHandler keyHandler;
 
 	/**
 	 * Construct our map and set it running.
 	 */
-	public GameWindowImpl(Dimension windowSize) {
+	public GameWindowImpl(int width, int height) {
 		// create a frame to contain our game
 		container = new JFrame();
-		this.windowSize = windowSize;
+		this.width = width;
+		this.height = height;
 
 		// get hold the content of the frame and set up the resolution of the
 		// game
 		JPanel panel = (JPanel) container.getContentPane();
-		panel.setPreferredSize(new Dimension(windowSize.width,
-				windowSize.height));
+		panel.setPreferredSize(new Dimension(width,
+				height));
 		panel.setLayout(null);
 
 		// setup our canvas size and put it into the content of the frame
-		setBounds(0, 0, windowSize.width, windowSize.height);
+		setBounds(0, 0, width, height);
 		panel.add(this);
 
 		// Tell AWT not to bother repainting our canvas since we're
@@ -79,11 +81,6 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 	}
 
 	@Override
-	public Dimension getSize() {
-		return windowSize;
-	}
-
-	@Override
 	public void setTitle(String title) {
 		container.setTitle(title);
 	}
@@ -91,6 +88,16 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 	@Override
 	public void show() {
 		getBufferStrategy().show();
+	}
+
+	@Override
+	public int getWindowHeight() {
+		return height;
+	}
+
+	@Override
+	public int getWindowWidth() {
+		return width;
 	}
 
 }

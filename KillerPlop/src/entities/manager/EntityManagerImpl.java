@@ -16,8 +16,8 @@ import entities.shots.ShotPool;
 /**
  * Implements EntityManager.
  * 
- * Has several lists to store activated entities and desactivated aliens entities,
- * ships and shots.
+ * Has several lists to store activated entities and desactivated aliens
+ * entities, ships and shots.
  * 
  * @author Administrateur
  * 
@@ -35,7 +35,6 @@ public class EntityManagerImpl implements EntityManager, Constants {
 
 	protected LinkedList<ShipEntity> shipEntities;
 	protected LinkedList<ShotEntity> shotEntities;
-	
 
 	/**
 	 * Constructor
@@ -59,33 +58,13 @@ public class EntityManagerImpl implements EntityManager, Constants {
 	}
 
 	@Override
-	public void desactivateEntity(Entity entity) {		
-		if (entity.isAlienEntity()) {
-			alienEntities.remove(entity);
-			AlienEntity ae = (AlienEntity) entity;
-			if (ae.canBeReactivated()) {
-				ae.nextActivation();
-				sleepingEntities.add(ae);
-			}
-		}
-		if (entity.isShipEntity()){
-			shipEntities.remove(entity);
-		}
-		if (entity.isShotEntity()){
-			shotEntities.remove(entity);
-			ShotPool.getInstance().returnShot((ShotEntity) entity);
-		}
-		
-	}
-
-	@Override
 	public void moveEntities(GameController gameController) {
 		for (AlienEntity entity : alienEntities)
-			entity.update(gameController);
+			entity.move(gameController);
 		for (ShipEntity ship : shipEntities)
-			ship.update(gameController);
+			ship.move(gameController);
 		for (ShotEntity shot : shotEntities)
-			shot.update(gameController);
+			shot.move(gameController);
 	}
 
 	@Override
@@ -99,39 +78,67 @@ public class EntityManagerImpl implements EntityManager, Constants {
 	}
 
 	@Override
-	public void resolveCollisions(double x, double y, int viewHeight, int viewWidth) {
-		//collisions with between the map and shots
-		for (int i=0; i<shotEntities.size(); i++){
-			if (shotEntities.get(i).getX()<x || shotEntities.get(i).getX()>x+viewWidth || shotEntities.get(i).getY()<y || shotEntities.get(i).getY()>y+viewHeight){
-				desactivateEntity(shotEntities.get(i));
-				i--;
-			}
-		}		
-		//collisions between entities
-		for (int i=0; i<alienEntities.size(); i++){
-			for (int j=0; j<shipEntities.size(); j++){
-				if(Math.sqrt(Math.pow(alienEntities.get(i).getX()-shipEntities.get(j).getX(), 2)+Math.pow(alienEntities.get(i).getY()-shipEntities.get(j).getY(), 2)) < 20){
-					desactivateEntity(alienEntities.get(i));
-					desactivateEntity(shipEntities.get(j));
+	public void resolveCollisions(double x, double y, int viewHeight,
+			int viewWidth) {
+
+		// Collisions between aliens and ships
+		for (ShipEntity ship : shipEntities) {
+			if (!ship.isDestroyed())
+				for (AlienEntity ae : alienEntities)
+					if (ae.collidesWith(ship))
+						ship.hit();
+		}
+
+		// Collisions between aliens and ship shots
+		for (AlienEntity ae : alienEntities)
+			if (!ae.isDestroyed())
+				for (ShotEntity shot : shotEntities)
+					if (!shot.isDestroyed())
+						if (ae.collidesWith(shot)) {
+							ae.hit();
+							shot.hit();
+						}
+	}
+
+	public void cleanUpEntities() {
+
+		// Cleaning ships destroyed
+		ListIterator<ShipEntity> shipIt = shipEntities.listIterator();
+		while (shipIt.hasNext()) {
+			if (shipIt.next().isDestroyed())
+				shipIt.remove();
+		}
+		// Cleaning aliens destroyed
+		ListIterator<AlienEntity> alienIt = alienEntities.listIterator();
+		AlienEntity ae;
+		while (alienIt.hasNext()) {
+			ae = alienIt.next();
+			if (ae.isDestroyed()) {
+				if (ae.canBeReactivated()) {
+					ae.nextActivation();
+					addEntity(ae);
 				}
-			}
-			for (int j=0; j<shotEntities.size(); j++){
-				if(Math.sqrt(Math.pow(alienEntities.get(i).getX()-shotEntities.get(j).getX(), 2)+Math.pow(alienEntities.get(i).getY()-shotEntities.get(j).getY(), 2)) < 20){
-					
-					//System.out.println(Math.sqrt(Math.pow(alienEntities.get(i).getX()-shotEntities.get(j).getX(), 2)+Math.pow(alienEntities.get(i).getX()-shotEntities.get(j).getX(), 2)));
-					desactivateEntity(alienEntities.get(i));
-					desactivateEntity(shotEntities.get(j));
-				}
+				alienIt.remove();
 			}
 		}
-		
+		// Cleaning shots destroyed
+		ListIterator<ShotEntity> shotIt = shotEntities.listIterator();
+		ShotEntity shot;
+		while (shotIt.hasNext()) {
+			shot = shotIt.next();
+			if (shot.isDestroyed()) {
+				ShotPool.getInstance().returnShot(shot);
+				shotIt.remove();
+			}
+		}
+
 	}
 
 	@Override
 	public void addEntity(Entity entity) {
 
 		if (entity.isAlienEntity()) {
-			// Adding this activated entity in the sleeping list, sorted by
+			// Adding this alien entity in the sleeping list, sorted by
 			// activation point.
 			AlienEntity ae = (AlienEntity) entity;
 
@@ -144,8 +151,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 			} else if (sleepingEntities.getLast().compareTo(ae) < 0) {
 				sleepingEntities.addLast(ae);
 			} else {
-				ListIterator<AlienEntity> i = sleepingEntities
-						.listIterator();
+				ListIterator<AlienEntity> i = sleepingEntities.listIterator();
 				while (i.hasNext() && i.next().compareTo(ae) < 0)
 					;
 				// Must go backward
@@ -163,13 +169,14 @@ public class EntityManagerImpl implements EntityManager, Constants {
 	@Override
 	public void resolveShot(long delta) {
 		for (ShipEntity ship : shipEntities)
-			if(ship.isShooting()){
-				shotEntities.addFirst(ShotPool.getInstance().getShot());
-				ship.setShooting(false);
-				shotEntities.getFirst().setX(ship.getX()+30);
-				shotEntities.getFirst().setY(ship.getY()+5);
-			}	
-			
+			if (!ship.isDestroyed())
+				if (ship.isShooting()) {
+					shotEntities.addFirst(ShotPool.getInstance().getShot());
+					ship.setShooting(false);
+					shotEntities.getFirst().setX(ship.getX() + 30);
+					shotEntities.getFirst().setY(ship.getY() + 5);
+				}
+
 	}
 
 }

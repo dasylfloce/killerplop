@@ -1,6 +1,6 @@
 package resources.sprites;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  * A sprite to be displayed on the screen. Note that a sprite
@@ -34,7 +34,7 @@ public interface Sprite {
 	 * @param x The x location at which to draw the sprite
 	 * @param y The y location at which to draw the sprite
 	 */
-	public void draw(Graphics g, int x, int y);
+	public void draw(Graphics2D g, int x, int y);
 	
 	/**
 	 * Update the sprite.

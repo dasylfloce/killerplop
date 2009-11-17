@@ -1,8 +1,9 @@
 package entities;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import controller.GameController;
+import entities.shapes.Shape;
 
 /**
  * Represents an entity of the game. Super class of all entities (like ship,
@@ -114,7 +115,26 @@ public interface Entity {
 	 * @param gameController
 	 *            game controller
 	 */
-	public void update(GameController gameController);
+	public void move(GameController gameController);
+
+	/**
+	 * @return the shape of the entity.
+	 */
+	public Shape getShape();
+
+	/**
+	 * @return true if this entity has been destroyed, by hitting something or
+	 *         anything else.
+	 */
+	public boolean isDestroyed();
+
+	/**
+	 * Reactivates this entity, which is used to determined if the entity is
+	 * still in game or not. Has no effect if the entity is not destroyed.
+	 * 
+	 * @param desactivated
+	 */
+	public void reactivate();
 
 	/**
 	 * Check if this entity collides with another.
@@ -124,6 +144,11 @@ public interface Entity {
 	 * @return True if the entities collide with each other
 	 */
 	public boolean collidesWith(Entity entity);
+
+	/**
+	 * Things to do if the entity is hit by anything.
+	 */
+	public void hit();
 
 	/**
 	 * Draw this entity on the graphics context provided. See EntityDisplayer
@@ -136,6 +161,6 @@ public interface Entity {
 	 * @param offsetX
 	 *            Vertical offset to draw the entity
 	 */
-	public void draw(Graphics g, int offsetX, int offsetY);
+	public void draw(Graphics2D g, int offsetX, int offsetY);
 
 }

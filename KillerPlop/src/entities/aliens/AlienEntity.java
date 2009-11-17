@@ -92,4 +92,9 @@ public class AlienEntity extends EntityImpl implements
 		
 	}
 
+	@Override
+	public void hit() {
+		destroyed = true;
+	}
+
 }

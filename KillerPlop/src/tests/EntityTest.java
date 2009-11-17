@@ -3,7 +3,6 @@ package tests;
 import resources.ImageStore;
 import resources.sprites.SimpleSprite;
 import resources.sprites.SpriteFactory;
-import Constants.Constants;
 import entities.aliens.AlienEntity;
 import entities.manager.EntityManager;
 import entities.manager.EntityManagerImpl;
@@ -12,7 +11,7 @@ import entities.movement.basics.SinusMovement;
 import entities.movement.basics.StaticMovement;
 import entities.ship.ShipEntity;
 
-public class EntityTest extends Test implements Constants {
+public class EntityTest extends Test {
 
 	private static EntityManager manager;
 	public static ShipEntity ship = new ShipEntity(SpriteFactory.createAnimatedShip(), 10, WINDOW_HEIGHT / 2,
