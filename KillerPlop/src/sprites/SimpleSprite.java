@@ -83,4 +83,9 @@ public class SimpleSprite implements Sprite {
 	public Shape getShape() {
 		return shape;
 	}
+	
+	@Override
+	public void setShape(Shape shape) {
+		this.shape = shape;
+	}
 }

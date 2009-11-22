@@ -53,4 +53,10 @@ public interface Sprite {
 	 */
 	public void update(long delta);
 
+	/**
+	 * Set the shape of the sprite
+	 * @param shape New shape
+	 */
+	public void setShape(Shape shape);
+
 }

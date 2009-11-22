@@ -28,12 +28,9 @@ public class SimpleTile implements Tile {
 	 */
 	public SimpleTile(String name, boolean blocking) {
 		this.name = name;
-		Shape shape;
-		if (blocking)
-			shape = new RectShape(getWidth(), getHeight());
-		else
-			shape = new NullShape();
-		sprite = new SimpleSprite(ImageStore.get(name), shape);
+		sprite = new SimpleSprite(ImageStore.get(name));
+		if (!blocking)
+			sprite.setShape(new NullShape());
 	}
 
 	@Override
