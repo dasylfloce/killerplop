@@ -81,9 +81,13 @@ public class MapTiledImpl implements MapTiled, Constants {
 		tileWareHouse.updateTiles(delta);
 	}
 
-	private Tile getTileAt(double x, double y)
-			throws ArrayIndexOutOfBoundsException {
-		return map[((int) x) / getTileWidth()][((int) y) / getTileHeight()];
+	private Tile getTileAt(double x, double y) throws OutOfMapException {
+		try {
+			return map[((int) x) / getTileWidth()][((int) y) / getTileHeight()];
+		} catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+			throw new OutOfMapException(this, x, y);
+		}
 	}
 
 	@Override
@@ -123,13 +127,8 @@ public class MapTiledImpl implements MapTiled, Constants {
 
 	@Override
 	public boolean isBlockedAt(double x, double y) throws OutOfMapException {
-		try {
 			return getTileAt(x, y).isBlockingAt(x % getTileWidth(),
 					y % getTileHeight());
-		} catch (ArrayIndexOutOfBoundsException e) {
-			e.printStackTrace();
-			throw new OutOfMapException(this, x, y);
-		}
 	}
 
 	@Override
