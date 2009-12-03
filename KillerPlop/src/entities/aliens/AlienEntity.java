@@ -4,6 +4,7 @@ import sprites.Sprite;
 import controller.GameController;
 import entities.EntityImpl;
 import entities.movement.Movement;
+import exceptions.OutOfMapException;
 
 /**
  * This is an Entity that moves according to a Movement class, and which has an
@@ -87,9 +88,8 @@ public class AlienEntity extends EntityImpl implements
 	}
 
 	@Override
-	public void isOutOfMap() {
-		// TODO Auto-generated method stub
-		
+	public void isOutOfMap(OutOfMapException e) {
+		destroyed = true;
 	}
 
 	@Override

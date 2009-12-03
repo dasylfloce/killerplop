@@ -35,11 +35,17 @@ public class EntityManagerImpl implements EntityManager, Constants {
 
 	protected LinkedList<ShipEntity> shipEntities;
 	protected LinkedList<ShotEntity> shotEntities;
+	
+	/**
+	 * Explosion manager (visual effects)
+	 */
+	protected ExplosionManager explosionManager;
 
 	/**
 	 * Constructor
 	 */
 	public EntityManagerImpl() {
+		explosionManager = new ExplosionManager();
 		sleepingEntities = new LinkedList<AlienEntity>();
 		shipEntities = new LinkedList<ShipEntity>();
 		alienEntities = new ArrayList<AlienEntity>();
@@ -75,6 +81,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 			ship.draw(g, offsetX, offsetY);
 		for (ShotEntity shot : shotEntities)
 			shot.draw(g, offsetX, offsetY);
+		explosionManager.render(g, offsetX, offsetY);
 	}
 
 	@Override
@@ -104,9 +111,13 @@ public class EntityManagerImpl implements EntityManager, Constants {
 
 		// Cleaning ships destroyed
 		ListIterator<ShipEntity> shipIt = shipEntities.listIterator();
+		ShipEntity ship;
 		while (shipIt.hasNext()) {
-			if (shipIt.next().isDestroyed())
+			ship = shipIt.next();
+			if (ship.isDestroyed()) {
+				explosionManager.destroy(ship);
 				shipIt.remove();
+			}
 		}
 		// Cleaning aliens destroyed
 		ListIterator<AlienEntity> alienIt = alienEntities.listIterator();
@@ -114,6 +125,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 		while (alienIt.hasNext()) {
 			ae = alienIt.next();
 			if (ae.isDestroyed()) {
+				explosionManager.destroy(ae);
 				if (ae.canBeReactivated()) {
 					ae.nextActivation();
 					addEntity(ae);
@@ -177,6 +189,10 @@ public class EntityManagerImpl implements EntityManager, Constants {
 					shotEntities.getFirst().setY(ship.getY() + 5);
 				}
 
+	}
+	
+	public void manageExplosions(long delta) {
+		explosionManager.update(delta);
 	}
 
 }

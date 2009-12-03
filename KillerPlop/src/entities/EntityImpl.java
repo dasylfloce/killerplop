@@ -116,7 +116,7 @@ public abstract class EntityImpl implements Entity {
 		try {
 			updatePosition(gameController);
 		} catch (OutOfMapException e) {
-			isOutOfMap();
+			isOutOfMap(e);
 		}
 
 		sprite.update(gameController.getDelta());
@@ -170,7 +170,7 @@ public abstract class EntityImpl implements Entity {
 	/**
 	 * Called when the entity goes out of the map.
 	 */
-	public abstract void isOutOfMap();
+	public abstract void isOutOfMap(OutOfMapException e);
 
 	@Override
 	public boolean collidesWith(Entity other) {
