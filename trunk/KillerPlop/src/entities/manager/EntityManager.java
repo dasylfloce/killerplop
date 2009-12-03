@@ -67,6 +67,8 @@ public interface EntityManager {
 
 	public void resolveShot(long delta);
 	
+	public void manageExplosions(long delta);
+	
 	/**
 	 * Delete all entities that have been marked destroyed
 	 */

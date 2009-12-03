@@ -85,7 +85,6 @@ public class MapTiledImpl implements MapTiled, Constants {
 		try {
 			return map[((int) x) / getTileWidth()][((int) y) / getTileHeight()];
 		} catch (ArrayIndexOutOfBoundsException e) {
-			e.printStackTrace();
 			throw new OutOfMapException(this, x, y);
 		}
 	}

@@ -69,7 +69,8 @@ public class ShotEntity extends EntityImpl implements Constants {
 	}
 
 	@Override
-	public void isOutOfMap() {
+	public void isOutOfMap(OutOfMapException e) {
+		e.printStackTrace();
 		System.err.println("Shot out of the map !? (x:" + x + "; y:" + y);
 		System.exit(0);
 	}

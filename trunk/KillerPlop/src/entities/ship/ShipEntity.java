@@ -4,6 +4,7 @@ import sprites.Sprite;
 import Constants.Constants;
 import controller.GameController;
 import entities.EntityImpl;
+import exceptions.OutOfMapException;
 
 public class ShipEntity extends EntityImpl implements Constants{
 	
@@ -88,7 +89,8 @@ public class ShipEntity extends EntityImpl implements Constants{
 	}
 
 	@Override
-	public void isOutOfMap() {
+	public void isOutOfMap(OutOfMapException e) {
+		e.printStackTrace();
 		System.err.println("Ship out of the map !? (x:"+x+"; y:"+y);
 		System.exit(0);
 	}

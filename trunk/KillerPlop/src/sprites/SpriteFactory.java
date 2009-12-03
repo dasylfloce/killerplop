@@ -20,6 +20,16 @@ import entities.shapes.Shape;
  */
 public class SpriteFactory {
 
+	public static Sprite createExplosion() {
+		return new AnimatedSprite(new Image[] {
+				ImageStore.get("resources/explosion/explosion1.png"),
+				ImageStore.get("resources/explosion/explosion2.png"),
+				ImageStore.get("resources/explosion/explosion3.png"),
+				ImageStore.get("resources/explosion/explosion4.png"),
+				ImageStore.get("resources/explosion/explosion5.png") }, 150,
+				new CircleShape(25));
+	}
+
 	public static Sprite createBasicShip() {
 		return new SimpleSprite(ImageStore.get("resources/entities/ship2.gif"));
 	}

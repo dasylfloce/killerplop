@@ -107,6 +107,8 @@ public class ScenarioImpl implements Scenario {
 				} catch (IllegalArgumentException e) {
 					System.out.println("Débordement : " + sleep);
 				}
+			if (sleep <= 1000 / FRAME_RATE * 0.8)
+				System.out.println("ScenarioImpl.loop() : " + sleep);
 		}
 
 	}

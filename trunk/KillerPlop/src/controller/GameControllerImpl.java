@@ -193,6 +193,7 @@ public class GameControllerImpl implements GameController {
 		entityManager.resolveShot(delta);
 		entityManager.resolveCollisions(x, y, viewHeight, viewWidth);
 		entityManager.cleanUpEntities();
+		entityManager.manageExplosions(delta);
 	}
 
 }

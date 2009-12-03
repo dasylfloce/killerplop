@@ -27,7 +27,7 @@ public class EntityTest extends Test {
 	protected static void testStatic() {
 		for (int i = 0; i < 80; i++) {
 			manager.addEntity(new AlienEntity(new SimpleSprite(ImageStore
-					.get("resources/entities/alien.gif")), 800 + 100 * i
+					.get("resources/entities/alien.gif")), 200 + 30 * i
 					+ r.nextInt(WINDOW_HEIGHT - 40), r
 					.nextInt(Test.WINDOW_HEIGHT), new StaticMovement()));
 		}
