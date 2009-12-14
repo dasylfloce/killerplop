@@ -2,7 +2,7 @@ package fr.emn.killerplop.entities;
 
 import java.awt.Graphics2D;
 
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 import fr.emn.killerplop.entities.shapes.Shape;
 
 /**

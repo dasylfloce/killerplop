@@ -1,4 +1,4 @@
-package fr.emn.killerplop.entities.explosions;
+package fr.emn.killerplop.controller.explosionmanager;
 
 import java.awt.Graphics2D;
 import java.awt.Image;

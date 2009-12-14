@@ -1,7 +1,7 @@
 package fr.emn.killerplop.story.event;
 
 import fr.emn.killerplop.constants.Constants;
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 
 /**
  * A simple event. Superclass of all events.

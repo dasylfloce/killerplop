@@ -1,8 +1,8 @@
-package fr.emn.killerplop.controller;
+package fr.emn.killerplop.controller.gamecontroller;
 
 import java.awt.Graphics2D;
 
-import fr.emn.killerplop.entities.manager.EntityManager;
+import fr.emn.killerplop.controller.entitymanager.EntityManager;
 import fr.emn.killerplop.exceptions.OutOfMapException;
 import fr.emn.killerplop.map.maptiled.MapTiled;
 

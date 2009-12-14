@@ -1,4 +1,4 @@
-package fr.emn.killerplop.entities.manager;
+package fr.emn.killerplop.controller.entitymanager;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -6,10 +6,10 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 import fr.emn.killerplop.constants.Constants;
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.explosionmanager.ExplosionManager;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 import fr.emn.killerplop.entities.Entity;
 import fr.emn.killerplop.entities.aliens.AlienEntity;
-import fr.emn.killerplop.entities.explosions.ExplosionManager;
 import fr.emn.killerplop.entities.ship.ShipEntity;
 import fr.emn.killerplop.entities.shots.ShotEntity;
 import fr.emn.killerplop.entities.shots.ShotPool;

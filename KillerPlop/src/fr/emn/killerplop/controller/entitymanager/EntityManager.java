@@ -1,8 +1,8 @@
-package fr.emn.killerplop.entities.manager;
+package fr.emn.killerplop.controller.entitymanager;
 
 import java.awt.Graphics2D;
 
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 import fr.emn.killerplop.entities.Entity;
 
 /**
