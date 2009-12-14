@@ -46,6 +46,9 @@ public abstract class Shape {
 	protected abstract boolean intersectsWithRect(RectShape rect);
 
 	public abstract int getType();
+	
+	public abstract double getWidth();
+	public abstract double getHeight();
 
 	public abstract boolean contains(double x, double y);
 

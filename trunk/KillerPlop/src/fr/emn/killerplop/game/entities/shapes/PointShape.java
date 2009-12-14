@@ -35,4 +35,14 @@ public class PointShape extends Shape {
 		return rect.contains(this.x, this.y);
 	}
 
+	@Override
+	public double getHeight() {
+		return 1;
+	}
+
+	@Override
+	public double getWidth() {
+		return 1;
+	}
+
 }

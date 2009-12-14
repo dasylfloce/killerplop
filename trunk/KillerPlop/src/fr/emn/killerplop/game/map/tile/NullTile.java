@@ -1,9 +1,8 @@
 package fr.emn.killerplop.game.map.tile;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.entities.shapes.NullShape;
 import fr.emn.killerplop.game.entities.shapes.Shape;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 public class NullTile implements Tile {
 
@@ -44,7 +43,7 @@ public class NullTile implements Tile {
 	}
 
 	@Override
-	public void draw(Graphics2D g, int x, int y) {
+	public void draw(GraphicContext graphicContext, int x, int y) {
 		//Rien à dessiner
 	}
 

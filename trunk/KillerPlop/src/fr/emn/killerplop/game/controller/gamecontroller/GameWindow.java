@@ -1,8 +1,7 @@
 package fr.emn.killerplop.game.controller.gamecontroller;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.entities.ship.KeyHandler;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * The window in which the game will be displayed.
@@ -21,7 +20,7 @@ public interface GameWindow {
 	/**
 	 * @return the graphic context of the window
 	 */
-	public Graphics2D getGraphics();
+	public GraphicContext getGraphicContext();
 	
 	/**
 	 * Update the graphics on screen
@@ -37,6 +36,7 @@ public interface GameWindow {
 	 */
 	public int getWindowHeight();
 
+	
 	public KeyHandler getKeyHandler();
 	
 }

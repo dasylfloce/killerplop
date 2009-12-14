@@ -9,10 +9,9 @@
 
 package fr.emn.killerplop.game.map.maptiled;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.entities.shapes.Shape;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * La carte : c'est un tableau a deux dimensions. Chaque cellule contient l'id
@@ -86,7 +85,7 @@ public interface MapTiled {
 	 * Dessine la position (x; y) de la map sur le graph. La taille de la vue
 	 * est paramétrable.
 	 * 
-	 * @param g
+	 * @param graphicContext
 	 *            graph sur lequel dessiner
 	 * @param x
 	 *            position horizontale dans la map
@@ -99,6 +98,6 @@ public interface MapTiled {
 	 * @exception OutOfMapException
 	 *                si la position est hors de la map
 	 */
-	void render(Graphics2D g, double x, double y, int viewWidth, int viewHeight)
+	void render(GraphicContext graphicContext, double x, double y, int viewWidth, int viewHeight)
 			throws OutOfMapException;
 }

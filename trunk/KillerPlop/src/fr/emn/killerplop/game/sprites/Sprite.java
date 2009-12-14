@@ -21,7 +21,8 @@ public interface Sprite {
 
 	/**
 	 * Draw the sprite onto the graphics context provided
-	 * @param graphicContext TODO
+	 * @param graphicContext graphicContext
+	 * 			Graphic context to draw on.
 	 * @param x
 	 *            The x location at which to draw the sprite
 	 * @param y

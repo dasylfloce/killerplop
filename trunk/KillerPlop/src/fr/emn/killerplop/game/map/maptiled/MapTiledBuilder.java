@@ -1,7 +1,5 @@
 package fr.emn.killerplop.game.map.maptiled;
 
-import java.awt.Image;
-
 import fr.emn.killerplop.game.map.tile.Tile;
 import fr.emn.killerplop.game.map.tile.TileWareHouse;
 import fr.emn.killerplop.game.map.tile.TileWareHouseImpl;
@@ -48,10 +46,10 @@ public class MapTiledBuilder extends MapTiledImpl {
 		tileWareHouse.addTile(tile);
 	}
 	
-	public Image getBackground() {
+	public String getBackground() {
 		return background;
 	}
-	public void setBackground(Image background) {
+	public void setBackground(String background) {
 		this.background = background;
 	}
 

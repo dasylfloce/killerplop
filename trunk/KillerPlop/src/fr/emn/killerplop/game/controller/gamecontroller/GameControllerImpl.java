@@ -1,10 +1,9 @@
 package fr.emn.killerplop.game.controller.gamecontroller;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * Implements the GameController interface.
@@ -164,9 +163,9 @@ public class GameControllerImpl implements GameController {
 	}
 
 	@Override
-	public void render(Graphics2D g) throws OutOfMapException {
-		mapTiled.render(g, x, y, viewWidth, viewHeight);
-		entityManager.render(g, (int) x, (int) y);
+	public void render(GraphicContext graphicContext) throws OutOfMapException {
+		mapTiled.render(graphicContext, x, y, viewWidth, viewHeight);
+		entityManager.render(graphicContext, (int) x, (int) y);
 		
 	}
 

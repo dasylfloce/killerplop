@@ -181,13 +181,13 @@ public abstract class EntityImpl implements Entity {
 	}
 
 	@Override
-	public int getHeight() {
-		return sprite.getHeight();
+	public double getHeight() {
+		return sprite.getShape().getHeight();
 	}
 
 	@Override
-	public int getWidth() {
-		return sprite.getWidth();
+	public double getWidth() {
+		return sprite.getShape().getWidth();
 	}
 
 	@Override

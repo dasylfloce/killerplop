@@ -69,14 +69,14 @@ public interface Entity {
 	 * 
 	 * @return the width of the entity.
 	 */
-	public int getWidth();
+	public double getWidth();
 
 	/**
 	 * Gives the width of the entity, given by its sprite representation.
 	 * 
 	 * @return the width of the entity.
 	 */
-	public int getHeight();
+	public double getHeight();
 
 	/**
 	 * Set the horizontal speed of this entity

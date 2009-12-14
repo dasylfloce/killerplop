@@ -7,9 +7,8 @@
 
 package fr.emn.killerplop.game.map.tile;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.entities.shapes.Shape;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * Les tuiles de la carte<br>
@@ -68,13 +67,13 @@ public interface Tile {
 	/**
 	 * Affiche la tuile
 	 * 
-	 * @param g
+	 * @param graphicContext
 	 *            le Graphics où afficher
 	 * @param x
 	 *            la position x en pixels dans le Graphics
 	 * @param y
 	 *            la position y en pixels dans le Graphics
 	 */
-	public void draw(Graphics2D g, int x, int y);
+	public void draw(GraphicContext graphicContext, int x, int y);
 
 }

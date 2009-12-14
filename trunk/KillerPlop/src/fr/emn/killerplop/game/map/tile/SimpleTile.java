@@ -1,12 +1,10 @@
 package fr.emn.killerplop.game.map.tile;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.entities.shapes.NullShape;
 import fr.emn.killerplop.game.entities.shapes.Shape;
 import fr.emn.killerplop.game.sprites.SimpleSprite;
 import fr.emn.killerplop.game.sprites.Sprite;
-import fr.emn.killerplop.graphics.awt.AWTImageStore;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 public class SimpleTile implements Tile {
 
@@ -27,24 +25,24 @@ public class SimpleTile implements Tile {
 	 */
 	public SimpleTile(String imageRef, boolean blocking) {
 		this.imageRef = imageRef;
-		sprite = new SimpleSprite(AWTImageStore.get(name));
+		sprite = new SimpleSprite(imageRef);
 		if (!blocking)
 			sprite.setShape(new NullShape());
 	}
 
 	@Override
 	public int getWidth() {
-		return sprite.getWidth();
+		return (int)sprite.getShape().getWidth();
 	}
 
 	@Override
 	public int getHeight() {
-		return sprite.getHeight();
+		return (int)sprite.getShape().getHeight();
 	}
 
 	@Override
 	public String getName() {
-		return name;
+		return imageRef;
 	}
 
 	@Override
@@ -53,8 +51,8 @@ public class SimpleTile implements Tile {
 	}
 
 	@Override
-	public void draw(Graphics2D g, int x, int y) {
-		sprite.draw(null, x, y);
+	public void draw(GraphicContext graphicContext, int x, int y) {
+		sprite.draw(graphicContext, x, y);
 	}
 
 	public boolean equals(Object o) {

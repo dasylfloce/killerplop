@@ -55,7 +55,7 @@ public interface EntityManager {
 	 * Draw all active entities on the graph, with an offset that is required by
 	 * the map placement.
 	 * 
-	 * @param g
+	 * @param graphicContext
 	 *            Graph
 	 * @param offsetX
 	 *            Horizontal offset

@@ -1,10 +1,9 @@
 package fr.emn.killerplop.game.controller.gamecontroller;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * Control the evolution of the game.
@@ -130,8 +129,8 @@ public interface GameController {
 	/**
 	 * Draw the view of the controller on the graphics context provided.
 	 * 
-	 * @param g
+	 * @param graphicContext
 	 *            The graphics context on which to draw
 	 */
-	public void render(Graphics2D g) throws OutOfMapException;
+	public void render(GraphicContext graphicContext) throws OutOfMapException;
 }
