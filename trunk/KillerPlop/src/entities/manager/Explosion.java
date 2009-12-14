@@ -38,6 +38,7 @@ public class Explosion {
 		this.y = (int)entity.getY();
 		active = true;
 		timeElapsed = 0;
+		imageIndex = 0;
 		return this;
 	}
 	
