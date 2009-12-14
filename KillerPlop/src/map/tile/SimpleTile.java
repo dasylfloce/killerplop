@@ -6,7 +6,6 @@ import resources.ImageStore;
 import sprites.SimpleSprite;
 import sprites.Sprite;
 import entities.shapes.NullShape;
-import entities.shapes.RectShape;
 import entities.shapes.Shape;
 
 public class SimpleTile implements Tile {
