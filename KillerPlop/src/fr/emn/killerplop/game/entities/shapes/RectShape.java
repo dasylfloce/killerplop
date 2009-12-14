@@ -82,4 +82,14 @@ public class RectShape extends Shape {
 		return "("+x+", "+y+", "+(x+width)+", "+(y+height)+")";
 	}
 
+	@Override
+	public double getHeight() {
+		return height;
+	}
+
+	@Override
+	public double getWidth() {
+		return width;
+	}
+
 }

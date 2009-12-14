@@ -1,20 +1,18 @@
 package fr.emn.killerplop.game.controller.explosionmanager;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
-
 import fr.emn.killerplop.game.entities.Entity;
-import fr.emn.killerplop.graphics.awt.AWTImageStore;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 public class Explosion {
 
 	/** The array of images of the explosion */
-	protected static Image[] images = new Image[] {
-			AWTImageStore.get("resources/explosion/explosion1.png"),
-			AWTImageStore.get("resources/explosion/explosion2.png"),
-			AWTImageStore.get("resources/explosion/explosion3.png"),
-			AWTImageStore.get("resources/explosion/explosion4.png"),
-			AWTImageStore.get("resources/explosion/explosion5.png") };
+	protected static String[] imagesRef = new String[] {
+			"resources/explosion/explosion1.png",
+			"resources/explosion/explosion2.png",
+			"resources/explosion/explosion3.png",
+			"resources/explosion/explosion4.png",
+			"resources/explosion/explosion5.png" };
+
 	/** The duration of each images */
 	protected static long duration = 50;
 
@@ -34,20 +32,20 @@ public class Explosion {
 	}
 
 	public Explosion activateOn(Entity entity) {
-		this.x = (int)entity.getX();
-		this.y = (int)entity.getY();
+		this.x = (int) entity.getX();
+		this.y = (int) entity.getY();
 		active = true;
 		timeElapsed = 0;
 		imageIndex = 0;
 		return this;
 	}
-	
+
 	public boolean isActive() {
 		return active;
 	}
 
-	public void draw(Graphics2D g, int offsetX, int offsetY) {
-		g.drawImage(images[imageIndex], x-offsetX, y-offsetY, null);
+	public void draw(GraphicContext graphicContext, int offsetX, int offsetY) {
+		graphicContext.draw(imagesRef[imageIndex], x - offsetX, y - offsetY);
 	}
 
 	public void update(long delta) {
@@ -56,7 +54,7 @@ public class Explosion {
 			imageIndex++;
 			timeElapsed = timeElapsed % duration;
 		}
-		if (imageIndex >= images.length)
+		if (imageIndex >= imagesRef.length)
 			active = false;
 	}
 }

@@ -1,7 +1,5 @@
 package fr.emn.killerplop.game.sprites;
 
-import java.awt.Image;
-
 import fr.emn.killerplop.game.entities.shapes.Shape;
 
 /**
@@ -13,7 +11,7 @@ import fr.emn.killerplop.game.entities.shapes.Shape;
 public class AnimatedSprite extends SimpleSprite {
 
 	/** The array of images to be drawn for this sprite */
-	protected Image[] images;
+	protected String[] imagesRef;
 	/** The duration of each images */
 	protected long[] durations;
 	/** The index of the actual image drawn */
@@ -31,7 +29,7 @@ public class AnimatedSprite extends SimpleSprite {
 	 * @param duration
 	 *            Time between each flipping
 	 */
-	public AnimatedSprite(Image[] images, long duration) {
+	public AnimatedSprite(String[] images, long duration) {
 		this(images, null);
 		durations = new long[images.length];
 		for (int i = 0; i < images.length; i++)
@@ -48,9 +46,9 @@ public class AnimatedSprite extends SimpleSprite {
 	 * @param duration
 	 *            Time between each flipping, for each different image
 	 */
-	public AnimatedSprite(Image[] images, long[] durations) {
+	public AnimatedSprite(String[] images, long[] durations) {
 		super(images[0]);
-		this.images = images;
+		this.imagesRef = images;
 		this.durations = durations;
 	}
 
@@ -66,7 +64,7 @@ public class AnimatedSprite extends SimpleSprite {
 	 * @param shape
 	 *            Shape used for collision
 	 */
-	public AnimatedSprite(Image[] images, long duration, Shape shape) {
+	public AnimatedSprite(String[] images, long duration, Shape shape) {
 		this(images, null, shape);
 		durations = new long[images.length];
 		for (int i = 0; i < images.length; i++)
@@ -84,9 +82,9 @@ public class AnimatedSprite extends SimpleSprite {
 	 * @param shape
 	 *            Shape used for collision
 	 */
-	public AnimatedSprite(Image[] images, long[] durations, Shape shape) {
+	public AnimatedSprite(String[] images, long[] durations, Shape shape) {
 		super(images[0], shape);
-		this.images = images;
+		this.imagesRef = images;
 		this.durations = durations;
 	}
 
@@ -94,8 +92,8 @@ public class AnimatedSprite extends SimpleSprite {
 		timeElapsed += delta;
 		if (timeElapsed >= durations[imageIndex]) {
 			timeElapsed -= durations[imageIndex];
-			imageIndex = (imageIndex + 1) % images.length;
-			image = images[imageIndex];
+			imageIndex = (imageIndex + 1) % imagesRef.length;
+			imageRef = imagesRef[imageIndex];
 		}
 	}
 

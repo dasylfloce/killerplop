@@ -1,20 +1,18 @@
 package fr.emn.killerplop.game.map.maptiled;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
-
 import fr.emn.killerplop.game.constants.Constants;
 import fr.emn.killerplop.game.entities.shapes.Shape;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.game.map.tile.Tile;
 import fr.emn.killerplop.game.map.tile.TileWareHouse;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 public class MapTiledImpl implements MapTiled, Constants {
 
 	/**
 	 * Image de fond de la map, qui ne défile pas.
 	 */
-	protected Image background;
+	protected String background;
 
 	/**
 	 * La carte : contient les tuiles
@@ -49,7 +47,7 @@ public class MapTiledImpl implements MapTiled, Constants {
 	 *            Image de fond statique
 	 */
 	protected MapTiledImpl(TileWareHouse tileWareHouse, int mapWidth,
-			int mapHeight, Image background) {
+			int mapHeight, String background) {
 		this.tileWareHouse = tileWareHouse;
 		this.mapWidth = mapWidth;
 		this.mapHeight = mapHeight;
@@ -90,7 +88,7 @@ public class MapTiledImpl implements MapTiled, Constants {
 	}
 
 	@Override
-	public void render(Graphics2D g, double x, double y, int viewWidth,
+	public void render(GraphicContext graphicContext, double x, double y, int viewWidth,
 			int viewHeight) throws OutOfMapException {
 
 		if (x < 0 || y < 0 || x + viewWidth > mapWidth * getTileWidth()
@@ -99,7 +97,7 @@ public class MapTiledImpl implements MapTiled, Constants {
 
 		// affichage du background
 		if (background != null)
-			g.drawImage(background, 0, 0, viewWidth, viewHeight, null);
+			graphicContext.draw(background, 0, 0);
 
 		// positions dans la carte
 		int xm = ((int) x) / getTileWidth();
@@ -117,7 +115,7 @@ public class MapTiledImpl implements MapTiled, Constants {
 			for (int xi = -xo; xi < viewWidth; xi += getTileWidth()) {
 				t = map[pxm][pym];
 				if (t != null)
-					t.draw(g, xi, yi);
+					t.draw(graphicContext, xi, yi);
 				pxm++;
 			}
 			pym++;

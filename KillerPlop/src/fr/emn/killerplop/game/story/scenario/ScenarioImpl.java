@@ -1,7 +1,5 @@
 package fr.emn.killerplop.game.story.scenario;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.controller.gamecontroller.GameControllerImpl;
@@ -11,6 +9,7 @@ import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.game.exceptions.ViewSizeNullException;
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
 import fr.emn.killerplop.game.story.event.EventManager;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 public class ScenarioImpl implements Scenario {
 
@@ -84,14 +83,13 @@ public class ScenarioImpl implements Scenario {
 
 			// Get hold of a graphics context for the accelerated
 			// surface
-			Graphics2D g = gameWindow.getGraphics();
+			GraphicContext g = gameWindow.getGraphicContext();
 
 			// Drawing everything
 			gameController.render(g);
 
 			// finally, we've completed drawing so clear up the graphics
 			// and flip the buffer over
-			g.dispose();
 			gameWindow.show();
 
 			// we want each frame to take x milliseconds (given by the number of

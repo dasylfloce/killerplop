@@ -41,4 +41,14 @@ public class CircleShape extends Shape {
 		return "Circle => x:"+x+"; y:"+y+" [radius="+radius+"]";
 	}
 
+	@Override
+	public double getHeight() {
+		return 2*radius;
+	}
+
+	@Override
+	public double getWidth() {
+		return 2*radius;
+	}
+
 }

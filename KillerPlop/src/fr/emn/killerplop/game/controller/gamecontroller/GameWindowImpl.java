@@ -76,7 +76,7 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 
 	
 	@Override
-	public Graphics2D getGraphics() {
+	public Graphics2D getGraphicContext() {
 		return (Graphics2D) getBufferStrategy().getDrawGraphics();
 	}
 
