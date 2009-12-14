@@ -4,9 +4,9 @@ import java.awt.Graphics2D;
 
 import fr.emn.killerplop.game.entities.shapes.NullShape;
 import fr.emn.killerplop.game.entities.shapes.Shape;
-import fr.emn.killerplop.game.resources.ImageStore;
 import fr.emn.killerplop.game.sprites.SimpleSprite;
 import fr.emn.killerplop.game.sprites.Sprite;
+import fr.emn.killerplop.graphics.awt.AWTImageStore;
 
 public class SimpleTile implements Tile {
 
@@ -17,7 +17,7 @@ public class SimpleTile implements Tile {
 	/**
 	 * Nom de la tuile.
 	 */
-	protected String name;
+	protected String imageRef;
 	
 	/**
 	 * Construit une tuile à partir d'une image.
@@ -25,9 +25,9 @@ public class SimpleTile implements Tile {
 	 * @param name
 	 *            nom de la tuile (réference vers l'image)
 	 */
-	public SimpleTile(String name, boolean blocking) {
-		this.name = name;
-		sprite = new SimpleSprite(ImageStore.get(name));
+	public SimpleTile(String imageRef, boolean blocking) {
+		this.imageRef = imageRef;
+		sprite = new SimpleSprite(AWTImageStore.get(name));
 		if (!blocking)
 			sprite.setShape(new NullShape());
 	}
@@ -54,7 +54,7 @@ public class SimpleTile implements Tile {
 
 	@Override
 	public void draw(Graphics2D g, int x, int y) {
-		sprite.draw(g, x, y);
+		sprite.draw(null, x, y);
 	}
 
 	public boolean equals(Object o) {

@@ -20,7 +20,6 @@ public class Test implements Constants {
 	public static final  int WINDOW_HEIGHT = 320;
 	public static final  int WINDOW_WIDTH = 600;
 
-	
 	public static void main(String[] args) throws NoWindowException {
 		
 		EventManager eventManager = new EventManagerImpl();

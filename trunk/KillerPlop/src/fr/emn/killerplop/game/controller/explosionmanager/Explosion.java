@@ -4,17 +4,17 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 
 import fr.emn.killerplop.game.entities.Entity;
-import fr.emn.killerplop.game.resources.ImageStore;
+import fr.emn.killerplop.graphics.awt.AWTImageStore;
 
 public class Explosion {
 
 	/** The array of images of the explosion */
 	protected static Image[] images = new Image[] {
-			ImageStore.get("resources/explosion/explosion1.png"),
-			ImageStore.get("resources/explosion/explosion2.png"),
-			ImageStore.get("resources/explosion/explosion3.png"),
-			ImageStore.get("resources/explosion/explosion4.png"),
-			ImageStore.get("resources/explosion/explosion5.png") };
+			AWTImageStore.get("resources/explosion/explosion1.png"),
+			AWTImageStore.get("resources/explosion/explosion2.png"),
+			AWTImageStore.get("resources/explosion/explosion3.png"),
+			AWTImageStore.get("resources/explosion/explosion4.png"),
+			AWTImageStore.get("resources/explosion/explosion5.png") };
 	/** The duration of each images */
 	protected static long duration = 50;
 

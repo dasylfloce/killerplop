@@ -1,10 +1,9 @@
 package fr.emn.killerplop.game.sprites;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
-
 import fr.emn.killerplop.game.entities.shapes.RectShape;
 import fr.emn.killerplop.game.entities.shapes.Shape;
+import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.GraphicUtilities;
 
 /**
  * A sprite to be displayed on the screen. This sprite is composed by only one
@@ -15,18 +14,18 @@ import fr.emn.killerplop.game.entities.shapes.Shape;
 public class SimpleSprite implements Sprite {
 
 	/** The image to be drawn for this sprite */
-	protected Image image;
+	protected String imageRef;
 	/** The shape of the sprite */
 	protected Shape shape;
 
 	/**
 	 * Create a new sprite based on an image
 	 * 
-	 * @param image
+	 * @param imageRef
 	 *            The image that is this sprite
 	 */
-	public SimpleSprite(Image image, Shape shape) {
-		this.image = image;
+	public SimpleSprite(String imageRef, Shape shape) {
+		this.imageRef = imageRef;
 		this.shape = shape;
 	}
 
@@ -34,44 +33,25 @@ public class SimpleSprite implements Sprite {
 	 * Create a new sprite based on an image with a default shape. The shape is
 	 * a ShapeRectangle based on the size of the image.
 	 * 
-	 * @param image
+	 * @param imageRef
 	 *            The image that is this sprite
 	 */
-	public SimpleSprite(Image image) {
-		this.image = image;
-		this.shape = new RectShape(getWidth(), getHeight());
-	}
-
-	/**
-	 * Get the width of the drawn sprite
-	 * 
-	 * @return The width in pixels of this sprite
-	 */
-	public int getWidth() {
-		return image.getWidth(null);
-	}
-
-	/**
-	 * Get the height of the drawn sprite
-	 * 
-	 * @return The height in pixels of this sprite
-	 */
-	public int getHeight() {
-		return image.getHeight(null);
+	public SimpleSprite(String imageRef) {
+		this.imageRef = imageRef;
+		this.shape = new RectShape(GraphicUtilities.get().getWidthOf(imageRef),
+				GraphicUtilities.get().getHeightOf(imageRef));
 	}
 
 	/**
 	 * Draw the sprite onto the graphics context provided
 	 * 
-	 * @param g
-	 *            The graphics context on which to draw the sprite
 	 * @param x
 	 *            The x location at which to draw the sprite
 	 * @param y
 	 *            The y location at which to draw the sprite
 	 */
-	public void draw(Graphics2D g, int x, int y) {
-		g.drawImage(image, x, y, null);
+	public void draw(GraphicContext graphicContext, int x, int y) {
+		graphicContext.draw(imageRef, x, y);
 	}
 
 	@Override
@@ -83,7 +63,7 @@ public class SimpleSprite implements Sprite {
 	public Shape getShape() {
 		return shape;
 	}
-	
+
 	@Override
 	public void setShape(Shape shape) {
 		this.shape = shape;

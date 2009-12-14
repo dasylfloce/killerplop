@@ -7,9 +7,9 @@ import fr.emn.killerplop.game.entities.movement.basics.DynamicMovement;
 import fr.emn.killerplop.game.entities.movement.basics.SinusMovement;
 import fr.emn.killerplop.game.entities.movement.basics.StaticMovement;
 import fr.emn.killerplop.game.entities.ship.ShipEntity;
-import fr.emn.killerplop.game.resources.ImageStore;
 import fr.emn.killerplop.game.sprites.SimpleSprite;
 import fr.emn.killerplop.game.sprites.SpriteFactory;
+import fr.emn.killerplop.graphics.awt.AWTImageStore;
 
 public class EntityTest extends Test {
 
@@ -26,7 +26,7 @@ public class EntityTest extends Test {
 
 	protected static void testStatic() {
 		for (int i = 0; i < 80; i++) {
-			manager.addEntity(new AlienEntity(new SimpleSprite(ImageStore
+			manager.addEntity(new AlienEntity(new SimpleSprite(AWTImageStore
 					.get("resources/entities/alien.gif")), 200 + 30 * i
 					+ r.nextInt(WINDOW_HEIGHT - 40), r
 					.nextInt(Test.WINDOW_HEIGHT), new StaticMovement()));
@@ -36,7 +36,7 @@ public class EntityTest extends Test {
 	protected static void testSinus() {
 		for (int i = 0; i < 80; i++) {
 			int amplitude = r.nextInt(250);
-			manager.addEntity(new AlienEntity(new SimpleSprite(ImageStore
+			manager.addEntity(new AlienEntity(new SimpleSprite(AWTImageStore
 					.get("resources/entities/ship.gif")), 800 + 100 * i
 					+ r.nextInt(WINDOW_WIDTH), r.nextInt(Test.WINDOW_HEIGHT
 					- amplitude)

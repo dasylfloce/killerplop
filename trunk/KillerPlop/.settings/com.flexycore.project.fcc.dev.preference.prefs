@@ -1,0 +1,12 @@
+#Mon Dec 14 15:48:07 CET 2009
+PLUGIN_VERSION=1.1.42
+application.element.properties=\#Mon Dec 14 15\:48\:07 CET 2009\r\ncom.flexycore.debugger.config.synchroPort\=0\r\n
+debug.element.properties=\#Mon Dec 14 15\:48\:07 CET 2009\r\ncom.flexycore.debugger.config.synchroPort\=0\r\n
+eclipse.preferences.version=1
+enabled=true
+fcc=\:23
+libs=/11\:/12\:/124\:/141
+license=8C840-616FD-8B14E-2B819-14CD7
+output.dir=
+release.project=
+rsc.dir=

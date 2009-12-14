@@ -1,9 +1,8 @@
 package fr.emn.killerplop.game.entities;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.entities.shapes.Shape;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * Represents an entity of the game. Super class of all entities (like ship,
@@ -154,13 +153,13 @@ public interface Entity {
 	 * Draw this entity on the graphics context provided. See EntityDisplayer
 	 * for "offsets"
 	 * 
-	 * @param g
+	 * @param graphicContext
 	 *            The graphics context on which to draw
 	 * @param offsetX
 	 *            Horizontal offset to draw the entity
 	 * @param offsetX
 	 *            Vertical offset to draw the entity
 	 */
-	public void draw(Graphics2D g, int offsetX, int offsetY);
+	public void draw(GraphicContext graphicContext, int offsetX, int offsetY);
 
 }
