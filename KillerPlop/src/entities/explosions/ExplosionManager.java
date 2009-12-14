@@ -1,4 +1,4 @@
-package entities.manager;
+package entities.explosions;
 
 import java.awt.Graphics2D;
 import java.util.LinkedList;
