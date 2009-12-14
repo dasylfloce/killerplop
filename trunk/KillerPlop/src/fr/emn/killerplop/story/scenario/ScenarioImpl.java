@@ -2,10 +2,10 @@ package fr.emn.killerplop.story.scenario;
 
 import java.awt.Graphics2D;
 
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.entitymanager.EntityManager;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 import fr.emn.killerplop.controller.gamecontroller.GameControllerImpl;
 import fr.emn.killerplop.controller.gamecontroller.GameWindow;
-import fr.emn.killerplop.entities.manager.EntityManager;
 import fr.emn.killerplop.exceptions.NoWindowException;
 import fr.emn.killerplop.exceptions.OutOfMapException;
 import fr.emn.killerplop.exceptions.ViewSizeNullException;

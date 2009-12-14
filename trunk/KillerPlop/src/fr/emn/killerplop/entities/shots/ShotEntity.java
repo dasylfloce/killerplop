@@ -1,7 +1,7 @@
 package fr.emn.killerplop.entities.shots;
 
 import fr.emn.killerplop.constants.Constants;
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 import fr.emn.killerplop.entities.EntityImpl;
 import fr.emn.killerplop.exceptions.OutOfMapException;
 import fr.emn.killerplop.sprites.Sprite;

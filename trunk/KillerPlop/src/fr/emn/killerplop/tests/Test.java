@@ -3,7 +3,7 @@ package fr.emn.killerplop.tests;
 import java.util.Random;
 
 import fr.emn.killerplop.constants.Constants;
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 import fr.emn.killerplop.controller.gamecontroller.GameWindow;
 import fr.emn.killerplop.controller.gamecontroller.GameWindowImpl;
 import fr.emn.killerplop.exceptions.NoWindowException;

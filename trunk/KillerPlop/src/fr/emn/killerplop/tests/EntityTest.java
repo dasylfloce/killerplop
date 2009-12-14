@@ -1,8 +1,8 @@
 package fr.emn.killerplop.tests;
 
+import fr.emn.killerplop.controller.entitymanager.EntityManager;
+import fr.emn.killerplop.controller.entitymanager.EntityManagerImpl;
 import fr.emn.killerplop.entities.aliens.AlienEntity;
-import fr.emn.killerplop.entities.manager.EntityManager;
-import fr.emn.killerplop.entities.manager.EntityManagerImpl;
 import fr.emn.killerplop.entities.movement.basics.DynamicMovement;
 import fr.emn.killerplop.entities.movement.basics.SinusMovement;
 import fr.emn.killerplop.entities.movement.basics.StaticMovement;

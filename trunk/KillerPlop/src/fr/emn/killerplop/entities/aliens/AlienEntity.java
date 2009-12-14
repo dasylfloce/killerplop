@@ -1,6 +1,6 @@
 package fr.emn.killerplop.entities.aliens;
 
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 import fr.emn.killerplop.entities.EntityImpl;
 import fr.emn.killerplop.entities.movement.Movement;
 import fr.emn.killerplop.exceptions.OutOfMapException;

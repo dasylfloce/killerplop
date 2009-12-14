@@ -1,6 +1,6 @@
 package fr.emn.killerplop.entities.movement.basics;
 
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 import fr.emn.killerplop.entities.Entity;
 
 public class SinusMovement extends ControlledMovement {

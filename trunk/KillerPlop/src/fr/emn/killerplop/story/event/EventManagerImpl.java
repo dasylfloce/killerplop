@@ -3,7 +3,7 @@ package fr.emn.killerplop.story.event;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-import fr.emn.killerplop.controller.GameController;
+import fr.emn.killerplop.controller.gamecontroller.GameController;
 
 
 public class EventManagerImpl implements EventManager {
