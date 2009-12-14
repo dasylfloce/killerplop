@@ -10,8 +10,8 @@ import story.scenario.Scenario;
 import story.scenario.ScenarioImpl;
 import Constants.Constants;
 import controller.GameController;
-import controller.GameWindow;
-import controller.GameWindowImpl;
+import controller.gamecontroller.GameWindow;
+import controller.gamecontroller.GameWindowImpl;
 import exceptions.NoWindowException;
 
 public class Test implements Constants {

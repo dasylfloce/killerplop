@@ -1,6 +1,8 @@
-package controller;
+package controller.gamecontroller;
 
 import java.awt.Graphics2D;
+
+import controller.GameController;
 
 import map.maptiled.MapTiled;
 import entities.manager.EntityManager;

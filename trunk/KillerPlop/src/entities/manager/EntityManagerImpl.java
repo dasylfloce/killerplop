@@ -9,6 +9,7 @@ import Constants.Constants;
 import controller.GameController;
 import entities.Entity;
 import entities.aliens.AlienEntity;
+import entities.explosions.ExplosionManager;
 import entities.ship.ShipEntity;
 import entities.shots.ShotEntity;
 import entities.shots.ShotPool;

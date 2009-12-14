@@ -3,7 +3,7 @@ package story.scenario;
 import map.maptiled.MapTiled;
 import story.event.EventManager;
 import Constants.Constants;
-import controller.GameWindow;
+import controller.gamecontroller.GameWindow;
 import entities.manager.EntityManager;
 import exceptions.NoWindowException;
 

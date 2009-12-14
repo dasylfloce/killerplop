@@ -1,4 +1,4 @@
-package controller;
+package controller.gamecontroller;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
