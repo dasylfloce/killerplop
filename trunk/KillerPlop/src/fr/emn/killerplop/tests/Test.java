@@ -2,17 +2,17 @@ package fr.emn.killerplop.tests;
 
 import java.util.Random;
 
-import fr.emn.killerplop.constants.Constants;
-import fr.emn.killerplop.controller.gamecontroller.GameController;
-import fr.emn.killerplop.controller.gamecontroller.GameWindow;
-import fr.emn.killerplop.controller.gamecontroller.GameWindowImpl;
-import fr.emn.killerplop.exceptions.NoWindowException;
-import fr.emn.killerplop.story.event.EventManager;
-import fr.emn.killerplop.story.event.EventManagerImpl;
-import fr.emn.killerplop.story.event.TimeEvent;
-import fr.emn.killerplop.story.event.TimePeriodicEvent;
-import fr.emn.killerplop.story.scenario.Scenario;
-import fr.emn.killerplop.story.scenario.ScenarioImpl;
+import fr.emn.killerplop.game.constants.Constants;
+import fr.emn.killerplop.game.controller.gamecontroller.GameController;
+import fr.emn.killerplop.game.controller.gamecontroller.GameWindow;
+import fr.emn.killerplop.game.controller.gamecontroller.GameWindowImpl;
+import fr.emn.killerplop.game.exceptions.NoWindowException;
+import fr.emn.killerplop.game.story.event.EventManager;
+import fr.emn.killerplop.game.story.event.EventManagerImpl;
+import fr.emn.killerplop.game.story.event.TimeEvent;
+import fr.emn.killerplop.game.story.event.TimePeriodicEvent;
+import fr.emn.killerplop.game.story.scenario.Scenario;
+import fr.emn.killerplop.game.story.scenario.ScenarioImpl;
 
 public class Test implements Constants {
 	

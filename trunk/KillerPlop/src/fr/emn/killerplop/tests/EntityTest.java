@@ -1,15 +1,15 @@
 package fr.emn.killerplop.tests;
 
-import fr.emn.killerplop.controller.entitymanager.EntityManager;
-import fr.emn.killerplop.controller.entitymanager.EntityManagerImpl;
-import fr.emn.killerplop.entities.aliens.AlienEntity;
-import fr.emn.killerplop.entities.movement.basics.DynamicMovement;
-import fr.emn.killerplop.entities.movement.basics.SinusMovement;
-import fr.emn.killerplop.entities.movement.basics.StaticMovement;
-import fr.emn.killerplop.entities.ship.ShipEntity;
-import fr.emn.killerplop.resources.ImageStore;
-import fr.emn.killerplop.sprites.SimpleSprite;
-import fr.emn.killerplop.sprites.SpriteFactory;
+import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
+import fr.emn.killerplop.game.controller.entitymanager.EntityManagerImpl;
+import fr.emn.killerplop.game.entities.aliens.AlienEntity;
+import fr.emn.killerplop.game.entities.movement.basics.DynamicMovement;
+import fr.emn.killerplop.game.entities.movement.basics.SinusMovement;
+import fr.emn.killerplop.game.entities.movement.basics.StaticMovement;
+import fr.emn.killerplop.game.entities.ship.ShipEntity;
+import fr.emn.killerplop.game.resources.ImageStore;
+import fr.emn.killerplop.game.sprites.SimpleSprite;
+import fr.emn.killerplop.game.sprites.SpriteFactory;
 
 public class EntityTest extends Test {
 
