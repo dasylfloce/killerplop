@@ -1,6 +1,6 @@
 package fr.emn.killerplop.exceptions;
 
-import map.maptiled.MapTiled;
+import fr.emn.killerplop.map.maptiled.MapTiled;
 
 @SuppressWarnings("serial")
 public class OutOfMapException extends Exception {
