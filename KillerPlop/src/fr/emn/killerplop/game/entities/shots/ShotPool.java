@@ -5,7 +5,6 @@ import java.util.List;
 
 import fr.emn.killerplop.game.constants.Constants;
 import fr.emn.killerplop.game.entities.shapes.PointShape;
-import fr.emn.killerplop.game.resources.ImageStore;
 import fr.emn.killerplop.game.sprites.SimpleSprite;
 
 public class ShotPool implements Constants {
@@ -19,9 +18,9 @@ public class ShotPool implements Constants {
 
 	private ShotPool(int nbShots) {
 		for (int i = 0; i < nbShots; i++) {
-			available.add(new ShotEntity(
-					new SimpleSprite(ImageStore
-							.get("resources/entities/shot.gif"),
+			available
+					.add(new ShotEntity(new SimpleSprite(
+							"resources/entities/shot.gif",
 							new PointShape(10, 5)), 0, 0));
 		}
 	}

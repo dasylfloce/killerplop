@@ -5,7 +5,7 @@ import fr.emn.killerplop.game.map.maptiled.MapTiled;
 import fr.emn.killerplop.game.map.maptiled.MapTiledBuilder;
 import fr.emn.killerplop.game.map.tile.SimpleTile;
 import fr.emn.killerplop.game.map.tile.Tile;
-import fr.emn.killerplop.game.resources.ImageStore;
+import fr.emn.killerplop.graphics.awt.AWTImageStore;
 
 public class MapTest extends Test {
 
@@ -15,7 +15,7 @@ public class MapTest extends Test {
 
 	public static MapTiled background() {
 		MapTiledBuilder map = new MapTiledBuilder(500, 20, 32, 32);
-		map.setBackground(ImageStore.get("resources/backgrounds/espace1.jpg"));
+		map.setBackground(AWTImageStore.get("resources/backgrounds/espace1.jpg"));
 		
 		Tile tileAsteroide = new SimpleTile("resources/tiles/asteroide_transp.png", true);
 

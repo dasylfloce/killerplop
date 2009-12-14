@@ -1,9 +1,8 @@
 package fr.emn.killerplop.game.controller.entitymanager;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.entities.Entity;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * This control the movement and collision of any entities of the game.
@@ -63,7 +62,7 @@ public interface EntityManager {
 	 * @param offsetY
 	 *            Vertical offset
 	 */
-	public void render(Graphics2D g, int offsetX, int offsetY);
+	public void render(GraphicContext graphicContext, int offsetX, int offsetY);
 
 	public void resolveShot(long delta);
 	

@@ -1,6 +1,5 @@
 package fr.emn.killerplop.game.controller.entitymanager;
 
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -13,6 +12,7 @@ import fr.emn.killerplop.game.entities.aliens.AlienEntity;
 import fr.emn.killerplop.game.entities.ship.ShipEntity;
 import fr.emn.killerplop.game.entities.shots.ShotEntity;
 import fr.emn.killerplop.game.entities.shots.ShotPool;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * Implements EntityManager.
@@ -75,14 +75,14 @@ public class EntityManagerImpl implements EntityManager, Constants {
 	}
 
 	@Override
-	public void render(Graphics2D g, int offsetX, int offsetY) {
+	public void render(GraphicContext graphicContext, int offsetX, int offsetY) {
 		for (AlienEntity entity : alienEntities)
-			entity.draw(g, offsetX, offsetY);
+			entity.draw(graphicContext, offsetX, offsetY);
 		for (ShipEntity ship : shipEntities)
-			ship.draw(g, offsetX, offsetY);
+			ship.draw(graphicContext, offsetX, offsetY);
 		for (ShotEntity shot : shotEntities)
-			shot.draw(g, offsetX, offsetY);
-		explosionManager.render(g, offsetX, offsetY);
+			shot.draw(graphicContext, offsetX, offsetY);
+		explosionManager.render(graphicContext, offsetX, offsetY);
 	}
 
 	@Override

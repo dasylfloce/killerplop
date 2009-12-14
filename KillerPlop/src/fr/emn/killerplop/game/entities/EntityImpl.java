@@ -1,11 +1,10 @@
 package fr.emn.killerplop.game.entities;
 
-import java.awt.Graphics2D;
-
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.entities.shapes.Shape;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.game.sprites.Sprite;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * An entity represents any element that appears in the game. The entity is
@@ -192,8 +191,8 @@ public abstract class EntityImpl implements Entity {
 	}
 
 	@Override
-	public void draw(Graphics2D g, int offsetX, int offsetY) {
-		sprite.draw(g, (int) x - offsetX, (int) y - offsetY);
+	public void draw(GraphicContext graphicContext, int offsetX, int offsetY) {
+		sprite.draw(graphicContext, (int) x - offsetX, (int) y - offsetY);
 	}
 
 }

@@ -1,8 +1,8 @@
 package fr.emn.killerplop.game.sprites;
 
-import java.awt.Graphics2D;
 
 import fr.emn.killerplop.game.entities.shapes.Shape;
+import fr.emn.killerplop.graphics.GraphicContext;
 
 /**
  * A sprite to be displayed on the screen. Note that a sprite contains no state
@@ -15,35 +15,19 @@ import fr.emn.killerplop.game.entities.shapes.Shape;
 public interface Sprite {
 
 	/**
-	 * Get the width of the drawn sprite
-	 * 
-	 * @return The width in pixels of this sprite
-	 */
-	public int getWidth();
-
-	/**
-	 * Get the height of the drawn sprite
-	 * 
-	 * @return The height in pixels of this sprite
-	 */
-	public int getHeight();
-
-	/**
 	 * @return the shape of the sprite
 	 */
 	public Shape getShape();
 
 	/**
 	 * Draw the sprite onto the graphics context provided
-	 * 
-	 * @param g
-	 *            The graphics context on which to draw the sprite
+	 * @param graphicContext TODO
 	 * @param x
 	 *            The x location at which to draw the sprite
 	 * @param y
 	 *            The y location at which to draw the sprite
 	 */
-	public void draw(Graphics2D g, int x, int y);
+	public void draw(GraphicContext graphicContext, int x, int y);
 
 	/**
 	 * Update the sprite.
