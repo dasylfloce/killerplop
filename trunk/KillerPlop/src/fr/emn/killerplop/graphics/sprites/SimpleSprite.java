@@ -1,9 +1,8 @@
-package fr.emn.killerplop.game.sprites;
+package fr.emn.killerplop.graphics.sprites;
 
-import fr.emn.killerplop.game.entities.shapes.RectShape;
 import fr.emn.killerplop.game.entities.shapes.Shape;
-import fr.emn.killerplop.graphics.GraphicContext;
-import fr.emn.killerplop.graphics.GraphicUtilities;
+import fr.emn.killerplop.graphics.context.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicUtilities;
 
 /**
  * A sprite to be displayed on the screen. This sprite is composed by only one
@@ -27,6 +26,7 @@ public class SimpleSprite implements Sprite {
 	public SimpleSprite(String imageRef, Shape shape) {
 		this.imageRef = imageRef;
 		this.shape = shape;
+		GraphicUtilities.get().loadImage(imageRef);
 	}
 
 	/**
@@ -37,9 +37,7 @@ public class SimpleSprite implements Sprite {
 	 *            The image that is this sprite
 	 */
 	public SimpleSprite(String imageRef) {
-		this.imageRef = imageRef;
-		this.shape = new RectShape(GraphicUtilities.get().getWidthOf(imageRef),
-				GraphicUtilities.get().getHeightOf(imageRef));
+		this(imageRef, GraphicUtilities.get().getImageShape(imageRef));
 	}
 
 	/**

@@ -1,8 +1,8 @@
-package fr.emn.killerplop.game.sprites;
+package fr.emn.killerplop.graphics.sprites;
 
 
 import fr.emn.killerplop.game.entities.shapes.Shape;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 /**
  * A sprite to be displayed on the screen. Note that a sprite contains no state

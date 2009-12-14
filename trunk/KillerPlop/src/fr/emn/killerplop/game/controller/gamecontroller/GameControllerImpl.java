@@ -3,7 +3,7 @@ package fr.emn.killerplop.game.controller.gamecontroller;
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 /**
  * Implements the GameController interface.

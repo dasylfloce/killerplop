@@ -5,7 +5,7 @@ import fr.emn.killerplop.game.entities.shapes.Shape;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.game.map.tile.Tile;
 import fr.emn.killerplop.game.map.tile.TileWareHouse;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 public class MapTiledImpl implements MapTiled, Constants {
 

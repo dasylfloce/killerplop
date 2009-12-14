@@ -1,6 +1,7 @@
-package fr.emn.killerplop.game.sprites;
+package fr.emn.killerplop.graphics.sprites;
 
 import fr.emn.killerplop.game.entities.shapes.Shape;
+import fr.emn.killerplop.graphics.context.GraphicUtilities;
 
 /**
  * A sprite to be displayed on the screen. This sprite can be composed by
@@ -21,53 +22,49 @@ public class AnimatedSprite extends SimpleSprite {
 
 	/**
 	 * Create a new sprite based on an array of images, with constant delay
-	 * between flipping images (in ms).
-	 * A default shape is set, as a ShapeRectangle bounding the image size.
+	 * between flipping images (in ms). A default shape is set, as a
+	 * ShapeRectangle bounding the image size.
 	 * 
-	 * @param images
-	 *            The image representing this sprite
+	 * @param imagesRef
+	 *            The images representing this sprite
 	 * @param duration
 	 *            Time between each flipping
 	 */
-	public AnimatedSprite(String[] images, long duration) {
-		this(images, null);
-		durations = new long[images.length];
-		for (int i = 0; i < images.length; i++)
-			durations[i] = duration;
+	public AnimatedSprite(String[] imagesRef, long duration) {
+		this(imagesRef, 0, GraphicUtilities.get().getImageShape(
+				imagesRef[0]));
 	}
 
 	/**
 	 * Create a new sprite based on an array of images, with different delays
-	 * between flipping images for each image (in ms).
-	 * A default shape is set, as a ShapeRectangle bounding the image size.
+	 * between flipping images for each image (in ms). A default shape is set,
+	 * as a ShapeRectangle bounding the image size.
 	 * 
-	 * @param images
+	 * @param imagesRef
 	 *            The image representing this sprite
 	 * @param duration
 	 *            Time between each flipping, for each different image
 	 */
-	public AnimatedSprite(String[] images, long[] durations) {
-		super(images[0]);
-		this.imagesRef = images;
-		this.durations = durations;
+	public AnimatedSprite(String[] imagesRef, long[] durations) {
+		this(imagesRef, durations, GraphicUtilities.get().getImageShape(
+				imagesRef[0]));
 	}
 
 	/**
 	 * Create a new sprite based on an array of images, with constant delay
-	 * between flipping images (in ms).
-	 * The shape is used for collision area.
+	 * between flipping images (in ms). The shape is used for collision area.
 	 * 
-	 * @param images
+	 * @param imagesRef
 	 *            The image representing this sprite
 	 * @param duration
 	 *            Time between each flipping
 	 * @param shape
 	 *            Shape used for collision
 	 */
-	public AnimatedSprite(String[] images, long duration, Shape shape) {
-		this(images, null, shape);
-		durations = new long[images.length];
-		for (int i = 0; i < images.length; i++)
+	public AnimatedSprite(String[] imagesRef, long duration, Shape shape) {
+		this(imagesRef, null, shape);
+		durations = new long[imagesRef.length];
+		for (int i = 0; i < durations.length; i++)
 			durations[i] = duration;
 	}
 
@@ -75,19 +72,20 @@ public class AnimatedSprite extends SimpleSprite {
 	 * Create a new sprite based on an array of images, with different delays
 	 * between flipping images for each image (in ms).
 	 * 
-	 * @param images
+	 * @param imagesRef
 	 *            The image representing this sprite
 	 * @param duration
 	 *            Time between each flipping, for each different image
 	 * @param shape
 	 *            Shape used for collision
 	 */
-	public AnimatedSprite(String[] images, long[] durations, Shape shape) {
-		super(images[0], shape);
-		this.imagesRef = images;
+	public AnimatedSprite(String[] imagesRef, long[] durations, Shape shape) {
+		super(imagesRef[0], shape);
+		this.imagesRef = imagesRef;
 		this.durations = durations;
 	}
 
+	@Override
 	public void update(long delta) {
 		timeElapsed += delta;
 		if (timeElapsed >= durations[imageIndex]) {

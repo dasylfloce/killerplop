@@ -1,4 +1,4 @@
-package fr.emn.killerplop.game.controller.gamecontroller;
+package fr.emn.killerplop.graphics;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -9,23 +9,25 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import fr.emn.killerplop.game.entities.ship.KeyHandler;
+import fr.emn.killerplop.controls.KeyHandler;
+import fr.emn.killerplop.graphics.context.GameWindow;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 @SuppressWarnings("serial")
-public class GameWindowImpl extends Canvas implements GameWindow {
+public class AWTGameWindow extends Canvas implements GameWindow {
 
 	/** The game window that we'll update with the frame count */
 	protected JFrame container;
 	/** Size of the window */
 	protected int width;
 	protected int height;
-	
+
 	protected KeyHandler keyHandler;
 
 	/**
 	 * Construct our map and set it running.
 	 */
-	public GameWindowImpl(int width, int height) {
+	public AWTGameWindow(int width, int height) {
 		// create a frame to contain our game
 		container = new JFrame();
 		this.width = width;
@@ -34,8 +36,7 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 		// get hold the content of the frame and set up the resolution of the
 		// game
 		JPanel panel = (JPanel) container.getContentPane();
-		panel.setPreferredSize(new Dimension(width,
-				height));
+		panel.setPreferredSize(new Dimension(width, height));
 		panel.setLayout(null);
 
 		// setup our canvas size and put it into the content of the frame
@@ -54,6 +55,7 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 		// add a listener to respond to the user closing the window. If they
 		// do we'd like to exit the game
 		container.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
@@ -68,16 +70,16 @@ public class GameWindowImpl extends Canvas implements GameWindow {
 		// to manage our accelerated graphics
 		createBufferStrategy(2);
 	}
-	
+
 	@Override
-	public KeyHandler getKeyHandler(){
+	public KeyHandler getKeyHandler() {
 		return keyHandler;
 	}
 
-	
 	@Override
-	public Graphics2D getGraphicContext() {
-		return (Graphics2D) getBufferStrategy().getDrawGraphics();
+	public GraphicContext getGraphicContext() {
+		return new AWTGraphicContext((Graphics2D) getBufferStrategy()
+				.getDrawGraphics());
 	}
 
 	@Override

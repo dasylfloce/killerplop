@@ -12,6 +12,7 @@ public class CircleShape extends Shape {
 		return radius;
 	}
 	
+	@Override
 	public void setPosition(double x, double y) {
 		super.setPosition(x+radius, y+radius);
 	}
@@ -37,6 +38,7 @@ public class CircleShape extends Shape {
 		return distance(this.x, this.y, x, y) <= radius;
 	}
 	
+	@Override
 	public String toString() {
 		return "Circle => x:"+x+"; y:"+y+" [radius="+radius+"]";
 	}

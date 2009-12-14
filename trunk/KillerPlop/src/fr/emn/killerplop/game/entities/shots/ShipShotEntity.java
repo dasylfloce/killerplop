@@ -4,12 +4,13 @@ import fr.emn.killerplop.game.constants.Constants;
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.entities.EntityImpl;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
-import fr.emn.killerplop.game.sprites.Sprite;
+import fr.emn.killerplop.graphics.sprites.SpriteFactory;
 
-public class ShotEntity extends EntityImpl implements Constants {
+public class ShipShotEntity extends EntityImpl implements Constants {
 
-	public ShotEntity(Sprite sprite, int x, int y) {
-		super(sprite, x, y);
+	public ShipShotEntity() {
+		super(SpriteFactory.createShipShot(), 0,
+				0);
 	}
 
 	@Override
@@ -29,6 +30,7 @@ public class ShotEntity extends EntityImpl implements Constants {
 	 * @throws OutOfMapException
 	 *             if the shot goes out of the map
 	 */
+	@Override
 	protected void updatePosition(GameController gc) throws OutOfMapException {
 		double tempX = x + (gc.getDelta() * dx) / 1000;
 		double tempY = y + (gc.getDelta() * dy) / 1000;

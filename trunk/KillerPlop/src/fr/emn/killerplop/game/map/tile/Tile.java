@@ -8,7 +8,7 @@
 package fr.emn.killerplop.game.map.tile;
 
 import fr.emn.killerplop.game.entities.shapes.Shape;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 /**
  * Les tuiles de la carte<br>

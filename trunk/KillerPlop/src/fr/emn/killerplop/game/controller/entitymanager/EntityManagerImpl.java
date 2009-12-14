@@ -10,9 +10,9 @@ import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.entities.Entity;
 import fr.emn.killerplop.game.entities.aliens.AlienEntity;
 import fr.emn.killerplop.game.entities.ship.ShipEntity;
-import fr.emn.killerplop.game.entities.shots.ShotEntity;
-import fr.emn.killerplop.game.entities.shots.ShotPool;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.game.entities.shots.ShipShotEntity;
+import fr.emn.killerplop.game.entities.shots.ShipShotPool;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 /**
  * Implements EntityManager.
@@ -35,7 +35,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 	protected ArrayList<AlienEntity> alienEntities;
 
 	protected LinkedList<ShipEntity> shipEntities;
-	protected LinkedList<ShotEntity> shotEntities;
+	protected LinkedList<ShipShotEntity> shipShotEntities;
 	
 	/**
 	 * Explosion manager (visual effects)
@@ -50,7 +50,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 		sleepingEntities = new LinkedList<AlienEntity>();
 		shipEntities = new LinkedList<ShipEntity>();
 		alienEntities = new ArrayList<AlienEntity>();
-		shotEntities = new LinkedList<ShotEntity>();
+		shipShotEntities = new LinkedList<ShipShotEntity>();
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 			entity.move(gameController);
 		for (ShipEntity ship : shipEntities)
 			ship.move(gameController);
-		for (ShotEntity shot : shotEntities)
+		for (ShipShotEntity shot : shipShotEntities)
 			shot.move(gameController);
 	}
 
@@ -80,7 +80,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 			entity.draw(graphicContext, offsetX, offsetY);
 		for (ShipEntity ship : shipEntities)
 			ship.draw(graphicContext, offsetX, offsetY);
-		for (ShotEntity shot : shotEntities)
+		for (ShipShotEntity shot : shipShotEntities)
 			shot.draw(graphicContext, offsetX, offsetY);
 		explosionManager.render(graphicContext, offsetX, offsetY);
 	}
@@ -100,7 +100,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 		// Collisions between aliens and ship shots
 		for (AlienEntity ae : alienEntities)
 			if (!ae.isDestroyed())
-				for (ShotEntity shot : shotEntities)
+				for (ShipShotEntity shot : shipShotEntities)
 					if (!shot.isDestroyed())
 						if (ae.collidesWith(shot)) {
 							ae.hit();
@@ -135,12 +135,12 @@ public class EntityManagerImpl implements EntityManager, Constants {
 			}
 		}
 		// Cleaning shots destroyed
-		ListIterator<ShotEntity> shotIt = shotEntities.listIterator();
-		ShotEntity shot;
+		ListIterator<ShipShotEntity> shotIt = shipShotEntities.listIterator();
+		ShipShotEntity shot;
 		while (shotIt.hasNext()) {
 			shot = shotIt.next();
 			if (shot.isDestroyed()) {
-				ShotPool.getInstance().returnShot(shot);
+				ShipShotPool.getInstance().returnShot(shot);
 				shotIt.remove();
 			}
 		}
@@ -176,7 +176,7 @@ public class EntityManagerImpl implements EntityManager, Constants {
 		if (entity.isShipEntity())
 			shipEntities.add((ShipEntity) entity);
 		if (entity.isShotEntity())
-			shotEntities.add((ShotEntity) entity);
+			shipShotEntities.add((ShipShotEntity) entity);
 	}
 
 	@Override
@@ -184,10 +184,10 @@ public class EntityManagerImpl implements EntityManager, Constants {
 		for (ShipEntity ship : shipEntities)
 			if (!ship.isDestroyed())
 				if (ship.isShooting()) {
-					shotEntities.addFirst(ShotPool.getInstance().getShot());
+					shipShotEntities.addFirst(ShipShotPool.getInstance().getShot());
 					ship.setShooting(false);
-					shotEntities.getFirst().setX(ship.getX() + 30);
-					shotEntities.getFirst().setY(ship.getY() + 5);
+					shipShotEntities.getFirst().setX(ship.getX() + 30);
+					shipShotEntities.getFirst().setY(ship.getY() + 5);
 				}
 
 	}
