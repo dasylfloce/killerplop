@@ -73,6 +73,7 @@ public class RectShape extends Shape {
 		return x <= x2 && x + width >= x2 && y <= y2 && y + height >= y2;
 	}
 
+	@Override
 	public String toString() {
 		return "x:" + x + "; y:" + y + " [width=" + width + " | height="
 				+ height + "]";

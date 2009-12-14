@@ -2,7 +2,7 @@ package fr.emn.killerplop.game.entities;
 
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.entities.shapes.Shape;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 /**
  * Represents an entity of the game. Super class of all entities (like ship,

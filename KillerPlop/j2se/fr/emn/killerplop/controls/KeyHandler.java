@@ -1,7 +1,9 @@
-package fr.emn.killerplop.game.entities.ship;
+package fr.emn.killerplop.controls;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import fr.emn.killerplop.game.entities.ship.ShipEntity;
 
 public class KeyHandler extends KeyAdapter{
 	

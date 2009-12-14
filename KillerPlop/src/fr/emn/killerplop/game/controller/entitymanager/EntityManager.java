@@ -2,7 +2,7 @@ package fr.emn.killerplop.game.controller.entitymanager;
 
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.entities.Entity;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 /**
  * This control the movement and collision of any entities of the game.

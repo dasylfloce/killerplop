@@ -4,8 +4,6 @@ import java.util.Random;
 
 import fr.emn.killerplop.game.constants.Constants;
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
-import fr.emn.killerplop.game.controller.gamecontroller.GameWindow;
-import fr.emn.killerplop.game.controller.gamecontroller.GameWindowImpl;
 import fr.emn.killerplop.game.exceptions.NoWindowException;
 import fr.emn.killerplop.game.story.event.EventManager;
 import fr.emn.killerplop.game.story.event.EventManagerImpl;
@@ -13,6 +11,11 @@ import fr.emn.killerplop.game.story.event.TimeEvent;
 import fr.emn.killerplop.game.story.event.TimePeriodicEvent;
 import fr.emn.killerplop.game.story.scenario.Scenario;
 import fr.emn.killerplop.game.story.scenario.ScenarioImpl;
+import fr.emn.killerplop.graphics.AWTGameWindow;
+import fr.emn.killerplop.graphics.AWTGraphicUtilities;
+import fr.emn.killerplop.graphics.context.GameWindow;
+import fr.emn.killerplop.graphics.context.GraphicUtilities;
+import fr.emn.killerplop.graphics.imageCenter.ImageCenterLoader;
 
 public class Test implements Constants {
 	
@@ -21,6 +24,8 @@ public class Test implements Constants {
 	public static final  int WINDOW_WIDTH = 600;
 
 	public static void main(String[] args) throws NoWindowException {
+		GraphicUtilities.set(new AWTGraphicUtilities());
+		ImageCenterLoader.loadAllImages();
 		
 		EventManager eventManager = new EventManagerImpl();
 		//eventManager.addEvent(new RandomMapSpeedEvent(1500));
@@ -30,7 +35,7 @@ public class Test implements Constants {
 		Scenario storyTest = new ScenarioImpl("Test");
 		storyTest.initialization(MapTest.createMap(), EntityTest.createEntityManager(), eventManager);
 		
-		GameWindow gameWindow = new GameWindowImpl(WINDOW_WIDTH, WINDOW_HEIGHT);
+		GameWindow gameWindow = new AWTGameWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
 		gameWindow.getKeyHandler().setShip(EntityTest.ship);
 		storyTest.setGameWindow(gameWindow);
 		

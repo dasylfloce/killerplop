@@ -1,4 +1,4 @@
-package fr.emn.killerplop.graphics;
+package fr.emn.killerplop.graphics.context;
 
 public interface GraphicContext {
 	

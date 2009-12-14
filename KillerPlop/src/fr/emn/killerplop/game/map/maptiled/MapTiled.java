@@ -11,7 +11,7 @@ package fr.emn.killerplop.game.map.maptiled;
 
 import fr.emn.killerplop.game.entities.shapes.Shape;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 /**
  * La carte : c'est un tableau a deux dimensions. Chaque cellule contient l'id

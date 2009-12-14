@@ -3,13 +3,13 @@ package fr.emn.killerplop.game.story.scenario;
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.controller.gamecontroller.GameControllerImpl;
-import fr.emn.killerplop.game.controller.gamecontroller.GameWindow;
 import fr.emn.killerplop.game.exceptions.NoWindowException;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.game.exceptions.ViewSizeNullException;
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
 import fr.emn.killerplop.game.story.event.EventManager;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GameWindow;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 public class ScenarioImpl implements Scenario {
 

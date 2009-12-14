@@ -1,4 +1,4 @@
-package fr.emn.killerplop.game.entities.shots;
+package fr.emn.killerplop.controls;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -23,6 +23,7 @@ public class MouseHandler extends MouseAdapter{
 
 
 
+	@Override
 	public void mousePressed(MouseEvent e){
 		
 	}

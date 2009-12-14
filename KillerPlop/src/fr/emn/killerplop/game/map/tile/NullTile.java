@@ -2,7 +2,7 @@ package fr.emn.killerplop.game.map.tile;
 
 import fr.emn.killerplop.game.entities.shapes.NullShape;
 import fr.emn.killerplop.game.entities.shapes.Shape;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 public class NullTile implements Tile {
 
@@ -47,6 +47,7 @@ public class NullTile implements Tile {
 		//Rien à dessiner
 	}
 
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Tile) {
 			return ((Tile)o).getName().equals("null");

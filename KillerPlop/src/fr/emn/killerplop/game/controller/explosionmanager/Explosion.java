@@ -1,17 +1,14 @@
 package fr.emn.killerplop.game.controller.explosionmanager;
 
 import fr.emn.killerplop.game.entities.Entity;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
+import fr.emn.killerplop.graphics.imageCenter.ImageCenter;
 
-public class Explosion {
+public class Explosion implements ImageCenter {
 
 	/** The array of images of the explosion */
-	protected static String[] imagesRef = new String[] {
-			"resources/explosion/explosion1.png",
-			"resources/explosion/explosion2.png",
-			"resources/explosion/explosion3.png",
-			"resources/explosion/explosion4.png",
-			"resources/explosion/explosion5.png" };
+	protected static String[] imagesRef = new String[] { EXPLOSION_1,
+			EXPLOSION_2, EXPLOSION_3, EXPLOSION_4, EXPLOSION_5 };
 
 	/** The duration of each images */
 	protected static long duration = 50;

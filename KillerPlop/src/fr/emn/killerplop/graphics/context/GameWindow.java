@@ -1,7 +1,6 @@
-package fr.emn.killerplop.game.controller.gamecontroller;
+package fr.emn.killerplop.graphics.context;
 
-import fr.emn.killerplop.game.entities.ship.KeyHandler;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.controls.KeyHandler;
 
 /**
  * The window in which the game will be displayed.

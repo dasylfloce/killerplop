@@ -2,10 +2,10 @@ package fr.emn.killerplop.game.story.scenario;
 
 import fr.emn.killerplop.game.constants.Constants;
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
-import fr.emn.killerplop.game.controller.gamecontroller.GameWindow;
 import fr.emn.killerplop.game.exceptions.NoWindowException;
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
 import fr.emn.killerplop.game.story.event.EventManager;
+import fr.emn.killerplop.graphics.context.GameWindow;
 
 
 /**

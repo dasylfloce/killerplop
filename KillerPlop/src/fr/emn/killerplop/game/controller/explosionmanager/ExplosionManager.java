@@ -3,7 +3,7 @@ package fr.emn.killerplop.game.controller.explosionmanager;
 import java.util.LinkedList;
 
 import fr.emn.killerplop.game.entities.Entity;
-import fr.emn.killerplop.graphics.GraphicContext;
+import fr.emn.killerplop.graphics.context.GraphicContext;
 
 public class ExplosionManager {
 

@@ -4,7 +4,7 @@ import fr.emn.killerplop.game.constants.Constants;
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.entities.EntityImpl;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
-import fr.emn.killerplop.game.sprites.Sprite;
+import fr.emn.killerplop.graphics.sprites.Sprite;
 
 public class ShipEntity extends EntityImpl implements Constants{
 	
