@@ -1,11 +1,11 @@
 package fr.emn.killerplop.tests;
 
 
-import fr.emn.killerplop.map.maptiled.MapTiled;
-import fr.emn.killerplop.map.maptiled.MapTiledBuilder;
-import fr.emn.killerplop.map.tile.SimpleTile;
-import fr.emn.killerplop.map.tile.Tile;
-import fr.emn.killerplop.resources.ImageStore;
+import fr.emn.killerplop.game.map.maptiled.MapTiled;
+import fr.emn.killerplop.game.map.maptiled.MapTiledBuilder;
+import fr.emn.killerplop.game.map.tile.SimpleTile;
+import fr.emn.killerplop.game.map.tile.Tile;
+import fr.emn.killerplop.game.resources.ImageStore;
 
 public class MapTest extends Test {
 
