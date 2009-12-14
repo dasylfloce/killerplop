@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 
 import map.maptiled.MapTiled;
 import entities.manager.EntityManager;
-import exceptions.OutOfMapException;
+import fr.emn.killerplop.exceptions.OutOfMapException;
 
 /**
  * Control the evolution of the game.

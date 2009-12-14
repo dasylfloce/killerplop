@@ -7,7 +7,7 @@ import map.tile.Tile;
 import map.tile.TileWareHouse;
 import Constants.Constants;
 import entities.shapes.Shape;
-import exceptions.OutOfMapException;
+import fr.emn.killerplop.exceptions.OutOfMapException;
 
 public class MapTiledImpl implements MapTiled, Constants {
 

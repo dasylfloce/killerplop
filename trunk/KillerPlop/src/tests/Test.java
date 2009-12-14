@@ -12,7 +12,7 @@ import Constants.Constants;
 import controller.GameController;
 import controller.gamecontroller.GameWindow;
 import controller.gamecontroller.GameWindowImpl;
-import exceptions.NoWindowException;
+import fr.emn.killerplop.exceptions.NoWindowException;
 
 public class Test implements Constants {
 	

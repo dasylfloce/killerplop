@@ -6,7 +6,7 @@ import controller.GameController;
 
 import map.maptiled.MapTiled;
 import entities.manager.EntityManager;
-import exceptions.OutOfMapException;
+import fr.emn.killerplop.exceptions.OutOfMapException;
 
 /**
  * Implements the GameController interface.
