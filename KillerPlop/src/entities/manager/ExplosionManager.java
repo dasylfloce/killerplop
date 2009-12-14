@@ -16,7 +16,7 @@ public class ExplosionManager {
 		explosionPool = new LinkedList<Explosion>();
 		activeExplosions = new LinkedList<Explosion>();
 
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 5; i++)
 			explosionPool.add(new Explosion());
 	}
 

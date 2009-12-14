@@ -37,6 +37,7 @@ public class Explosion {
 		this.x = (int)entity.getX();
 		this.y = (int)entity.getY();
 		active = true;
+		timeElapsed = 0;
 		return this;
 	}
 	
