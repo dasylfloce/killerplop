@@ -8,9 +8,9 @@ import controller.GameController;
 import controller.gamecontroller.GameControllerImpl;
 import controller.gamecontroller.GameWindow;
 import entities.manager.EntityManager;
-import exceptions.NoWindowException;
-import exceptions.OutOfMapException;
-import exceptions.ViewSizeNullException;
+import fr.emn.killerplop.exceptions.NoWindowException;
+import fr.emn.killerplop.exceptions.OutOfMapException;
+import fr.emn.killerplop.exceptions.ViewSizeNullException;
 
 public class ScenarioImpl implements Scenario {
 

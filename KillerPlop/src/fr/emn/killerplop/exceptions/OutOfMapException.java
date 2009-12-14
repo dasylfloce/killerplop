@@ -1,4 +1,4 @@
-package exceptions;
+package fr.emn.killerplop.exceptions;
 
 import map.maptiled.MapTiled;
 

@@ -5,7 +5,7 @@ import story.event.EventManager;
 import Constants.Constants;
 import controller.gamecontroller.GameWindow;
 import entities.manager.EntityManager;
-import exceptions.NoWindowException;
+import fr.emn.killerplop.exceptions.NoWindowException;
 
 
 /**

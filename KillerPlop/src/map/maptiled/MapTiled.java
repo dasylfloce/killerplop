@@ -12,7 +12,7 @@ package map.maptiled;
 import java.awt.Graphics2D;
 
 import entities.shapes.Shape;
-import exceptions.OutOfMapException;
+import fr.emn.killerplop.exceptions.OutOfMapException;
 
 /**
  * La carte : c'est un tableau a deux dimensions. Chaque cellule contient l'id

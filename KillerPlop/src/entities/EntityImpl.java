@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import sprites.Sprite;
 import controller.GameController;
 import entities.shapes.Shape;
-import exceptions.OutOfMapException;
+import fr.emn.killerplop.exceptions.OutOfMapException;
 
 /**
  * An entity represents any element that appears in the game. The entity is

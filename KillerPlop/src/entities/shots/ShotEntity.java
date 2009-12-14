@@ -4,7 +4,7 @@ import sprites.Sprite;
 import Constants.Constants;
 import controller.GameController;
 import entities.EntityImpl;
-import exceptions.OutOfMapException;
+import fr.emn.killerplop.exceptions.OutOfMapException;
 
 public class ShotEntity extends EntityImpl implements Constants {
 

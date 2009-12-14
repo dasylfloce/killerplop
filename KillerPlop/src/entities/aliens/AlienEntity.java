@@ -4,7 +4,7 @@ import sprites.Sprite;
 import controller.GameController;
 import entities.EntityImpl;
 import entities.movement.Movement;
-import exceptions.OutOfMapException;
+import fr.emn.killerplop.exceptions.OutOfMapException;
 
 /**
  * This is an Entity that moves according to a Movement class, and which has an
