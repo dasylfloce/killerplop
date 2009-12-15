@@ -1,6 +1,6 @@
-package fr.emn.killerplop.game.story.scenario;
+package fr.emn.killerplop.story.scenario;
 
-public interface ScenarioManager {
+public interface ScenarioManager extends Runnable {
 
 	/**
 	 * @return the next scenario of the game.

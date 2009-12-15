@@ -1,15 +1,13 @@
-package fr.emn.killerplop.game.story.scenario;
+package fr.emn.killerplop.story.scenario;
 
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.controller.gamecontroller.GameControllerImpl;
-import fr.emn.killerplop.game.exceptions.NoWindowException;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.game.exceptions.ViewSizeNullException;
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
-import fr.emn.killerplop.game.story.event.EventManager;
 import fr.emn.killerplop.graphics.context.GameWindow;
-import fr.emn.killerplop.graphics.context.GraphicContext;
+import fr.emn.killerplop.story.event.EventManager;
 
 public class ScenarioImpl implements Scenario {
 
@@ -30,9 +28,11 @@ public class ScenarioImpl implements Scenario {
 	}
 
 	@Override
-	public void start() throws NoWindowException {
-		if (gameWindow == null)
-			throw new NoWindowException();
+	public void run() {
+		if (gameWindow == null) {
+			System.err.println("No window !");
+			System.exit(-1);
+		}
 
 		gameController.setViewSize(gameWindow.getWindowWidth(), gameWindow
 				.getWindowHeight());
@@ -81,16 +81,8 @@ public class ScenarioImpl implements Scenario {
 			eventManager.activateEvents(gameController);
 			gameController.updateEntities();
 
-			// Get hold of a graphics context for the accelerated
-			// surface
-			GraphicContext g = gameWindow.getGraphicContext();
-
-			// Drawing everything
-			gameController.render(g);
-
-			// finally, we've completed drawing so clear up the graphics
-			// and flip the buffer over
-			gameWindow.show();
+			// Show on window
+			gameWindow.render(gameController);
 
 			// we want each frame to take x milliseconds (given by the number of
 			// frame per second), to do this we've recorded when we started the

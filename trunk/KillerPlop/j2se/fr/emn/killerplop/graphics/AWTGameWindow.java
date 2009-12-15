@@ -2,7 +2,6 @@ package fr.emn.killerplop.graphics;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -10,8 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import fr.emn.killerplop.controls.KeyHandler;
+import fr.emn.killerplop.game.controller.gamecontroller.GameController;
+import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.graphics.context.GameWindow;
-import fr.emn.killerplop.graphics.context.GraphicContext;
 
 @SuppressWarnings("serial")
 public class AWTGameWindow extends Canvas implements GameWindow {
@@ -24,10 +24,12 @@ public class AWTGameWindow extends Canvas implements GameWindow {
 
 	protected KeyHandler keyHandler;
 
-	/**
-	 * Construct our map and set it running.
-	 */
+	protected AWTGraphicContext graphicContext;
+
 	public AWTGameWindow(int width, int height) {
+		// create the graphic context
+		graphicContext = new AWTGraphicContext();
+
 		// create a frame to contain our game
 		container = new JFrame();
 		this.width = width;
@@ -71,25 +73,13 @@ public class AWTGameWindow extends Canvas implements GameWindow {
 		createBufferStrategy(2);
 	}
 
-	@Override
 	public KeyHandler getKeyHandler() {
 		return keyHandler;
 	}
 
 	@Override
-	public GraphicContext getGraphicContext() {
-		return new AWTGraphicContext((Graphics2D) getBufferStrategy()
-				.getDrawGraphics());
-	}
-
-	@Override
 	public void setTitle(String title) {
 		container.setTitle(title);
-	}
-
-	@Override
-	public void show() {
-		getBufferStrategy().show();
 	}
 
 	@Override
@@ -100,6 +90,18 @@ public class AWTGameWindow extends Canvas implements GameWindow {
 	@Override
 	public int getWindowWidth() {
 		return width;
+	}
+
+	@Override
+	public void render(GameController gameController) throws OutOfMapException {
+		graphicContext.setGraphics(getBufferStrategy().getDrawGraphics());
+		
+		// Drawing everything
+		gameController.render(graphicContext);
+
+		// finally, we've completed drawing so clear up the graphics
+		// and flip the buffer over
+		getBufferStrategy().show();
 	}
 
 }
