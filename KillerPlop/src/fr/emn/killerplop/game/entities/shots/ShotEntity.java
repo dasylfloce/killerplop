@@ -6,9 +6,9 @@ import fr.emn.killerplop.game.entities.EntityImpl;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.graphics.sprites.SpriteFactory;
 
-public class ShipShotEntity extends EntityImpl implements Constants {
+public class ShotEntity extends EntityImpl implements Constants {
 
-	public ShipShotEntity() {
+	public ShotEntity() {
 		super(SpriteFactory.createShipShot(), 0,
 				0);
 	}
