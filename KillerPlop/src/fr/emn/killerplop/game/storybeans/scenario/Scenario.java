@@ -1,10 +1,10 @@
-package fr.emn.killerplop.story.scenario;
+package fr.emn.killerplop.game.storybeans.scenario;
 
 import fr.emn.killerplop.game.constants.Constants;
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
+import fr.emn.killerplop.game.storybeans.event.EventManager;
 import fr.emn.killerplop.graphics.context.GameWindow;
-import fr.emn.killerplop.story.event.EventManager;
 
 
 /**

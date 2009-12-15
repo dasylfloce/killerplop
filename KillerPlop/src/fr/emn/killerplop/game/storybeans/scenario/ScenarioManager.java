@@ -1,4 +1,4 @@
-package fr.emn.killerplop.story.scenario;
+package fr.emn.killerplop.game.storybeans.scenario;
 
 public interface ScenarioManager extends Runnable {
 

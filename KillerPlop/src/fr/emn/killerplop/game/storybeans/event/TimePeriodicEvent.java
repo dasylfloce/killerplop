@@ -1,4 +1,4 @@
-package fr.emn.killerplop.story.event;
+package fr.emn.killerplop.game.storybeans.event;
 
 
 public abstract class TimePeriodicEvent extends TimeEvent {
