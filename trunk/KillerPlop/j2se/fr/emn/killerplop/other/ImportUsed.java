@@ -1,4 +1,4 @@
-package fr.emn.killerplop.tests;
+package fr.emn.killerplop.other;
 
 import java.io.BufferedReader;
 import java.io.File;
