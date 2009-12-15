@@ -1,4 +1,4 @@
-package fr.emn.killerplop.game.story.event;
+package fr.emn.killerplop.story.event;
 
 import java.util.LinkedList;
 import java.util.ListIterator;

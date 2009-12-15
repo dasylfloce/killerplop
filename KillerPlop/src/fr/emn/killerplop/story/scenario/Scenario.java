@@ -1,11 +1,10 @@
-package fr.emn.killerplop.game.story.scenario;
+package fr.emn.killerplop.story.scenario;
 
 import fr.emn.killerplop.game.constants.Constants;
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
-import fr.emn.killerplop.game.exceptions.NoWindowException;
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
-import fr.emn.killerplop.game.story.event.EventManager;
 import fr.emn.killerplop.graphics.context.GameWindow;
+import fr.emn.killerplop.story.event.EventManager;
 
 
 /**
@@ -15,7 +14,7 @@ import fr.emn.killerplop.graphics.context.GameWindow;
  * @author Aurélien RAMBAUX
  *
  */
-public interface Scenario extends Constants {
+public interface Scenario extends Constants, Runnable {
 
 	/**
 	 * Create the game controller from the scenario
@@ -27,11 +26,6 @@ public interface Scenario extends Constants {
 	 * @param gameWindow
 	 */
 	public void setGameWindow(GameWindow gameWindow);
-	
-	/**
-	 * Start the scenario
-	 */
-	public void start() throws NoWindowException;
 	
 	/**
 	 * @return true if the scenario is terminated.

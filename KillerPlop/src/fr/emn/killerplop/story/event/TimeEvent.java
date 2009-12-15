@@ -1,4 +1,4 @@
-package fr.emn.killerplop.game.story.event;
+package fr.emn.killerplop.story.event;
 
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 

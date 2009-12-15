@@ -1,7 +1,7 @@
-#Mon Dec 14 18:34:37 CET 2009
+#Tue Dec 15 18:42:03 CET 2009
 PLUGIN_VERSION=1.1.42
-application.element.properties=\#Mon Dec 14 18\:34\:37 CET 2009\r\ncom.flexycore.debugger.config.synchroPort\=0\r\ncom.flexycore.iBinaryConfig.outDir\=\r\n
-debug.element.properties=\#Mon Dec 14 18\:34\:37 CET 2009\r\ncom.flexycore.debugger.config.synchroPort\=0\r\ncom.flexycore.iBinaryConfig.outDir\=\r\n
+application.element.properties=\#Tue Dec 15 18\:42\:03 CET 2009\r\ncom.flexycore.debugger.config.synchroPort\=0\r\n
+debug.element.properties=\#Tue Dec 15 18\:42\:03 CET 2009\r\ncom.flexycore.debugger.config.synchroPort\=0\r\n
 eclipse.preferences.version=1
 enabled=true
 fcc=\:23
