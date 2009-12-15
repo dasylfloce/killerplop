@@ -1,7 +1,10 @@
-package fr.emn.killerplop.story.scenario;
+package fr.emn.killerplop.story;
 
-import fr.emn.killerplop.story.event.EventManager;
-import fr.emn.killerplop.story.event.EventManagerImpl;
+import fr.emn.killerplop.game.storybeans.event.EventManager;
+import fr.emn.killerplop.game.storybeans.event.EventManagerImpl;
+import fr.emn.killerplop.game.storybeans.scenario.Scenario;
+import fr.emn.killerplop.game.storybeans.scenario.ScenarioImpl;
+import fr.emn.killerplop.game.storybeans.scenario.ScenarioManager;
 
 public abstract class KillerPlop implements ScenarioManager {
 
