@@ -1,5 +1,8 @@
-package fr.emn.killerplop.tests;
+package fr.emn.killerplop.story.test;
 
+import java.util.Random;
+
+import fr.emn.killerplop.game.constants.Constants;
 import fr.emn.killerplop.game.controller.entitymanager.EntityManager;
 import fr.emn.killerplop.game.controller.entitymanager.EntityManagerImpl;
 import fr.emn.killerplop.game.entities.aliens.AlienEntity;
@@ -10,9 +13,11 @@ import fr.emn.killerplop.game.entities.ship.ShipEntity;
 import fr.emn.killerplop.graphics.sprites.SimpleSprite;
 import fr.emn.killerplop.graphics.sprites.SpriteFactory;
 
-public class EntityTest extends Test {
+public class EntityTest implements Constants {
 
+	private static Random r = new Random();
 	private static EntityManager manager;
+
 	public static ShipEntity ship = new ShipEntity(SpriteFactory
 			.createShip(), 10, WINDOW_HEIGHT / 2, SHIPSPEED);
 
@@ -28,7 +33,7 @@ public class EntityTest extends Test {
 			manager.addEntity(new AlienEntity(new SimpleSprite(
 					"entities/alien.gif"), 200 + 30 * i
 					+ r.nextInt(WINDOW_HEIGHT - 40), r
-					.nextInt(Test.WINDOW_HEIGHT), new StaticMovement()));
+					.nextInt(WINDOW_HEIGHT), new StaticMovement()));
 		}
 	}
 
@@ -37,7 +42,7 @@ public class EntityTest extends Test {
 			int amplitude = r.nextInt(250);
 			manager.addEntity(new AlienEntity(new SimpleSprite(
 					"entities/ship.gif"), 800 + 100 * i
-					+ r.nextInt(WINDOW_WIDTH), r.nextInt(Test.WINDOW_HEIGHT
+					+ r.nextInt(WINDOW_WIDTH), r.nextInt(WINDOW_HEIGHT
 					- amplitude)
 					+ amplitude / 2, new DynamicMovement(new SinusMovement(
 					amplitude, r.nextInt(3) + 1, -r.nextInt(200)))));
@@ -49,7 +54,7 @@ public class EntityTest extends Test {
 			int amplitude = r.nextInt(150);
 			manager.addEntity(new AlienEntity(SpriteFactory.createBoss(),
 					WINDOW_WIDTH + 100 * i + r.nextInt(WINDOW_WIDTH), r
-							.nextInt(Test.WINDOW_HEIGHT - 2 * amplitude)
+							.nextInt(WINDOW_HEIGHT - 2 * amplitude)
 							+ amplitude / 2, new SinusMovement(amplitude, r
 							.nextInt(3) + 1, r.nextInt(200))));
 		}
@@ -60,7 +65,7 @@ public class EntityTest extends Test {
 			int amplitude = r.nextInt(150);
 			manager.addEntity(new AlienEntity(SpriteFactory.createrandom(),
 					WINDOW_WIDTH + 30 * i + r.nextInt(WINDOW_WIDTH), r
-							.nextInt(Test.WINDOW_HEIGHT - 2 * amplitude)
+							.nextInt(WINDOW_HEIGHT - 2 * amplitude)
 							+ amplitude / 2, new SinusMovement(amplitude, r
 							.nextInt(3) + 1, -r.nextInt(300)+100)));
 		}

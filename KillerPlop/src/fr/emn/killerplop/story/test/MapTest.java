@@ -1,5 +1,7 @@
-package fr.emn.killerplop.tests;
+package fr.emn.killerplop.story.test;
 
+
+import java.util.Random;
 
 import fr.emn.killerplop.game.map.maptiled.MapTiled;
 import fr.emn.killerplop.game.map.maptiled.MapTiledBuilder;
@@ -7,7 +9,9 @@ import fr.emn.killerplop.game.map.tile.SimpleTile;
 import fr.emn.killerplop.game.map.tile.Tile;
 import fr.emn.killerplop.graphics.imageCenter.ImageCenter;
 
-public class MapTest extends Test implements ImageCenter {
+public class MapTest implements ImageCenter {
+	
+	private static Random r = new Random();
 
 	public static MapTiled createMap() {
 		return background();

@@ -12,4 +12,9 @@ public interface Constants {
 	
 	public static final  int SHOOTDELAY = 250;
 	
+	public static final  int WINDOW_HEIGHT = 320;
+	
+	public static final  int WINDOW_WIDTH = 600;
+
+
 }
