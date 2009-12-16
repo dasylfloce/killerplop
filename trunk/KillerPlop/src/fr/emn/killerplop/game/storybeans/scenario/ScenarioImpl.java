@@ -36,6 +36,7 @@ public class ScenarioImpl implements Scenario {
 
 		gameController.setViewSize(gameWindow.getWindowWidth(), gameWindow
 				.getWindowHeight());
+
 		try {
 			loop();
 		} catch (ViewSizeNullException e) {
@@ -55,6 +56,7 @@ public class ScenarioImpl implements Scenario {
 		// fps : recorded fps
 		long sleep = 0, delta = 0, lastFpsTime = 0, fps = 0;
 		long lastLoopTime = System.nanoTime();
+		int refreshViewRatio = 0;
 
 		// keep looping round til the game ends
 		while (!isTerminated()) {
@@ -82,7 +84,9 @@ public class ScenarioImpl implements Scenario {
 			gameController.updateEntities();
 
 			// Show on window
-			gameWindow.render(gameController);
+			if (refreshViewRatio % REFRESH_VIEW_RATIO == 0)
+				gameWindow.render(gameController);
+			refreshViewRatio++;
 
 			// we want each frame to take x milliseconds (given by the number of
 			// frame per second), to do this we've recorded when we started the

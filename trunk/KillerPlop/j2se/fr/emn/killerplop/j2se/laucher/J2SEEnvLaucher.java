@@ -1,11 +1,11 @@
-package fr.emn.killerplop.laucher;
+package fr.emn.killerplop.j2se.laucher;
 
 import fr.emn.killerplop.game.constants.Constants;
-import fr.emn.killerplop.graphics.AWTGameWindow;
-import fr.emn.killerplop.graphics.AWTGraphicUtilities;
 import fr.emn.killerplop.graphics.context.GameWindow;
 import fr.emn.killerplop.graphics.context.GraphicUtilities;
 import fr.emn.killerplop.graphics.imageCenter.ImageCenterLoader;
+import fr.emn.killerplop.j2se.graphics.AWTGameWindow;
+import fr.emn.killerplop.j2se.graphics.AWTGraphicUtilities;
 import fr.emn.killerplop.story.Environnement;
 import fr.emn.killerplop.story.KillerPlop;
 import fr.emn.killerplop.story.test.EntityTest;

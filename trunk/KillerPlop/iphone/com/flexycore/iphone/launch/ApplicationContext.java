@@ -1,7 +1,8 @@
 package com.flexycore.iphone.launch;
 
 import com.flexycore.iphone.uikit.UIApplicationDelegate;
-import fr.emn.killerplop.test.IPhoneTest;
+
+import fr.emn.killerplop.iphone.test.IPhoneTest;
 
 public class ApplicationContext {
 	UIApplicationDelegate application;
