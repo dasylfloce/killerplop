@@ -3,7 +3,7 @@
  * web		: http://www.skysoft.fr
  */
 
-package fr.emn.killerplop.test;
+package fr.emn.killerplop.iphone.test;
 
 import java.util.Random;
 import com.flexycore.iphone.coregraphics.CGContext;

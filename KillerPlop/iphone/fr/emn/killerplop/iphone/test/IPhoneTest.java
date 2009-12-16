@@ -3,7 +3,7 @@
  * web		: http://www.skysoft.fr
  */
 
-package fr.emn.killerplop.test;
+package fr.emn.killerplop.iphone.test;
 
 import com.flexycore.iphone.uikit.UIApplication;
 import com.flexycore.iphone.uikit.UIApplicationDelegate;

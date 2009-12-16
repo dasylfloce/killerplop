@@ -1,4 +1,4 @@
-package fr.emn.killerplop.graphics;
+package fr.emn.killerplop.j2se.graphics;
 
 import fr.emn.killerplop.game.entities.shapes.RectShape;
 import fr.emn.killerplop.graphics.context.GraphicUtilities;

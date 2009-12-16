@@ -1,4 +1,4 @@
-package fr.emn.killerplop.graphics;
+package fr.emn.killerplop.j2se.graphics;
 
 import java.awt.Graphics;
 

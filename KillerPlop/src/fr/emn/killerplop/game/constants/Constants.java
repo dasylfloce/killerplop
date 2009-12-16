@@ -3,6 +3,8 @@ package fr.emn.killerplop.game.constants;
 public interface Constants {
 	
 	public static final int FRAME_RATE = 50;
+	
+	public static final int REFRESH_VIEW_RATIO = 1;
 
 	public static final double SHIPSPEED = 200;
 	
