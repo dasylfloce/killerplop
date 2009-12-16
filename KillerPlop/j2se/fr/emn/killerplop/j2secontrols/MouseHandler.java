@@ -1,4 +1,4 @@
-package fr.emn.killerplop.controls;
+package fr.emn.killerplop.j2se.controls;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
