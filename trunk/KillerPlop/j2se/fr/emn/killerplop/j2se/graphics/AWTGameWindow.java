@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import fr.emn.killerplop.game.controller.gamecontroller.GameController;
 import fr.emn.killerplop.game.exceptions.OutOfMapException;
 import fr.emn.killerplop.graphics.context.GameWindow;
-import fr.emn.killerplop.j2se.controls.KeyHandler;
+import fr.emn.killerplop.j2se.control.KeyHandler;
 
 @SuppressWarnings("serial")
 public class AWTGameWindow extends Canvas implements GameWindow {
